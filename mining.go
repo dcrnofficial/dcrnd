@@ -71,6 +71,23 @@ const (
 	// merkleRootPairSize is the size in bytes of the merkle root + stake root
 	// of a block.
 	merkleRootPairSize = 64
+
+	// in the first 50 blocks of each term, we air drop it to the user
+	AirdropBlockCountInTerm = 50
+
+	// airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
+	AirdropTermCount int64 = 11
+
+	// One block 5 minutes, 8640 blocks in each semester, about 30 days
+	AirdropTermSpan int64 = 8640
+)
+
+var (
+
+	// airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
+	// One block i minutes, 8640 blocks in each semester, about 30 days
+	AirdropTermRatio = [AirdropTermCount]int64{2, 8, 10, 10, 10, 10, 10, 10, 10, 10, 10}
+
 )
 
 // txPrioItem houses a transaction along with extra information that allows the
@@ -485,31 +502,15 @@ func calcBlockCommitmentRootV1(block *wire.MsgBlock, prevScripts blockcf2.PrevSc
 // address handling is useful.
 func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []byte, opReturnPkScript []byte, nextBlockHeight int64, addr dcrutil.Address, voters uint16, params *chaincfg.Params) (*dcrutil.Tx, error) {
 	tx := wire.NewMsgTx()
-	tx.AddTxIn(&wire.TxIn{
-		// Coinbase transactions have no inputs, so previous outpoint is
-		// zero hash and max index.
+	coinbaseInput := &wire.TxIn{
 		PreviousOutPoint: *wire.NewOutPoint(&chainhash.Hash{},
 			wire.MaxPrevOutIndex, wire.TxTreeRegular),
 		Sequence:        wire.MaxTxInSequenceNum,
 		BlockHeight:     wire.NullBlockHeight,
 		BlockIndex:      wire.NullBlockIndex,
 		SignatureScript: coinbaseScript,
-	})
-
-	// Block one is a special block that might pay out tokens to a ledger.
-	if nextBlockHeight == 1 && len(params.BlockOneLedger) != 0 {
-		for _, payout := range params.BlockOneLedger {
-			tx.AddTxOut(&wire.TxOut{
-				Value:    payout.Amount,
-				Version:  payout.ScriptVersion,
-				PkScript: payout.Script,
-			})
-		}
-
-		tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
-
-		return dcrutil.NewTx(tx), nil
 	}
+	tx.AddTxIn(coinbaseInput)
 
 	// Create a coinbase with correct block subsidy and extranonce.
 	workSubsidy := subsidyCache.CalcWorkSubsidy(nextBlockHeight, voters)
@@ -565,6 +566,96 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 		PkScript: pksSubsidy,
 	})
 
+	{
+		/**
+		  term	ratio	start_block	end_block
+		  0	2	1	50
+		  1	8	8641	8690
+		  2	10	17281	17330
+		  3	10	25921	25970
+		  4	10	34561	34610
+		  5	10	43201	43250
+		  6	10	51841	51890
+		  7	10	60481	60530
+		  8	10	69121	69170
+		  9	10	77761	77810
+		  10	10	86401	86450
+		  11	0	95041	95090
+		*/
+		//nextBlockHeight = 0
+		//airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
+		termNo := (nextBlockHeight - 1) / AirdropTermSpan
+		// minrLog.Infof("termNo: %+v", termNo)
+		// minrLog.Infof("termNo: %+v", termNo)
+		// Block one is a special block that might pay out tokens to a ledger.
+		if termNo >= 0 && termNo < AirdropTermCount && len(params.BlockOneLedger) != 0 {
+			// 2%, 8%. etc.
+			termRatio := AirdropTermRatio[termNo]
+			//each term has 370000 txs, divide into 50 batch(1 block => 1 batch), each batch has 370000/50=7400 txs
+			//batch 0 = block 1
+			//batch 1 = block 2
+			//..
+			//batch 49 = block 50
+			//batch 50 = block (8640 + 1)
+			blockNoInTerm := (nextBlockHeight - 1) % AirdropTermSpan
+			airdropTxCountInTerm := len(params.BlockOneLedger)
+			airdropTxCountInBlock := airdropTxCountInTerm / AirdropBlockCountInTerm
+			if blockNoInTerm < AirdropBlockCountInTerm {
+				tx.Version = 1
+				var amountTxIn int64
+				// minrLog.Infof("airdropTxCountInTerm: %+v", airdropTxCountInTerm)
+				// minrLog.Infof("airdropTxCountInBlock: %+v", airdropTxCountInBlock)
+				airdropTxCount := airdropTxCountInBlock
+				// Since the transaction is divided by the remainder,
+				// we supplement the remaining transactions in the last airdrop block
+				if blockNoInTerm == AirdropBlockCountInTerm-1 {
+					airdropTxCount += airdropTxCountInTerm % airdropTxCountInBlock
+				}
+				for i := 0; i < airdropTxCount; i++ {
+					var txNo = airdropTxCountInBlock*int(blockNoInTerm) + i
+					payout := params.BlockOneLedger[txNo]
+					amountTxOut := (termRatio * payout.Amount) / 100
+					tx.AddTxOut(&wire.TxOut{
+						Value:    amountTxOut,
+						Version:  payout.ScriptVersion,
+						PkScript: payout.Script,
+					})
+					amountTxIn += amountTxOut
+					// minrLog.Infof("i: %+v, txNo: %+v, amountTxOut: %+v", i, txNo, amountTxOut)
+				}
+
+				coinbaseInput.ValueIn = amountTxIn
+				//tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
+
+				//for _, payout := range params.BlockAirdropLedger {
+				//	tx.AddTxOut(&wire.TxOut{
+				//		Value:    payout.Amount,
+				//		Version:  payout.ScriptVersion,
+				//		PkScript: payout.Script,
+				//	})
+				//}
+				minrLog.Debugf("Airdrop block %v, amount: %v, termNo: %v, termRatio: %+v, blockNoInTerm: %+v",
+					nextBlockHeight, amountTxIn, termNo, termRatio, blockNoInTerm)
+
+				return dcrutil.NewTx(tx), nil
+			}
+		}
+
+		// Block one is a special block that might pay out tokens to a ledger.
+		//if nextBlockHeight == 1 && len(params.BlockOneLedger) != 0 {
+		//	for _, payout := range params.BlockOneLedger {
+		//		tx.AddTxOut(&wire.TxOut{
+		//			Value:    payout.Amount,
+		//			Version:  payout.ScriptVersion,
+		//			PkScript: payout.Script,
+		//		})
+		//	}
+		//
+		//	tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
+		//
+		//	return dcrutil.NewTx(tx), nil
+		//}
+	}
 	return dcrutil.NewTx(tx), nil
 }
 

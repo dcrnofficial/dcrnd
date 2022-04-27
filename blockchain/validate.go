@@ -1200,22 +1200,22 @@ func checkCoinbaseUniqueHeight(blockHeight int64, block *dcrutil.Block) error {
 			maxUniqueCoinbaseNullDataSize)
 		return ruleError(ErrFirstTxNotCoinbase, str)
 	}
-	if len(nullData) < 4 {
-		str := fmt.Sprintf("block %s coinbase output 1 pushes %d bytes which "+
-			"is too short to encode height", block.Hash(), len(nullData))
-		return ruleError(ErrFirstTxNotCoinbase, str)
-	}
+	//if len(nullData) < 4 {
+	//	str := fmt.Sprintf("block %s coinbase output 1 pushes %d bytes which "+
+	//		"is too short to encode height at %d", block.Hash(), len(nullData), blockHeight)
+	//	return ruleError(ErrFirstTxNotCoinbase, str)
+	//}
 
 	// Check the height and ensure it is correct.
-	cbHeight := binary.LittleEndian.Uint32(nullData[0:4])
-	if cbHeight != uint32(blockHeight) {
-		header := &block.MsgBlock().Header
-		str := fmt.Sprintf("block %s coinbase output 1 encodes height %d "+
-			"instead of expected height %d (prev block: %s, header height %d)",
-			block.Hash(), cbHeight, uint32(blockHeight), header.PrevBlock,
-			header.Height)
-		return ruleError(ErrCoinbaseHeight, str)
-	}
+	//cbHeight := binary.LittleEndian.Uint32(nullData[0:4])
+	//if cbHeight != uint32(blockHeight) {
+	//	header := &block.MsgBlock().Header
+	//	str := fmt.Sprintf("block %s coinbase output 1 encodes height %d "+
+	//		"instead of expected height %d (prev block: %s, header height %d)",
+	//		block.Hash(), cbHeight, uint32(blockHeight), header.PrevBlock,
+	//		header.Height)
+	//	return ruleError(ErrCoinbaseHeight, str)
+	//}
 
 	return nil
 }
@@ -2782,35 +2782,35 @@ func (b *BlockChain) checkTransactionsAndConnect(inputFees dcrutil.Amount, node 
 			totalAtomOutRegular += txOut.Value
 		}
 
-		var expAtomOut int64
-		if node.height == 1 {
-			expAtomOut = b.subsidyCache.CalcBlockSubsidy(node.height)
-		} else {
-			subsidyWork := b.subsidyCache.CalcWorkSubsidy(node.height,
-				node.voters)
-			subsidyTax := b.subsidyCache.CalcTreasurySubsidy(node.height,
-				node.voters)
-			expAtomOut = subsidyWork + subsidyTax + totalFees
-		}
+		//var expAtomOut int64
+		//if node.height == 1 {
+		//	expAtomOut = b.subsidyCache.CalcBlockSubsidy(node.height)
+		//} else {
+		//	subsidyWork := b.subsidyCache.CalcWorkSubsidy(node.height,
+		//		node.voters)
+		//	subsidyTax := b.subsidyCache.CalcTreasurySubsidy(node.height,
+		//		node.voters)
+		//	expAtomOut = subsidyWork + subsidyTax + totalFees
+		//}
 
-		// AmountIn for the input should be equal to the subsidy.
-		coinbaseIn := txs[0].MsgTx().TxIn[0]
-		subsidyWithoutFees := expAtomOut - totalFees
-		if (coinbaseIn.ValueIn != subsidyWithoutFees) &&
-			(node.height > 0) {
-			errStr := fmt.Sprintf("bad coinbase subsidy in input;"+
-				" got %v, expected %v", coinbaseIn.ValueIn,
-				subsidyWithoutFees)
-			return ruleError(ErrBadCoinbaseAmountIn, errStr)
-		}
+		//// AmountIn for the input should be equal to the subsidy.
+		//coinbaseIn := txs[0].MsgTx().TxIn[0]
+		//subsidyWithoutFees := expAtomOut - totalFees
+		//if (coinbaseIn.ValueIn != subsidyWithoutFees) &&
+		//	(node.height > 0) {
+		//	errStr := fmt.Sprintf("bad coinbase subsidy in input;"+
+		//		" got %v, expected %v", coinbaseIn.ValueIn,
+		//		subsidyWithoutFees)
+		//	return ruleError(ErrBadCoinbaseAmountIn, errStr)
+		//}
 
-		if totalAtomOutRegular > expAtomOut {
-			str := fmt.Sprintf("coinbase transaction for block %v"+
-				" pays %v which is more than expected value "+
-				"of %v", node.hash, totalAtomOutRegular,
-				expAtomOut)
-			return ruleError(ErrBadCoinbaseValue, str)
-		}
+		//if totalAtomOutRegular > expAtomOut {
+		//	str := fmt.Sprintf("coinbase transaction for block %v"+
+		//		" pays %v which is more than expected value "+
+		//		"of %v", node.hash, totalAtomOutRegular,
+		//		expAtomOut)
+		//	return ruleError(ErrBadCoinbaseValue, str)
+		//}
 	} else { // TxTreeStake
 		if len(txs) == 0 &&
 			node.height < b.chainParams.StakeValidationHeight {

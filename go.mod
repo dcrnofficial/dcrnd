@@ -40,3 +40,14 @@ require (
 	golang.org/x/crypto v0.0.0-20190611184440-5c40567a22f8
 	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
 )
+
+replace (
+    github.com/decred/dcrd/addrmgr v1.1.0 => ./addrmgr
+    github.com/decred/dcrd/blockchain/stake/v2 v2.0.2 => ./blockchain/stake
+    github.com/decred/dcrd/blockchain/standalone v1.1.0 => ./blockchain/standalone
+    github.com/decred/dcrd/blockchain/v2 v2.1.0 => ./blockchain
+    github.com/decred/dcrd/chaincfg/v2 v2.3.0 => ./chaincfg
+    github.com/decred/dcrd/connmgr/v2 v2.1.0 => ./connmgr
+    github.com/decred/dcrd/mining/v2 v2.0.1 => ./mining
+    github.com/decred/dcrd/peer/v2 v2.1.0 => ./peer
+)
