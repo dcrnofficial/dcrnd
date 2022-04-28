@@ -72,7 +72,12 @@ func TestNet3Params() *Params {
 		Name:        "testnet3",
 		Net:         wire.TestNet3,
 		DefaultPort: "19108",
-		DNSSeeds:    []DNSSeed{},
+		DNSSeeds: []DNSSeed{
+			{"54.193.161.248", true},
+			{"54.215.65.128", true},
+			{"54.183.100.110", true},
+			{"13.56.184.123", true},
+		},
 
 		// Chain parameters
 		GenesisBlock:             &genesisBlock,
