@@ -28,7 +28,7 @@ func TestNet3Params() *Params {
 			Version:   6,
 			PrevBlock: chainhash.Hash{},
 			// MerkleRoot: Calculated below.
-			Timestamp:    time.Unix(1533513600, 0), // 2018-08-06 00:00:00 +0000 UTC
+			Timestamp:    time.Unix(1651118400, 0), // 2022-04-28 12:00:00 +0000 UTC
 			Bits:         0x1e00ffff,               // Difficulty 1 [000000ffff000000000000000000000000000000000000000000000000000000]
 			SBits:        20000000,
 			Nonce:        0x18aea41a,
@@ -72,12 +72,7 @@ func TestNet3Params() *Params {
 		Name:        "testnet3",
 		Net:         wire.TestNet3,
 		DefaultPort: "19108",
-		DNSSeeds: []DNSSeed{
-			{"54.193.161.248", true},
-			{"54.215.65.128", true},
-			{"54.183.100.110", true},
-			{"13.56.184.123", true},
-		},
+		DNSSeeds:    []DNSSeed{},
 
 		// Chain parameters
 		GenesisBlock:             &genesisBlock,
@@ -106,10 +101,7 @@ func TestNet3Params() *Params {
 		BlockTaxProportion:       1,
 
 		// Checkpoints ordered from oldest to newest.
-		Checkpoints: []Checkpoint{
-			{83520, newHashFromStr("0000000001e6244d95feae8b598e854905158c7bc781daf874afff88675ef0c8")},
-			{282340, newHashFromStr("0000001f538d6343316fe50709fa544b680a1be38141d003e755da8ad30f67a8")},
-		},
+		Checkpoints: []Checkpoint{},
 
 		// Consensus rule change deployments.
 		//

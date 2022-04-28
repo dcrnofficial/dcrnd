@@ -39,7 +39,7 @@ func MainNetParams() *Params {
 			PrevBlock: chainhash.Hash{}, // All zero.
 			// MerkleRoot: Calculated below.
 			StakeRoot:    chainhash.Hash{},
-			Timestamp:    time.Unix(1454954400, 0), // Mon, 08 Feb 2016 18:00:00 GMT
+			Timestamp:    time.Unix(1652846400, 0), // 2022-05-18 12:00:00 +0000 UTC
 			Bits:         0x1b01ffff,               // Difficulty 32767
 			SBits:        2 * 1e8,                  // 2 Coin
 			Nonce:        0x00000000,

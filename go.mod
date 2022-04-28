@@ -50,4 +50,5 @@ replace (
     github.com/decred/dcrd/connmgr/v2 v2.1.0 => ./connmgr
     github.com/decred/dcrd/mining/v2 v2.0.1 => ./mining
     github.com/decred/dcrd/peer/v2 v2.1.0 => ./peer
+    github.com/decred/dcrd/wire v1.3.0 => ./wire
 )
