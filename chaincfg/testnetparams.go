@@ -170,8 +170,8 @@ func TestNet3Params() *Params {
 		StakeMajorityDivisor:    4,
 
 		// Decred organization related parameters.
-		// Organization address is TsTVAEV7hxmncdwhY4v8arXFWjXbiLuQPT6.
-		OrganizationPkScript:        hexDecode("76a9141b0cf311abd49e81908b0d9e58f44cbce692881688ac"),
+		// Organization address is TseKrui8oSZ3JeqoRhb6SArxf1n1TgtqRyz.
+		OrganizationPkScript:        hexDecode("76a91491f420db24970cef73bd081bd7b649d407d012db88ac"),
 		OrganizationPkScriptVersion: 0,
 		BlockOneLedger:              tokenPayouts_TestNet3Params(),
 	}
