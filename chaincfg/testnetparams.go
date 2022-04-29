@@ -25,14 +25,14 @@ func TestNet3Params() *Params {
 	// the public transaction ledger for the test network (version 3).
 	genesisBlock := wire.MsgBlock{
 		Header: wire.BlockHeader{
-			Version:   6,
+			Version:   1,
 			PrevBlock: chainhash.Hash{},
 			// MerkleRoot: Calculated below.
 			Timestamp:    time.Unix(1651118400, 0), // 2022-04-28 12:00:00 +0000 UTC
 			Bits:         0x1e00ffff,               // Difficulty 1 [000000ffff000000000000000000000000000000000000000000000000000000]
 			SBits:        20000000,
 			Nonce:        0x18aea41a,
-			StakeVersion: 6,
+			StakeVersion: 0,
 		},
 		Transactions: []*wire.MsgTx{{
 			SerType: wire.TxSerializeFull,
