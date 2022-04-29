@@ -51,10 +51,9 @@ func TestNet3Params() *Params {
 				ValueIn:         wire.NullValueIn,
 			}},
 			TxOut: []*wire.TxOut{{
-				Version: 0x0000,
-				Value:   0x00000000,
-				PkScript: hexDecode("801679e98561ada96caec2949a5d41c4cab3851e" +
-					"b740d951c10ecbcf265c1fd9"),
+				Version:  0x0000,
+				Value:    0x00000000,
+				PkScript: hexDecode("801679e98561ada96caec2949a5d41c4cab3851eb740d951c10ecbcf265c1fd9"),
 			}},
 			LockTime: 0,
 			Expiry:   0,
@@ -97,7 +96,7 @@ func TestNet3Params() *Params {
 		RetargetAdjustmentFactor: 4,
 
 		// Subsidy parameters.
-		BaseSubsidy:              2500000000, // 25 Coin
+		BaseSubsidy:              1142657450, // 25 Coin
 		MulSubsidy:               100,
 		DivSubsidy:               101,
 		SubsidyReductionInterval: 2048,
@@ -116,64 +115,7 @@ func TestNet3Params() *Params {
 		RuleChangeActivationMultiplier: 3,    // 75%
 		RuleChangeActivationDivisor:    4,
 		RuleChangeActivationInterval:   5040, // 1 week
-		Deployments: map[uint32][]ConsensusDeployment{
-			7: {{
-				Vote: Vote{
-					Id:          VoteIDFixLNSeqLocks,
-					Description: "Modify sequence lock handling as defined in DCP0004",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1548633600, // Jan 28th, 2019
-				ExpireTime: 1580169600, // Jan 28th, 2020
-			}},
-			8: {{
-				Vote: Vote{
-					Id:          VoteIDHeaderCommitments,
-					Description: "Enable header commitments as defined in DCP0005",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1567641600, // Sep 5th, 2019
-				ExpireTime: 1599264000, // Sep 5th, 2020
-			}},
-		},
+		Deployments:                    map[uint32][]ConsensusDeployment{},
 
 		// Enforce current block version once majority of the network has
 		// upgraded.
@@ -222,14 +164,14 @@ func TestNet3Params() *Params {
 		StakeVersionInterval:    144 * 2 * 7, // ~1 week
 		MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
 		StakeEnabledHeight:      16 + 16,     // CoinbaseMaturity + TicketMaturity
-		StakeValidationHeight:   768,         // Arbitrary
+		StakeValidationHeight:   64,          // Arbitrary
 		StakeBaseSigScript:      []byte{0x00, 0x00},
 		StakeMajorityMultiplier: 3,
 		StakeMajorityDivisor:    4,
 
 		// Decred organization related parameters.
-		// Organization address is TcrypGAcGCRVXrES7hWqVZb5oLJKCZEtoL1.
-		OrganizationPkScript:        hexDecode("a914d585cd7426d25b4ea5faf1e6987aacfeda3db94287"),
+		// Organization address is TsTVAEV7hxmncdwhY4v8arXFWjXbiLuQPT6.
+		OrganizationPkScript:        hexDecode("76a9141b0cf311abd49e81908b0d9e58f44cbce692881688ac"),
 		OrganizationPkScriptVersion: 0,
 		BlockOneLedger:              tokenPayouts_TestNet3Params(),
 	}

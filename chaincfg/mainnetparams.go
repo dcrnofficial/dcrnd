@@ -62,10 +62,9 @@ func MainNetParams() *Params {
 				ValueIn:         wire.NullValueIn,
 			}},
 			TxOut: []*wire.TxOut{{
-				Version: 0x0000,
-				Value:   0x00000000,
-				PkScript: hexDecode("801679e98561ada96caec2949a5d41c4cab3851e" +
-					"b740d951c10ecbcf265c1fd9"),
+				Version:  0x0000,
+				Value:    0x00000000,
+				PkScript: hexDecode("801679e98561ada96caec2949a5d41c4cab3851eb740d951c10ecbcf265c1fd9"),
 			}},
 			LockTime: 0,
 			Expiry:   0,
@@ -118,147 +117,7 @@ func MainNetParams() *Params {
 		RuleChangeActivationMultiplier: 3,    // 75%
 		RuleChangeActivationDivisor:    4,
 		RuleChangeActivationInterval:   2016 * 4, // 4 weeks
-		Deployments: map[uint32][]ConsensusDeployment{
-			4: {{
-				Vote: Vote{
-					Id:          VoteIDSDiffAlgorithm,
-					Description: "Change stake difficulty algorithm as defined in DCP0001",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing algorithm",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new algorithm",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1493164800, // Apr 26th, 2017
-				ExpireTime: 1524700800, // Apr 26th, 2018
-			}, {
-				Vote: Vote{
-					Id:          VoteIDLNSupport,
-					Description: "Request developers begin work on Lightning Network (LN) integration",
-					Mask:        0x0018, // Bits 3 and 4
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain from voting",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "no, do not work on integrating LN support",
-						Bits:        0x0008, // Bit 3
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "yes, begin work on integrating LN support",
-						Bits:        0x0010, // Bit 4
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1493164800, // Apr 26th, 2017
-				ExpireTime: 1508976000, // Oct 26th, 2017
-			}},
-			5: {{
-				Vote: Vote{
-					Id:          VoteIDLNFeatures,
-					Description: "Enable features defined in DCP0002 and DCP0003 necessary to support Lightning Network (LN)",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1505260800, // Sep 13th, 2017
-				ExpireTime: 1536796800, // Sep 13th, 2018
-			}},
-			6: {{
-				Vote: Vote{
-					Id:          VoteIDFixLNSeqLocks,
-					Description: "Modify sequence lock handling as defined in DCP0004",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1548633600, // Jan 28th, 2019
-				ExpireTime: 1580169600, // Jan 28th, 2020
-			}},
-			7: {{
-				Vote: Vote{
-					Id:          VoteIDHeaderCommitments,
-					Description: "Enable header commitments as defined in DCP0005",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1567641600, // Sep 5th, 2019
-				ExpireTime: 1599264000, // Sep 5th, 2020
-			}},
-		},
+		Deployments:                    map[uint32][]ConsensusDeployment{},
 
 		// Enforce current block version once majority of the network has
 		// upgraded.
