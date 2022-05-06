@@ -87,7 +87,6 @@ var (
 	// airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
 	// One block i minutes, 8640 blocks in each semester, about 30 days
 	AirdropTermRatio = [AirdropTermCount]int64{2, 8, 10, 10, 10, 10, 10, 10, 10, 10, 10}
-
 )
 
 // txPrioItem houses a transaction along with extra information that allows the
@@ -517,11 +516,12 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 	treasurySubsidy := subsidyCache.CalcTreasurySubsidy(nextBlockHeight, voters)
 
 	// Treasury output.
+	var treasuryOutput *wire.TxOut
 	if params.BlockTaxProportion > 0 {
-		tx.AddTxOut(&wire.TxOut{
+		treasuryOutput = &wire.TxOut{
 			Value:    treasurySubsidy,
 			PkScript: params.OrganizationPkScript,
-		})
+		}
 	} else {
 		// Treasury disabled.
 		scriptBuilder := txscript.NewScriptBuilder()
@@ -529,18 +529,19 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 		if err != nil {
 			return nil, err
 		}
-		tx.AddTxOut(&wire.TxOut{
+		treasuryOutput = &wire.TxOut{
 			Value:    treasurySubsidy,
 			PkScript: trueScript,
-		})
+		}
 	}
+	tx.AddTxOut(treasuryOutput)
 	// Extranonce.
 	tx.AddTxOut(&wire.TxOut{
 		Value:    0,
 		PkScript: opReturnPkScript,
 	})
 	// ValueIn.
-	tx.TxIn[0].ValueIn = workSubsidy + treasurySubsidy
+	coinbaseInput.ValueIn = workSubsidy + treasurySubsidy
 
 	// Create the script to pay to the provided payment address if one was
 	// specified.  Otherwise create a script that allows the coinbase to be
@@ -624,7 +625,7 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 					// minrLog.Infof("i: %+v, txNo: %+v, amountTxOut: %+v", i, txNo, amountTxOut)
 				}
 
-				coinbaseInput.ValueIn = amountTxIn
+				coinbaseInput.ValueIn += amountTxIn
 				//tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
 
 				//for _, payout := range params.BlockAirdropLedger {

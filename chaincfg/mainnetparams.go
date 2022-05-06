@@ -104,8 +104,8 @@ func MainNetParams() *Params {
 		MulSubsidy:               100,
 		DivSubsidy:               101,
 		SubsidyReductionInterval: 6144,
-		WorkRewardProportion:     6,
-		StakeRewardProportion:    3,
+		WorkRewardProportion:     8,
+		StakeRewardProportion:    1,
 		BlockTaxProportion:       1,
 
 		// Checkpoints ordered from oldest to newest.
