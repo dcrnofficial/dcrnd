@@ -167,7 +167,7 @@ func MainNetParams() *Params {
 		StakeVersionInterval:    144 * 2 * 7, // ~1 week
 		MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
 		StakeEnabledHeight:      256 + 256,   // CoinbaseMaturity + TicketMaturity
-		StakeValidationHeight:   4096,        // ~14 days
+		StakeValidationHeight:   2048,        // ~7 days
 		StakeBaseSigScript:      []byte{0x00, 0x00},
 		StakeMajorityMultiplier: 3,
 		StakeMajorityDivisor:    4,
