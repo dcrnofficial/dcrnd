@@ -1200,22 +1200,22 @@ func checkCoinbaseUniqueHeight(blockHeight int64, block *dcrutil.Block) error {
 			maxUniqueCoinbaseNullDataSize)
 		return ruleError(ErrFirstTxNotCoinbase, str)
 	}
-	//if len(nullData) < 4 {
-	//	str := fmt.Sprintf("block %s coinbase output 1 pushes %d bytes which "+
-	//		"is too short to encode height at %d", block.Hash(), len(nullData), blockHeight)
-	//	return ruleError(ErrFirstTxNotCoinbase, str)
-	//}
+	if len(nullData) < 4 {
+		str := fmt.Sprintf("block %s coinbase output 1 pushes %d bytes which "+
+			"is too short to encode height at %d", block.Hash(), len(nullData), blockHeight)
+		return ruleError(ErrFirstTxNotCoinbase, str)
+	}
 
-	// Check the height and ensure it is correct.
-	//cbHeight := binary.LittleEndian.Uint32(nullData[0:4])
-	//if cbHeight != uint32(blockHeight) {
-	//	header := &block.MsgBlock().Header
-	//	str := fmt.Sprintf("block %s coinbase output 1 encodes height %d "+
-	//		"instead of expected height %d (prev block: %s, header height %d)",
-	//		block.Hash(), cbHeight, uint32(blockHeight), header.PrevBlock,
-	//		header.Height)
-	//	return ruleError(ErrCoinbaseHeight, str)
-	//}
+	//Check the height and ensure it is correct.
+	cbHeight := binary.LittleEndian.Uint32(nullData[0:4])
+	if cbHeight != uint32(blockHeight) {
+		header := &block.MsgBlock().Header
+		str := fmt.Sprintf("block %s coinbase output 1 encodes height %d "+
+			"instead of expected height %d (prev block: %s, header height %d)",
+			block.Hash(), cbHeight, uint32(blockHeight), header.PrevBlock,
+			header.Height)
+		return ruleError(ErrCoinbaseHeight, str)
+	}
 
 	return nil
 }
