@@ -1,4 +1,4 @@
-module github.com/decred/dcrd/wire
+module github.com/Decred-Next/dcrd/wire
 
 go 1.11
 

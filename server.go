@@ -21,6 +21,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/decred/dcrd/addrmgr"
 	"github.com/decred/dcrd/blockchain/stake/v2"
 	"github.com/decred/dcrd/blockchain/standalone"
@@ -34,7 +35,6 @@ import (
 	"github.com/decred/dcrd/fees/v2"
 	"github.com/decred/dcrd/gcs/v2"
 	"github.com/decred/dcrd/gcs/v2/blockcf"
-	"github.com/decred/dcrd/internal/version"
 	"github.com/decred/dcrd/lru"
 	"github.com/decred/dcrd/mempool/v3"
 	"github.com/decred/dcrd/mining/v2"

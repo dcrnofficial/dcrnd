@@ -11,10 +11,10 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/btcsuite/winsvc/eventlog"
 	"github.com/btcsuite/winsvc/mgr"
 	"github.com/btcsuite/winsvc/svc"
-	"github.com/decred/dcrd/internal/version"
 )
 
 const (

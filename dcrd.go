@@ -14,9 +14,9 @@ import (
 	"runtime/debug"
 	"runtime/pprof"
 
+	"github.com/Decred-Next/dcrnd/internal/limits"
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/decred/dcrd/blockchain/v2/indexers"
-	"github.com/decred/dcrd/internal/limits"
-	"github.com/decred/dcrd/internal/version"
 )
 
 var cfg *config
