@@ -177,5 +177,6 @@ func MainNetParams() *Params {
 		OrganizationPkScript:        hexDecode("a914f5916158e3e2c4551c1796708db8367207ed13bb87"),
 		OrganizationPkScriptVersion: 0,
 		BlockOneLedger:              tokenPayouts_MainNetParams(),
+		AirdropBlockOffset:          4096,
 	}
 }

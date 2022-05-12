@@ -16,3 +16,8 @@ require (
 	github.com/decred/dcrd/wire v1.3.0
 	github.com/decred/slog v1.0.0
 )
+
+replace (
+	github.com/decred/dcrd/blockchain/standalone v1.1.0 => ./standalone
+	github.com/decred/dcrd/chaincfg/v2 v2.3.0 => ../chaincfg
+)

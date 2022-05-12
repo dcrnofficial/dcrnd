@@ -18,6 +18,27 @@ import (
 // overhead of creating it multiple times.
 var bigOne = big.NewInt(1)
 
+const (
+	// in the first 50 blocks of each term, we air drop it to the user
+	AirdropBlockCountInTerm = 50
+
+	// airdrop divide into 11 terms, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
+	AirdropTermCount int64 = 20
+
+	// One block 5 minutes, 8640 blocks in each term, about 30 days
+	AirdropTermSpan int64 = 8640
+)
+
+var (
+	// airdrop divide into 20 term, 2%, 2%, 2%, .... 8%
+	AirdropTermRatio = [AirdropTermCount]int64{
+		2, 2, 2, 2, 2,
+		2, 2, 2, 2, 2,
+		8, 8, 8, 8, 8,
+		8, 8, 8, 8, 8,
+	}
+)
+
 // Checkpoint identifies a known good point in the block chain.  Using
 // checkpoints allows a few optimizations for old blocks during initial download
 // and also prevents forks from old blocks.
@@ -462,6 +483,14 @@ type Params struct {
 	// block height 1. If there are no payouts to be given, set this
 	// to an empty slice.
 	BlockOneLedger []TokenPayout
+
+	// Airdrop block offset for each term
+	// Term0(2%),   BlockRange: AirdropBlockOffset + 8640*0  -> AirdropBlockOffset + 8640*0  +50
+	// Term1(2%),   BlockRange: AirdropBlockOffset + 8640*1  -> AirdropBlockOffset + 8640*1  +50
+	// ...
+	// Term19(8%),  BlockRange: AirdropBlockOffset + 8640*19 -> AirdropBlockOffset + 8640*19 +50
+	// Term20(0%),  BlockRange: AirdropBlockOffset + 8640*20 -> AirdropBlockOffset + 8640*20 +50
+	AirdropBlockOffset int64
 }
 
 // HDPrivKeyVersion returns the hierarchical deterministic extended private key

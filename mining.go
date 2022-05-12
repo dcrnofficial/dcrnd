@@ -71,22 +71,6 @@ const (
 	// merkleRootPairSize is the size in bytes of the merkle root + stake root
 	// of a block.
 	merkleRootPairSize = 64
-
-	// in the first 50 blocks of each term, we air drop it to the user
-	AirdropBlockCountInTerm = 50
-
-	// airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
-	AirdropTermCount int64 = 11
-
-	// One block 5 minutes, 8640 blocks in each semester, about 30 days
-	AirdropTermSpan int64 = 8640
-)
-
-var (
-
-	// airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
-	// One block i minutes, 8640 blocks in each semester, about 30 days
-	AirdropTermRatio = [AirdropTermCount]int64{2, 8, 10, 10, 10, 10, 10, 10, 10, 10, 10}
 )
 
 // txPrioItem houses a transaction along with extra information that allows the
@@ -570,46 +554,39 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 	{
 		/**
 		  term	ratio	start_block	end_block
-		  0	2	1	50
-		  1	8	8641	8690
-		  2	10	17281	17330
-		  3	10	25921	25970
-		  4	10	34561	34610
-		  5	10	43201	43250
-		  6	10	51841	51890
-		  7	10	60481	60530
-		  8	10	69121	69170
-		  9	10	77761	77810
-		  10	10	86401	86450
-		  11	0	95041	95090
+		// Airdrop block offset for each term
+		// Term0(2%),   BlockRange: 4096 + 8640*0  -> 4096 + 8640*0  +50
+		// Term1(2%),   BlockRange: 4096 + 8640*1  -> 4096 + 8640*1  +50
+		// ...
+		// Term19(8%),  BlockRange: 4096 + 8640*19 -> 4096 + 8640*19 +50
+		// Term20(0%),  BlockRange: 4096 + 8640*20 -> 4096 + 8640*20 +50
 		*/
 		//nextBlockHeight = 0
-		//airdrop divide into 11 term, 2%, 8%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%
-		termNo := (nextBlockHeight - 1) / AirdropTermSpan
+		termNo := (nextBlockHeight - 1) / chaincfg.AirdropTermSpan
 		// minrLog.Infof("termNo: %+v", termNo)
 		// minrLog.Infof("termNo: %+v", termNo)
 		// Block one is a special block that might pay out tokens to a ledger.
-		if termNo >= 0 && termNo < AirdropTermCount && len(params.BlockOneLedger) != 0 {
+		if termNo >= 0 && termNo < chaincfg.AirdropTermCount && len(params.BlockOneLedger) != 0 {
 			// 2%, 8%. etc.
-			termRatio := AirdropTermRatio[termNo]
+			termRatio := chaincfg.AirdropTermRatio[termNo]
 			//each term has 370000 txs, divide into 50 batch(1 block => 1 batch), each batch has 370000/50=7400 txs
-			//batch 0 = block 1
-			//batch 1 = block 2
+			//batch 0 start at block 1 + AirdropBlockOffset
+			//batch 1 start at block 2 + AirdropBlockOffset
 			//..
-			//batch 49 = block 50
-			//batch 50 = block (8640 + 1)
-			blockNoInTerm := (nextBlockHeight - 1) % AirdropTermSpan
+			//batch 49 start at block 50 + AirdropBlockOffset
+			//batch 50 start at block (8640 + 1) + AirdropBlockOffset
+			blockNoInTerm := (nextBlockHeight-1)%chaincfg.AirdropTermSpan - params.AirdropBlockOffset
 			airdropTxCountInTerm := len(params.BlockOneLedger)
-			airdropTxCountInBlock := airdropTxCountInTerm / AirdropBlockCountInTerm
-			if blockNoInTerm < AirdropBlockCountInTerm {
+			airdropTxCountInBlock := airdropTxCountInTerm / chaincfg.AirdropBlockCountInTerm
+			if (blockNoInTerm < chaincfg.AirdropBlockCountInTerm) && (blockNoInTerm >= 0) {
 				tx.Version = 1
 				var amountTxIn int64
 				// minrLog.Infof("airdropTxCountInTerm: %+v", airdropTxCountInTerm)
 				// minrLog.Infof("airdropTxCountInBlock: %+v", airdropTxCountInBlock)
 				airdropTxCount := airdropTxCountInBlock
 				// Since the transaction is divided by the remainder,
-				// we supplement the remaining transactions in the last airdrop block
-				if blockNoInTerm == AirdropBlockCountInTerm-1 {
+				// we supplement the remaining transactions in the last airdrop block for each term
+				if blockNoInTerm == chaincfg.AirdropBlockCountInTerm-1 {
 					airdropTxCount += airdropTxCountInTerm % airdropTxCountInBlock
 				}
 				for i := 0; i < airdropTxCount; i++ {
