@@ -16,9 +16,9 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/decred/dcrd/dcrjson/v3"
 	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/internal/version"
 
 	dcrdtypes "github.com/decred/dcrd/rpc/jsonrpc/types/v2"
 	wallettypes "github.com/decred/dcrwallet/rpc/jsonrpc/types"

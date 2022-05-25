@@ -35,6 +35,7 @@ import (
 
 	"github.com/gorilla/websocket"
 
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/decred/dcrd/blockchain/stake/v2"
 	"github.com/decred/dcrd/blockchain/standalone"
 	"github.com/decred/dcrd/blockchain/v2"
@@ -45,7 +46,6 @@ import (
 	"github.com/decred/dcrd/dcrec/secp256k1/v2"
 	"github.com/decred/dcrd/dcrjson/v3"
 	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/internal/version"
 	"github.com/decred/dcrd/mempool/v3"
 	"github.com/decred/dcrd/rpc/jsonrpc/types/v2"
 	"github.com/decred/dcrd/txscript/v2"

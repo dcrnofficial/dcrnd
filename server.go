@@ -21,6 +21,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/decred/dcrd/addrmgr"
 	"github.com/decred/dcrd/blockchain/stake/v2"
 	"github.com/decred/dcrd/blockchain/standalone"
@@ -34,7 +35,6 @@ import (
 	"github.com/decred/dcrd/fees/v2"
 	"github.com/decred/dcrd/gcs/v2"
 	"github.com/decred/dcrd/gcs/v2/blockcf"
-	"github.com/decred/dcrd/internal/version"
 	"github.com/decred/dcrd/lru"
 	"github.com/decred/dcrd/mempool/v3"
 	"github.com/decred/dcrd/mining/v2"
@@ -2843,7 +2843,7 @@ func newServer(listenAddrs []string, db database.DB, chainParams *chaincfg.Param
 	// Create the background block template generator if the config has a
 	// mining address.
 	if len(cfg.miningAddrs) > 0 {
-		s.bg = newBgBlkTmplGenerator(tg, cfg.miningAddrs, cfg.SimNet)
+		s.bg = newBgBlkTmplGenerator(tg, cfg.miningAddrs, true)
 		s.blockManager.cfg.BgBlkTmplGenerator = s.bg
 	}
 

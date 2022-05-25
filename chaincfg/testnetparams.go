@@ -25,14 +25,15 @@ func TestNet3Params() *Params {
 	// the public transaction ledger for the test network (version 3).
 	genesisBlock := wire.MsgBlock{
 		Header: wire.BlockHeader{
-			Version:   6,
-			PrevBlock: chainhash.Hash{},
+			Version:   1,
+			PrevBlock: chainhash.Hash{}, // All zero.
 			// MerkleRoot: Calculated below.
-			Timestamp:    time.Unix(1533513600, 0), // 2018-08-06 00:00:00 +0000 UTC
-			Bits:         0x1e00ffff,               // Difficulty 1 [000000ffff000000000000000000000000000000000000000000000000000000]
-			SBits:        20000000,
-			Nonce:        0x18aea41a,
-			StakeVersion: 6,
+			StakeRoot:    chainhash.Hash{},
+			Timestamp:    time.Unix(1653386400, 0), // 2022/05/24 10:00:00 GMT
+			Bits:         0x1e00ffff,               // Difficulty 1
+			SBits:        2 * 1e8,                  // 2 Coin
+			Nonce:        0x00000000,
+			StakeVersion: 0,
 		},
 		Transactions: []*wire.MsgTx{{
 			SerType: wire.TxSerializeFull,
@@ -51,31 +52,25 @@ func TestNet3Params() *Params {
 				ValueIn:         wire.NullValueIn,
 			}},
 			TxOut: []*wire.TxOut{{
-				Version: 0x0000,
-				Value:   0x00000000,
-				PkScript: hexDecode("801679e98561ada96caec2949a5d41c4cab3851e" +
-					"b740d951c10ecbcf265c1fd9"),
+				Version:  0x0000,
+				Value:    0x00000000,
+				PkScript: hexDecode("80165584be68cb981cfc0b5eeee0e3cf6738de31d3970505"),
 			}},
 			LockTime: 0,
 			Expiry:   0,
 		}},
 	}
-	// NOTE: This really should be TxHashFull, but it was defined incorrectly.
-	//
-	// Since the field is not used in any validation code, it does not have any
-	// adverse effects, but correcting it would result in changing the block
-	// hash which would invalidate the entire test network.  The next test
-	// network should set the value properly.
-	genesisBlock.Header.MerkleRoot = genesisBlock.Transactions[0].TxHash()
+	genesisBlock.Header.MerkleRoot = genesisBlock.Transactions[0].TxHashFull()
 
 	return &Params{
 		Name:        "testnet3",
 		Net:         wire.TestNet3,
 		DefaultPort: "19108",
 		DNSSeeds: []DNSSeed{
-			{"testnet-seed.decred.mindcry.org", true},
-			{"testnet-seed.decred.netpurgatory.com", true},
-			{"testnet-seed.decred.org", true},
+			{"testnet1.dcrn.xyz", true},
+			{"testnet2.dcrn.xyz", true},
+			{"testnet3.dcrn.xyz", true},
+			{"testnet4.dcrn.xyz", true},
 		},
 
 		// Chain parameters
@@ -83,113 +78,54 @@ func TestNet3Params() *Params {
 		GenesisHash:              genesisBlock.BlockHash(),
 		PowLimit:                 testNetPowLimit,
 		PowLimitBits:             0x1e00ffff,
-		ReduceMinDifficulty:      true,
-		MinDiffReductionTime:     time.Minute * 10, // ~99.3% chance to be mined before reduction
+		ReduceMinDifficulty:      false,
+		MinDiffReductionTime:     0,
 		GenerateSupported:        true,
-		MaximumBlockSizes:        []int{1310720},
-		MaxTxSize:                1000000,
-		TargetTimePerBlock:       time.Minute * 2,
+		MaximumBlockSizes:        []int{393216},
+		MaxTxSize:                393216,
+		TargetTimePerBlock:       time.Minute * 5,
 		WorkDiffAlpha:            1,
 		WorkDiffWindowSize:       144,
 		WorkDiffWindows:          20,
-		TargetTimespan:           time.Minute * 2 * 144, // TimePerBlock * WindowSize
+		TargetTimespan:           time.Minute * 5 * 144, // TimePerBlock * WindowSize
 		RetargetAdjustmentFactor: 4,
 
 		// Subsidy parameters.
-		BaseSubsidy:              2500000000, // 25 Coin
+		BaseSubsidy:              10 * 1e8,
 		MulSubsidy:               100,
 		DivSubsidy:               101,
-		SubsidyReductionInterval: 2048,
+		SubsidyReductionInterval: 6144,
 		WorkRewardProportion:     6,
 		StakeRewardProportion:    3,
 		BlockTaxProportion:       1,
 
 		// Checkpoints ordered from oldest to newest.
-		Checkpoints: []Checkpoint{
-			{83520, newHashFromStr("0000000001e6244d95feae8b598e854905158c7bc781daf874afff88675ef0c8")},
-			{282340, newHashFromStr("0000001f538d6343316fe50709fa544b680a1be38141d003e755da8ad30f67a8")},
-		},
+		Checkpoints: []Checkpoint{},
 
 		// Consensus rule change deployments.
 		//
 		// The miner confirmation window is defined as:
 		//   target proof of work timespan / target proof of work spacing
-		RuleChangeActivationQuorum:     2520, // 10 % of RuleChangeActivationInterval * TicketsPerBlock
+		RuleChangeActivationQuorum:     4032, // 10 % of RuleChangeActivationInterval * TicketsPerBlock
 		RuleChangeActivationMultiplier: 3,    // 75%
 		RuleChangeActivationDivisor:    4,
-		RuleChangeActivationInterval:   5040, // 1 week
-		Deployments: map[uint32][]ConsensusDeployment{
-			7: {{
-				Vote: Vote{
-					Id:          VoteIDFixLNSeqLocks,
-					Description: "Modify sequence lock handling as defined in DCP0004",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1548633600, // Jan 28th, 2019
-				ExpireTime: 1580169600, // Jan 28th, 2020
-			}},
-			8: {{
-				Vote: Vote{
-					Id:          VoteIDHeaderCommitments,
-					Description: "Enable header commitments as defined in DCP0005",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1567641600, // Sep 5th, 2019
-				ExpireTime: 1599264000, // Sep 5th, 2020
-			}},
-		},
+		RuleChangeActivationInterval:   2016 * 4, // 4 weeks
+		Deployments:                    map[uint32][]ConsensusDeployment{},
 
 		// Enforce current block version once majority of the network has
 		// upgraded.
-		// 51% (51 / 100)
+		// 75% (750 / 1000)
+		//
 		// Reject previous block versions once a majority of the network has
 		// upgraded.
-		// 75% (75 / 100)
-		BlockEnforceNumRequired: 51,
-		BlockRejectNumRequired:  75,
-		BlockUpgradeNumToCheck:  100,
+		// 95% (950 / 1000)
+		BlockEnforceNumRequired: 750,
+		BlockRejectNumRequired:  950,
+		BlockUpgradeNumToCheck:  1000,
 
 		// AcceptNonStdTxs is a mempool param to either accept and relay non
 		// standard txs to the network or reject them
-		AcceptNonStdTxs: true,
+		AcceptNonStdTxs: false,
 
 		// Address encoding magics
 		NetworkAddressPrefix: "T",
@@ -210,29 +146,59 @@ func TestNet3Params() *Params {
 		LegacyCoinType:   11, // for backwards compatibility
 
 		// Decred PoS parameters
-		MinimumStakeDiff:        20000000, // 0.2 Coin
-		TicketPoolSize:          1024,
+		MinimumStakeDiff:        2 * 1e8, // 2 Coin
+		TicketPoolSize:          8192,
 		TicketsPerBlock:         5,
 		TicketMaturity:          16,
-		TicketExpiry:            6144, // 6*TicketPoolSize
+		TicketExpiry:            40960, // 5*TicketPoolSize
 		CoinbaseMaturity:        16,
 		SStxChangeMaturity:      1,
 		TicketPoolSizeWeight:    4,
-		StakeDiffAlpha:          1,
+		StakeDiffAlpha:          1, // Minimal
 		StakeDiffWindowSize:     144,
 		StakeDiffWindows:        20,
 		StakeVersionInterval:    144 * 2 * 7, // ~1 week
 		MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
 		StakeEnabledHeight:      16 + 16,     // CoinbaseMaturity + TicketMaturity
-		StakeValidationHeight:   768,         // Arbitrary
+		StakeValidationHeight:   64,          // ~7 days
 		StakeBaseSigScript:      []byte{0x00, 0x00},
 		StakeMajorityMultiplier: 3,
 		StakeMajorityDivisor:    4,
 
 		// Decred organization related parameters.
-		// Organization address is TcrypGAcGCRVXrES7hWqVZb5oLJKCZEtoL1.
-		OrganizationPkScript:        hexDecode("a914d585cd7426d25b4ea5faf1e6987aacfeda3db94287"),
+		// Organization address is TsoMKY3P4yXVg7a7Q5em119BFrhCCtr1HT9
+		OrganizationPkScript:        hexDecode("76a914f4f3e728ea60e5ce3fa4a32958925a67cf6c221c88ac"),
 		OrganizationPkScriptVersion: 0,
 		BlockOneLedger:              tokenPayouts_TestNet3Params(),
+		AirdropBlockOffset:          16,
+		DaoInitLedger: []TokenPayout{{
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914be7e1c2739c62db0ab77399ddb76268801ad144288ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914dc53132f167ec93c608a13b33f1f1627a81ad0c588ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914dc9e9eea83db5244aee79f88a6c17a399e4c612088ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914a6b5056f2c9ed620f09b26cc61e5202eeb61169088ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914dec73de6806a2ce8aee9b2a2b5f75be689cf1b9888ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914531ea176a7164ada0563982d87ee2c3be40e1dff88ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a91461dbfa0aa1099a2a51c1638f446eb417b19daf5a88ac"),
+			Amount:        100000 * 1e8,
+		}},
 	}
 }

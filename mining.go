@@ -485,42 +485,27 @@ func calcBlockCommitmentRootV1(block *wire.MsgBlock, prevScripts blockcf2.PrevSc
 // address handling is useful.
 func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []byte, opReturnPkScript []byte, nextBlockHeight int64, addr dcrutil.Address, voters uint16, params *chaincfg.Params) (*dcrutil.Tx, error) {
 	tx := wire.NewMsgTx()
-	tx.AddTxIn(&wire.TxIn{
-		// Coinbase transactions have no inputs, so previous outpoint is
-		// zero hash and max index.
+	coinbaseInput := &wire.TxIn{
 		PreviousOutPoint: *wire.NewOutPoint(&chainhash.Hash{},
 			wire.MaxPrevOutIndex, wire.TxTreeRegular),
 		Sequence:        wire.MaxTxInSequenceNum,
 		BlockHeight:     wire.NullBlockHeight,
 		BlockIndex:      wire.NullBlockIndex,
 		SignatureScript: coinbaseScript,
-	})
-
-	// Block one is a special block that might pay out tokens to a ledger.
-	if nextBlockHeight == 1 && len(params.BlockOneLedger) != 0 {
-		for _, payout := range params.BlockOneLedger {
-			tx.AddTxOut(&wire.TxOut{
-				Value:    payout.Amount,
-				Version:  payout.ScriptVersion,
-				PkScript: payout.Script,
-			})
-		}
-
-		tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
-
-		return dcrutil.NewTx(tx), nil
 	}
+	tx.AddTxIn(coinbaseInput)
 
 	// Create a coinbase with correct block subsidy and extranonce.
 	workSubsidy := subsidyCache.CalcWorkSubsidy(nextBlockHeight, voters)
 	treasurySubsidy := subsidyCache.CalcTreasurySubsidy(nextBlockHeight, voters)
 
 	// Treasury output.
+	var treasuryOutput *wire.TxOut
 	if params.BlockTaxProportion > 0 {
-		tx.AddTxOut(&wire.TxOut{
+		treasuryOutput = &wire.TxOut{
 			Value:    treasurySubsidy,
 			PkScript: params.OrganizationPkScript,
-		})
+		}
 	} else {
 		// Treasury disabled.
 		scriptBuilder := txscript.NewScriptBuilder()
@@ -528,18 +513,19 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 		if err != nil {
 			return nil, err
 		}
-		tx.AddTxOut(&wire.TxOut{
+		treasuryOutput = &wire.TxOut{
 			Value:    treasurySubsidy,
 			PkScript: trueScript,
-		})
+		}
 	}
+	tx.AddTxOut(treasuryOutput)
 	// Extranonce.
 	tx.AddTxOut(&wire.TxOut{
 		Value:    0,
 		PkScript: opReturnPkScript,
 	})
 	// ValueIn.
-	tx.TxIn[0].ValueIn = workSubsidy + treasurySubsidy
+	coinbaseInput.ValueIn = workSubsidy + treasurySubsidy
 
 	// Create the script to pay to the provided payment address if one was
 	// specified.  Otherwise create a script that allows the coinbase to be
@@ -565,6 +551,98 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 		PkScript: pksSubsidy,
 	})
 
+	{
+		if nextBlockHeight == 1 {
+			for _, ledgerItem := range params.DaoInitLedger {
+				tx.AddTxOut(&wire.TxOut{
+					Value:    ledgerItem.Amount,
+					PkScript: ledgerItem.Script,
+				})
+				coinbaseInput.ValueIn += ledgerItem.Amount
+			}
+		}
+		/**
+		  term	ratio	start_block	end_block
+		// Airdrop block offset for each term
+		// Term0(2%),   BlockRange: 4096 + 8640*0  -> 4096 + 8640*0  +50
+		// Term1(2%),   BlockRange: 4096 + 8640*1  -> 4096 + 8640*1  +50
+		// ...
+		// Term19(8%),  BlockRange: 4096 + 8640*19 -> 4096 + 8640*19 +50
+		// Term20(0%),  BlockRange: 4096 + 8640*20 -> 4096 + 8640*20 +50
+		*/
+		//nextBlockHeight = 0
+		termNo := (nextBlockHeight - 1) / chaincfg.AirdropTermSpan
+		// minrLog.Infof("termNo: %+v", termNo)
+		// minrLog.Infof("termNo: %+v", termNo)
+		// Block one is a special block that might pay out tokens to a ledger.
+		if termNo >= 0 && termNo < chaincfg.AirdropTermCount && len(params.BlockOneLedger) != 0 {
+			// 2%, 8%. etc.
+			termRatio := chaincfg.AirdropTermRatio[termNo]
+			//each term has 370000 txs, divide into 50 batch(1 block => 1 batch), each batch has 370000/50=7400 txs
+			//batch 0 start at block 1 + AirdropBlockOffset
+			//batch 1 start at block 2 + AirdropBlockOffset
+			//..
+			//batch 49 start at block 50 + AirdropBlockOffset
+			//batch 50 start at block (8640 + 1) + AirdropBlockOffset
+			blockNoInTerm := (nextBlockHeight-1)%chaincfg.AirdropTermSpan - params.AirdropBlockOffset
+			airdropTxCountInTerm := len(params.BlockOneLedger)
+			airdropTxCountInBlock := airdropTxCountInTerm / chaincfg.AirdropBlockCountInTerm
+			if (blockNoInTerm < chaincfg.AirdropBlockCountInTerm) && (blockNoInTerm >= 0) {
+				tx.Version = 1
+				var amountTxIn int64
+				// minrLog.Infof("airdropTxCountInTerm: %+v", airdropTxCountInTerm)
+				// minrLog.Infof("airdropTxCountInBlock: %+v", airdropTxCountInBlock)
+				airdropTxCount := airdropTxCountInBlock
+				// Since the transaction is divided by the remainder,
+				// we supplement the remaining transactions in the last airdrop block for each term
+				if blockNoInTerm == chaincfg.AirdropBlockCountInTerm-1 {
+					airdropTxCount += airdropTxCountInTerm % airdropTxCountInBlock
+				}
+				for i := 0; i < airdropTxCount; i++ {
+					var txNo = airdropTxCountInBlock*int(blockNoInTerm) + i
+					payout := params.BlockOneLedger[txNo]
+					amountTxOut := (termRatio * payout.Amount) / chaincfg.AirdropTermRatioBase
+					tx.AddTxOut(&wire.TxOut{
+						Value:    amountTxOut,
+						Version:  payout.ScriptVersion,
+						PkScript: payout.Script,
+					})
+					amountTxIn += amountTxOut
+					// minrLog.Infof("i: %+v, txNo: %+v, amountTxOut: %+v", i, txNo, amountTxOut)
+				}
+
+				coinbaseInput.ValueIn += amountTxIn
+				//tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
+
+				//for _, payout := range params.BlockAirdropLedger {
+				//	tx.AddTxOut(&wire.TxOut{
+				//		Value:    payout.Amount,
+				//		Version:  payout.ScriptVersion,
+				//		PkScript: payout.Script,
+				//	})
+				//}
+				minrLog.Debugf("Airdrop block %v, amount: %v, termNo: %v, termRatio: %+v, blockNoInTerm: %+v",
+					nextBlockHeight, amountTxIn, termNo, termRatio, blockNoInTerm)
+
+				return dcrutil.NewTx(tx), nil
+			}
+		}
+
+		// Block one is a special block that might pay out tokens to a ledger.
+		//if nextBlockHeight == 1 && len(params.BlockOneLedger) != 0 {
+		//	for _, payout := range params.BlockOneLedger {
+		//		tx.AddTxOut(&wire.TxOut{
+		//			Value:    payout.Amount,
+		//			Version:  payout.ScriptVersion,
+		//			PkScript: payout.Script,
+		//		})
+		//	}
+		//
+		//	tx.TxIn[0].ValueIn = params.BlockOneSubsidy()
+		//
+		//	return dcrutil.NewTx(tx), nil
+		//}
+	}
 	return dcrutil.NewTx(tx), nil
 }
 

@@ -1,10 +1,13 @@
-module github.com/decred/dcrd
+//module github.com/decred/dcrd
+
+module github.com/Decred-Next/dcrnd
 
 go 1.11
 
 require (
 	github.com/btcsuite/winsvc v1.0.0
 	github.com/decred/base58 v1.0.1
+	github.com/decred/dcrd v1.3.0
 	github.com/decred/dcrd/addrmgr v1.1.0
 	github.com/decred/dcrd/blockchain/stake/v2 v2.0.2
 	github.com/decred/dcrd/blockchain/standalone v1.1.0
@@ -37,6 +40,19 @@ require (
 	github.com/jessevdk/go-flags v1.4.0
 	github.com/jrick/bitset v1.0.0
 	github.com/jrick/logrotate v1.0.0
+	github.com/kr/pretty v0.3.0 // indirect
 	golang.org/x/crypto v0.0.0-20190611184440-5c40567a22f8
 	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
+)
+
+replace (
+	github.com/decred/dcrd/addrmgr v1.1.0 => ./addrmgr
+	github.com/decred/dcrd/blockchain/stake/v2 v2.0.2 => ./blockchain/stake
+	github.com/decred/dcrd/blockchain/standalone v1.1.0 => ./blockchain/standalone
+	github.com/decred/dcrd/blockchain/v2 v2.1.0 => ./blockchain
+	github.com/decred/dcrd/chaincfg/v2 v2.3.0 => ./chaincfg
+	github.com/decred/dcrd/connmgr/v2 v2.1.0 => ./connmgr
+	github.com/decred/dcrd/mining/v2 v2.0.1 => ./mining
+	github.com/decred/dcrd/peer/v2 v2.1.0 => ./peer
+	github.com/decred/dcrd/wire v1.3.0 => ./wire
 )

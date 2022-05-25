@@ -158,12 +158,12 @@ func (c *SubsidyCache) CalcBlockSubsidy(height int64) int64 {
 	// Negative block heights are invalid and produce no subsidy.
 	// Block 0 is the genesis block and produces no subsidy.
 	// Block 1 subsidy is special as it is used for initial token distribution.
-	switch {
-	case height <= 0:
-		return 0
-	case height == 1:
-		return c.params.BlockOneSubsidy()
-	}
+	//switch {
+	//case height <= 0:
+	//	return 0
+	//case height == 1:
+	//	return c.params.BlockOneSubsidy()
+	//}
 
 	// Calculate the reduction interval associated with the requested height and
 	// attempt to look it up in cache.  When it's not in the cache, look up the
@@ -248,9 +248,9 @@ func (c *SubsidyCache) CalcBlockSubsidy(height int64) int64 {
 // This function is safe for concurrent access.
 func (c *SubsidyCache) CalcWorkSubsidy(height int64, voters uint16) int64 {
 	// The first block has special subsidy rules.
-	if height == 1 {
-		return c.params.BlockOneSubsidy()
-	}
+	//if height == 1 {
+	//	return c.params.BlockOneSubsidy()
+	//}
 
 	// The subsidy is zero if there are not enough voters once voting begins.  A
 	// block without enough voters will fail to validate anyway.
@@ -319,7 +319,7 @@ func (c *SubsidyCache) CalcStakeVoteSubsidy(height int64) int64 {
 // This function is safe for concurrent access.
 func (c *SubsidyCache) CalcTreasurySubsidy(height int64, voters uint16) int64 {
 	// The first two blocks have special subsidy rules.
-	if height <= 1 {
+	if height <= 0 {
 		return 0
 	}
 

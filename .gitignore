@@ -35,6 +35,7 @@ _testmain.go
 # Binaries
 *.exe
 dcrd
+dcrnd
 cmd/addblock/addblock
 cmd/checkdevpremine/checkdevpremine
 cmd/dcrctl/dcrctl

@@ -44,36 +44,36 @@ func blockOneCoinbasePaysTokens(tx *dcrutil.Tx, params *chaincfg.Params) error {
 		return ruleError(ErrBlockOneOutputs, str)
 	}
 
-	ledger := params.BlockOneLedger
-	if len(ledger) != len(tx.MsgTx().TxOut) {
-		str := fmt.Sprintf("wrong number of outputs in block 1 coinbase; "+
-			"got %v, expected %v", len(tx.MsgTx().TxOut), len(ledger))
-		return ruleError(ErrBlockOneOutputs, str)
-	}
+	//ledger := params.BlockOneLedger
+	//if len(ledger) != len(tx.MsgTx().TxOut) {
+	//	str := fmt.Sprintf("wrong number of outputs in block 1 coinbase; "+
+	//		"got %v, expected %v", len(tx.MsgTx().TxOut), len(ledger))
+	//	return ruleError(ErrBlockOneOutputs, str)
+	//}
 
 	// Check the addresses and output amounts against those in the ledger.
-	const consensusScriptVersion = 0
-	for i, txOut := range tx.MsgTx().TxOut {
-		ledgerEntry := &ledger[i]
-		if txOut.Version != ledgerEntry.ScriptVersion {
-			str := fmt.Sprintf("block one output %d script version %d is not %d",
-				i, txOut.Version, consensusScriptVersion)
-			return ruleError(ErrBlockOneOutputs, str)
-		}
-
-		if !bytes.Equal(txOut.PkScript, ledgerEntry.Script) {
-			str := fmt.Sprintf("block one output %d script %x is not %x", i,
-				txOut.PkScript, ledgerEntry.Script)
-			return ruleError(ErrBlockOneOutputs, str)
-		}
-
-		if txOut.Value != ledgerEntry.Amount {
-			str := fmt.Sprintf("block one output %d generates %v instead of "+
-				"required %v", i, dcrutil.Amount(txOut.Value),
-				dcrutil.Amount(ledgerEntry.Amount))
-			return ruleError(ErrBlockOneOutputs, str)
-		}
-	}
+	//const consensusScriptVersion = 0
+	//for i, txOut := range tx.MsgTx().TxOut {
+	//	ledgerEntry := &ledger[i]
+	//	if txOut.Version != ledgerEntry.ScriptVersion {
+	//		str := fmt.Sprintf("block one output %d script version %d is not %d",
+	//			i, txOut.Version, consensusScriptVersion)
+	//		return ruleError(ErrBlockOneOutputs, str)
+	//	}
+	//
+	//	if !bytes.Equal(txOut.PkScript, ledgerEntry.Script) {
+	//		str := fmt.Sprintf("block one output %d script %x is not %x", i,
+	//			txOut.PkScript, ledgerEntry.Script)
+	//		return ruleError(ErrBlockOneOutputs, str)
+	//	}
+	//
+	//	if txOut.Value != ledgerEntry.Amount {
+	//		str := fmt.Sprintf("block one output %d generates %v instead of "+
+	//			"required %v", i, dcrutil.Amount(txOut.Value),
+	//			dcrutil.Amount(ledgerEntry.Amount))
+	//		return ruleError(ErrBlockOneOutputs, str)
+	//	}
+	//}
 
 	return nil
 }

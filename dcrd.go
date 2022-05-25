@@ -14,9 +14,9 @@ import (
 	"runtime/debug"
 	"runtime/pprof"
 
+	"github.com/Decred-Next/dcrnd/internal/limits"
+	"github.com/Decred-Next/dcrnd/internal/version"
 	"github.com/decred/dcrd/blockchain/v2/indexers"
-	"github.com/decred/dcrd/internal/limits"
-	"github.com/decred/dcrd/internal/version"
 )
 
 var cfg *config
@@ -54,7 +54,7 @@ func dcrdMain() error {
 	defer dcrdLog.Info("Shutdown complete")
 
 	// Show version and home dir at startup.
-	dcrdLog.Infof("Version %s (Go version %s %s/%s)", version.String(),
+	dcrdLog.Infof("DCRN version %s (Go version %s %s/%s)", version.String(),
 		runtime.Version(), runtime.GOOS, runtime.GOARCH)
 	dcrdLog.Infof("Home dir: %s", cfg.HomeDir)
 	if cfg.NoFileLogging {

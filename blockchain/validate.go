@@ -1202,11 +1202,11 @@ func checkCoinbaseUniqueHeight(blockHeight int64, block *dcrutil.Block) error {
 	}
 	if len(nullData) < 4 {
 		str := fmt.Sprintf("block %s coinbase output 1 pushes %d bytes which "+
-			"is too short to encode height", block.Hash(), len(nullData))
+			"is too short to encode height at %d", block.Hash(), len(nullData), blockHeight)
 		return ruleError(ErrFirstTxNotCoinbase, str)
 	}
 
-	// Check the height and ensure it is correct.
+	//Check the height and ensure it is correct.
 	cbHeight := binary.LittleEndian.Uint32(nullData[0:4])
 	if cbHeight != uint32(blockHeight) {
 		header := &block.MsgBlock().Header
@@ -2782,22 +2782,64 @@ func (b *BlockChain) checkTransactionsAndConnect(inputFees dcrutil.Amount, node 
 			totalAtomOutRegular += txOut.Value
 		}
 
-		var expAtomOut int64
-		if node.height == 1 {
-			expAtomOut = b.subsidyCache.CalcBlockSubsidy(node.height)
-		} else {
-			subsidyWork := b.subsidyCache.CalcWorkSubsidy(node.height,
-				node.voters)
-			subsidyTax := b.subsidyCache.CalcTreasurySubsidy(node.height,
-				node.voters)
-			expAtomOut = subsidyWork + subsidyTax + totalFees
-		}
+		subsidyWork := b.subsidyCache.CalcWorkSubsidy(node.height, node.voters)
+		subsidyTax := b.subsidyCache.CalcTreasurySubsidy(node.height, node.voters)
+		expAtomOut := subsidyWork + subsidyTax + totalFees
 
+		{
+			currBlockHeight := node.height
+			if currBlockHeight == 1 {
+				for _, ledgerItem := range b.chainParams.DaoInitLedger {
+					expAtomOut += ledgerItem.Amount
+				}
+			}
+			/**
+			  term	ratio	start_block	end_block
+			// Airdrop block offset for each term
+			// Term0(2%),   BlockRange: 4096 + 8640*0  -> 4096 + 8640*0  +50
+			// Term1(2%),   BlockRange: 4096 + 8640*1  -> 4096 + 8640*1  +50
+			// ...
+			// Term19(8%),  BlockRange: 4096 + 8640*19 -> 4096 + 8640*19 +50
+			// Term20(0%),  BlockRange: 4096 + 8640*20 -> 4096 + 8640*20 +50
+			*/
+			termNo := (currBlockHeight - 1) / chaincfg.AirdropTermSpan
+			// minrLog.Infof("termNo: %+v", termNo)
+			// minrLog.Infof("termNo: %+v", termNo)
+			// Block one is a special block that might pay out tokens to a ledger.
+			if termNo >= 0 && termNo < chaincfg.AirdropTermCount && len(b.chainParams.BlockOneLedger) != 0 {
+				// 2%, 8%. etc.
+				termRatio := chaincfg.AirdropTermRatio[termNo]
+				//each term has 370000 txs, divide into 50 batch(1 block => 1 batch), each batch has 370000/50=7400 txs
+				//batch 0 start at block 1 + AirdropBlockOffset
+				//batch 1 start at block 2 + AirdropBlockOffset
+				//..
+				//batch 49 start at block 50 + AirdropBlockOffset
+				//batch 50 start at block (8640 + 1) + AirdropBlockOffset
+				blockNoInTerm := (currBlockHeight-1)%chaincfg.AirdropTermSpan - b.chainParams.AirdropBlockOffset
+				airdropTxCountInTerm := len(b.chainParams.BlockOneLedger)
+				airdropTxCountInBlock := airdropTxCountInTerm / chaincfg.AirdropBlockCountInTerm
+				if (blockNoInTerm < chaincfg.AirdropBlockCountInTerm) && (blockNoInTerm >= 0) {
+					var airdropAmount int64
+					airdropTxCount := airdropTxCountInBlock
+					// Since the transaction is divided by the remainder,
+					// we supplement the remaining transactions in the last airdrop block for each term
+					if blockNoInTerm == chaincfg.AirdropBlockCountInTerm-1 {
+						airdropTxCount += airdropTxCountInTerm % airdropTxCountInBlock
+					}
+					for i := 0; i < airdropTxCount; i++ {
+						var txNo = airdropTxCountInBlock*int(blockNoInTerm) + i
+						payout := b.chainParams.BlockOneLedger[txNo]
+						amountTxOut := (termRatio * payout.Amount) / chaincfg.AirdropTermRatioBase
+						airdropAmount += amountTxOut
+					}
+					expAtomOut += airdropAmount
+				}
+			}
+		}
 		// AmountIn for the input should be equal to the subsidy.
 		coinbaseIn := txs[0].MsgTx().TxIn[0]
 		subsidyWithoutFees := expAtomOut - totalFees
-		if (coinbaseIn.ValueIn != subsidyWithoutFees) &&
-			(node.height > 0) {
+		if (coinbaseIn.ValueIn != subsidyWithoutFees) && (node.height > 0) {
 			errStr := fmt.Sprintf("bad coinbase subsidy in input;"+
 				" got %v, expected %v", coinbaseIn.ValueIn,
 				subsidyWithoutFees)

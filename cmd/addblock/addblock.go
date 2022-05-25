@@ -10,10 +10,10 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"github.com/Decred-Next/dcrnd/internal/limits"
 	"github.com/decred/dcrd/blockchain/v2"
 	"github.com/decred/dcrd/blockchain/v2/indexers"
 	"github.com/decred/dcrd/database/v2"
-	"github.com/decred/dcrd/internal/limits"
 	"github.com/decred/slog"
 )
 

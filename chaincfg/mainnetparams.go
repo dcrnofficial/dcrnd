@@ -39,8 +39,8 @@ func MainNetParams() *Params {
 			PrevBlock: chainhash.Hash{}, // All zero.
 			// MerkleRoot: Calculated below.
 			StakeRoot:    chainhash.Hash{},
-			Timestamp:    time.Unix(1454954400, 0), // Mon, 08 Feb 2016 18:00:00 GMT
-			Bits:         0x1b01ffff,               // Difficulty 32767
+			Timestamp:    time.Unix(1653386400, 0), // 2022/05/24 10:00:00 GMT
+			Bits:         0x1b000a00,               // Difficulty 1677696
 			SBits:        2 * 1e8,                  // 2 Coin
 			Nonce:        0x00000000,
 			StakeVersion: 0,
@@ -62,10 +62,9 @@ func MainNetParams() *Params {
 				ValueIn:         wire.NullValueIn,
 			}},
 			TxOut: []*wire.TxOut{{
-				Version: 0x0000,
-				Value:   0x00000000,
-				PkScript: hexDecode("801679e98561ada96caec2949a5d41c4cab3851e" +
-					"b740d951c10ecbcf265c1fd9"),
+				Version:  0x0000,
+				Value:    0x00000000,
+				PkScript: hexDecode("80165584be68cb981cfc0b5eeee0e3cf6738de31d3970505"),
 			}},
 			LockTime: 0,
 			Expiry:   0,
@@ -78,9 +77,12 @@ func MainNetParams() *Params {
 		Net:         wire.MainNet,
 		DefaultPort: "9108",
 		DNSSeeds: []DNSSeed{
-			{"mainnet-seed.decred.mindcry.org", true},
-			{"mainnet-seed.decred.netpurgatory.com", true},
-			{"mainnet-seed.decred.org", true},
+			{"mainnet1.dcrn.xyz", true},
+			{"mainnet2.dcrn.xyz", true},
+			{"mainnet3.dcrn.xyz", true},
+			{"mainnet4.dcrn.xyz", true},
+			{"mainnet5.dcrn.xyz", true},
+			{"mainnet6.dcrn.xyz", true},
 		},
 
 		// Chain parameters
@@ -101,7 +103,7 @@ func MainNetParams() *Params {
 		RetargetAdjustmentFactor: 4,
 
 		// Subsidy parameters.
-		BaseSubsidy:              3119582664, // 21m
+		BaseSubsidy:              10 * 1e8,
 		MulSubsidy:               100,
 		DivSubsidy:               101,
 		SubsidyReductionInterval: 6144,
@@ -110,28 +112,7 @@ func MainNetParams() *Params {
 		BlockTaxProportion:       1,
 
 		// Checkpoints ordered from oldest to newest.
-		Checkpoints: []Checkpoint{
-			{440, newHashFromStr("0000000000002203eb2c95ee96906730bb56b2985e174518f90eb4db29232d93")},
-			{24480, newHashFromStr("0000000000000c9d4239c4ef7ef3fb5aaeed940244bc69c57c8c5e1f071b28a6")},
-			{48590, newHashFromStr("0000000000000d5e0de21a96d3c965f5f2db2c82612acd7389c140c9afe92ba7")},
-			{54770, newHashFromStr("00000000000009293d067b1126b7de07fc9b2b94ee50dfe0d48c239a7adb072c")},
-			{60720, newHashFromStr("0000000000000a64475d68ffb9ad89a3d147c0f5138db26b40da9d19d0004117")},
-			{65270, newHashFromStr("0000000000000021f107601962789b201f0a0cbb98ac5f8c12b93d94e795b441")},
-			{75380, newHashFromStr("0000000000000e7d13cfc85806aa720fe3670980f5b7d33253e4f41985558372")},
-			{85410, newHashFromStr("00000000000013ec928074bea6eac9754aa614c7acb20edf300f18b0cd122692")},
-			{99880, newHashFromStr("0000000000000cb2a9a9ded647b9f78aae51ace32dd8913701d420ead272913c")},
-			{123080, newHashFromStr("000000000000009ea6e02d0f0424f445ed50686f9ae4aecdf3b268e981114477")},
-			{135960, newHashFromStr("00000000000001d2f9bbca9177972c0ba45acb40836b72945a75d73b99079498")},
-			{139740, newHashFromStr("00000000000001397179ae1aff156fb1aea228938d06b83e43b78b1c44527b5b")},
-			{155900, newHashFromStr("000000000000008557e37fb05177fc5a54e693de20689753639135f85a2dcb2e")},
-			{164300, newHashFromStr("000000000000009ed067ff51cd5e15f3c786222a5183b20a991a80ce535907a9")},
-			{181020, newHashFromStr("00000000000000b77d832cb2cbed02908d69323862a53e56345400ad81a6fb8f")},
-			{189950, newHashFromStr("000000000000007341d8ae2ea7e41f25cee00e1a70a4a3dc1cb055d14ecb2e11")},
-			{214672, newHashFromStr("0000000000000021d5cbeead55cb7fd659f07e8127358929ffc34cd362209758")},
-			{259810, newHashFromStr("0000000000000000ee0fbf469a9f32477ffbb46ebd7a280a53c842ab4243f97c")},
-			{295940, newHashFromStr("0000000000000000148852c8a919addf4043f9f267b13c08df051d359f1622ca")},
-			{384170, newHashFromStr("00000000000000001704bbc6bda8c4864a71cd0febcc0b44d753c69d83840f04")},
-		},
+		Checkpoints: []Checkpoint{},
 
 		// The miner confirmation window is defined as:
 		//   target proof of work timespan / target proof of work spacing
@@ -139,147 +120,7 @@ func MainNetParams() *Params {
 		RuleChangeActivationMultiplier: 3,    // 75%
 		RuleChangeActivationDivisor:    4,
 		RuleChangeActivationInterval:   2016 * 4, // 4 weeks
-		Deployments: map[uint32][]ConsensusDeployment{
-			4: {{
-				Vote: Vote{
-					Id:          VoteIDSDiffAlgorithm,
-					Description: "Change stake difficulty algorithm as defined in DCP0001",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing algorithm",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new algorithm",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1493164800, // Apr 26th, 2017
-				ExpireTime: 1524700800, // Apr 26th, 2018
-			}, {
-				Vote: Vote{
-					Id:          VoteIDLNSupport,
-					Description: "Request developers begin work on Lightning Network (LN) integration",
-					Mask:        0x0018, // Bits 3 and 4
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain from voting",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "no, do not work on integrating LN support",
-						Bits:        0x0008, // Bit 3
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "yes, begin work on integrating LN support",
-						Bits:        0x0010, // Bit 4
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1493164800, // Apr 26th, 2017
-				ExpireTime: 1508976000, // Oct 26th, 2017
-			}},
-			5: {{
-				Vote: Vote{
-					Id:          VoteIDLNFeatures,
-					Description: "Enable features defined in DCP0002 and DCP0003 necessary to support Lightning Network (LN)",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1505260800, // Sep 13th, 2017
-				ExpireTime: 1536796800, // Sep 13th, 2018
-			}},
-			6: {{
-				Vote: Vote{
-					Id:          VoteIDFixLNSeqLocks,
-					Description: "Modify sequence lock handling as defined in DCP0004",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1548633600, // Jan 28th, 2019
-				ExpireTime: 1580169600, // Jan 28th, 2020
-			}},
-			7: {{
-				Vote: Vote{
-					Id:          VoteIDHeaderCommitments,
-					Description: "Enable header commitments as defined in DCP0005",
-					Mask:        0x0006, // Bits 1 and 2
-					Choices: []Choice{{
-						Id:          "abstain",
-						Description: "abstain voting for change",
-						Bits:        0x0000,
-						IsAbstain:   true,
-						IsNo:        false,
-					}, {
-						Id:          "no",
-						Description: "keep the existing consensus rules",
-						Bits:        0x0002, // Bit 1
-						IsAbstain:   false,
-						IsNo:        true,
-					}, {
-						Id:          "yes",
-						Description: "change to the new consensus rules",
-						Bits:        0x0004, // Bit 2
-						IsAbstain:   false,
-						IsNo:        false,
-					}},
-				},
-				StartTime:  1567641600, // Sep 5th, 2019
-				ExpireTime: 1599264000, // Sep 5th, 2020
-			}},
-		},
+		Deployments:                    map[uint32][]ConsensusDeployment{},
 
 		// Enforce current block version once majority of the network has
 		// upgraded.
@@ -329,15 +170,45 @@ func MainNetParams() *Params {
 		StakeVersionInterval:    144 * 2 * 7, // ~1 week
 		MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
 		StakeEnabledHeight:      256 + 256,   // CoinbaseMaturity + TicketMaturity
-		StakeValidationHeight:   4096,        // ~14 days
+		StakeValidationHeight:   2048,        // ~7 days
 		StakeBaseSigScript:      []byte{0x00, 0x00},
 		StakeMajorityMultiplier: 3,
 		StakeMajorityDivisor:    4,
 
 		// Decred organization related parameters
-		// Organization address is Dcur2mcGjmENx4DhNqDctW5wJCVyT3Qeqkx
-		OrganizationPkScript:        hexDecode("a914f5916158e3e2c4551c1796708db8367207ed13bb87"),
+		// Organization address is DsUnEWbLXrqMWTEMkEGsUC9R1mP6p3FDCRN
+		OrganizationPkScript:        hexDecode("76a91429dbcdffde4bf456b9df612b0916cc331ad4720288ac"),
 		OrganizationPkScriptVersion: 0,
 		BlockOneLedger:              tokenPayouts_MainNetParams(),
+		AirdropBlockOffset:          4096,
+		DaoInitLedger: []TokenPayout{{
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914be7e1c2739c62db0ab77399ddb76268801ad144288ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914dc53132f167ec93c608a13b33f1f1627a81ad0c588ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914dc9e9eea83db5244aee79f88a6c17a399e4c612088ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914a6b5056f2c9ed620f09b26cc61e5202eeb61169088ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914dec73de6806a2ce8aee9b2a2b5f75be689cf1b9888ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a914531ea176a7164ada0563982d87ee2c3be40e1dff88ac"),
+			Amount:        100000 * 1e8,
+		}, {
+			ScriptVersion: 0,
+			Script:        hexDecode("76a91461dbfa0aa1099a2a51c1638f446eb417b19daf5a88ac"),
+			Amount:        100000 * 1e8,
+		}},
 	}
 }

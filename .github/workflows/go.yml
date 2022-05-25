@@ -6,23 +6,37 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [1.12, 1.13]
+        go: [1.18]
     steps:
       - name: Set up Go
-        uses: actions/setup-go@v1
+        uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
       - name: Check out source
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Install Linters
-        run: "curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v1.18.0"
+        run: "curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin v1.30.0"
       - name: Build
         env:
           GO111MODULE: "on"
-        run: go build ./...
-      - name: Test
+        run: go build ./... & go build
+      - name: Package
         env:
           GO111MODULE: "on"
-        run: |
-          export PATH=${PATH}:$(go env GOPATH)/bin
-          sh ./run_tests.sh
+        run: go build
+      #      - name: Test
+      #        env:
+      #          GO111MODULE: "on"
+      #        run: |
+      #          sh ./run_tests.sh
+      #      - name: Display structure of downloaded files
+      #        run: ls -R
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dcrnd-binary
+          path: ./dcrd
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dcrnd-binary
