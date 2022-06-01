@@ -564,11 +564,11 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 		/**
 		  term	ratio	start_block	end_block
 		// Airdrop block offset for each term
-		// Term0(2%),   BlockRange: 4096 + 8640*0  -> 4096 + 8640*0  +50
-		// Term1(2%),   BlockRange: 4096 + 8640*1  -> 4096 + 8640*1  +50
+		// Term0,   BlockRange: 4096 + 8640*0  -> 4096 + 8640*0  +512
+		// Term1,   BlockRange: 4096 + 8640*1  -> 4096 + 8640*1  +512
 		// ...
-		// Term19(8%),  BlockRange: 4096 + 8640*19 -> 4096 + 8640*19 +50
-		// Term20(0%),  BlockRange: 4096 + 8640*20 -> 4096 + 8640*20 +50
+		// Term19,  BlockRange: 4096 + 8640*19 -> 4096 + 8640*19 +512
+		// Term20,  BlockRange: 4096 + 8640*20 -> 4096 + 8640*20 +512
 		*/
 		//nextBlockHeight = 0
 		termNo := (nextBlockHeight - 1) / chaincfg.AirdropTermSpan
@@ -576,9 +576,7 @@ func createCoinbaseTx(subsidyCache *standalone.SubsidyCache, coinbaseScript []by
 		// minrLog.Infof("termNo: %+v", termNo)
 		// Block one is a special block that might pay out tokens to a ledger.
 		if termNo >= 0 && termNo < chaincfg.AirdropTermCount && len(params.BlockOneLedger) != 0 {
-			// 2%, 8%. etc.
 			termRatio := chaincfg.AirdropTermRatio[termNo]
-			//each term has 370000 txs, divide into 50 batch(1 block => 1 batch), each batch has 370000/50=7400 txs
 			//batch 0 start at block 1 + AirdropBlockOffset
 			//batch 1 start at block 2 + AirdropBlockOffset
 			//..
