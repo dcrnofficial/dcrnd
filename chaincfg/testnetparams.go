@@ -173,31 +173,7 @@ func TestNet3Params() *Params {
 		AirdropBlockOffset:          16,
 		DaoInitLedger: []TokenPayout{{
 			ScriptVersion: 0,
-			Script:        hexDecode("76a914be7e1c2739c62db0ab77399ddb76268801ad144288ac"),
-			Amount:        100000 * 1e8,
-		}, {
-			ScriptVersion: 0,
-			Script:        hexDecode("76a914dc53132f167ec93c608a13b33f1f1627a81ad0c588ac"),
-			Amount:        100000 * 1e8,
-		}, {
-			ScriptVersion: 0,
-			Script:        hexDecode("76a914dc9e9eea83db5244aee79f88a6c17a399e4c612088ac"),
-			Amount:        100000 * 1e8,
-		}, {
-			ScriptVersion: 0,
-			Script:        hexDecode("76a914a6b5056f2c9ed620f09b26cc61e5202eeb61169088ac"),
-			Amount:        100000 * 1e8,
-		}, {
-			ScriptVersion: 0,
-			Script:        hexDecode("76a914dec73de6806a2ce8aee9b2a2b5f75be689cf1b9888ac"),
-			Amount:        100000 * 1e8,
-		}, {
-			ScriptVersion: 0,
-			Script:        hexDecode("76a914531ea176a7164ada0563982d87ee2c3be40e1dff88ac"),
-			Amount:        100000 * 1e8,
-		}, {
-			ScriptVersion: 0,
-			Script:        hexDecode("76a91461dbfa0aa1099a2a51c1638f446eb417b19daf5a88ac"),
+			Script:        hexDecode("76a914f4f3e728ea60e5ce3fa4a32958925a67cf6c221c88ac"),
 			Amount:        100000 * 1e8,
 		}},
 	}
