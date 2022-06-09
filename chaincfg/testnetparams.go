@@ -166,14 +166,14 @@ func TestNet3Params() *Params {
 		StakeMajorityDivisor:    4,
 
 		// Decred organization related parameters.
-		// Organization address is TsoMKY3P4yXVg7a7Q5em119BFrhCCtr1HT9
-		OrganizationPkScript:        hexDecode("76a914f4f3e728ea60e5ce3fa4a32958925a67cf6c221c88ac"),
+		// Organization address is TsdpUSGowpw7Vvo1Q4KhThV5DucXBaWwnGK
+		OrganizationPkScript:        hexDecode("76a9148c654e4f59db6e681b85b66a061e6bea564940d588ac"),
 		OrganizationPkScriptVersion: 0,
 		BlockOneLedger:              tokenPayouts_TestNet3Params(),
 		AirdropBlockOffset:          16,
 		DaoInitLedger: []TokenPayout{{
 			ScriptVersion: 0,
-			Script:        hexDecode("76a914f4f3e728ea60e5ce3fa4a32958925a67cf6c221c88ac"),
+			Script:        hexDecode("76a9148c654e4f59db6e681b85b66a061e6bea564940d588ac"),
 			Amount:        100000 * 1e8,
 		}},
 	}
