@@ -34,19 +34,19 @@ const (
 func (u AmountUnit) String() string {
 	switch u {
 	case AmountMegaCoin:
-		return "MDCR"
+		return "MDCRN"
 	case AmountKiloCoin:
-		return "kDCR"
+		return "kDCRN"
 	case AmountCoin:
-		return "DCR"
+		return "DCRN"
 	case AmountMilliCoin:
-		return "mDCR"
+		return "mDCRN"
 	case AmountMicroCoin:
-		return "μDCR"
+		return "μDCRN"
 	case AmountAtom:
 		return "Atom"
 	default:
-		return "1e" + strconv.FormatInt(int64(u), 10) + " DCR"
+		return "1e" + strconv.FormatInt(int64(u), 10) + " DCRN"
 	}
 }
 
