@@ -7,7 +7,7 @@ package lru_test
 import (
 	"fmt"
 
-	"github.com/decred/dcrd/lru"
+	"github.com/Decred-Next/dcrnd/lru/v8"
 )
 
 // This example demonstrates creating a new cache instance, inserting items into
