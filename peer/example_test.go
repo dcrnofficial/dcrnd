@@ -10,8 +10,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/decred/dcrd/peer/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/peer/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 // mockRemotePeer creates a basic inbound peer listening on the simnet port for
