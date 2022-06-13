@@ -1,18 +1,18 @@
-module github.com/decred/dcrd/mempool/v3
+module github.com/Decred-Next/dcrnd/mempool/v8
 
 go 1.11
 
 require (
-	github.com/decred/dcrd/blockchain/stake/v2 v2.0.2
-	github.com/decred/dcrd/blockchain/standalone v1.1.0
-	github.com/decred/dcrd/blockchain/v2 v2.1.0
-	github.com/decred/dcrd/chaincfg/chainhash v1.0.2
-	github.com/decred/dcrd/chaincfg/v2 v2.3.0
-	github.com/decred/dcrd/dcrec v1.0.0
-	github.com/decred/dcrd/dcrec/secp256k1/v2 v2.0.0
-	github.com/decred/dcrd/dcrutil/v2 v2.0.1
-	github.com/decred/dcrd/mining/v2 v2.0.1
-	github.com/decred/dcrd/txscript/v2 v2.1.0
-	github.com/decred/dcrd/wire v1.3.0
+	github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/chaincfg/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/mining/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/wire/v8 v8.0.0
 	github.com/decred/slog v1.0.0
 )

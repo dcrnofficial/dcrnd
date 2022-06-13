@@ -12,16 +12,16 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/decred/dcrd/blockchain/stake/v2"
-	"github.com/decred/dcrd/blockchain/standalone"
-	"github.com/decred/dcrd/blockchain/v2"
-	"github.com/decred/dcrd/blockchain/v2/indexers"
-	"github.com/decred/dcrd/chaincfg/chainhash"
-	"github.com/decred/dcrd/chaincfg/v2"
-	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/mining/v2"
-	"github.com/decred/dcrd/txscript/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/blockchain/stake/v2"
+	"github.com/Decred-Next/dcrnd/blockchain/standalone"
+	"github.com/Decred-Next/dcrnd/blockchain/v2"
+	"github.com/Decred-Next/dcrnd/blockchain/v2/indexers"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/v2"
+	"github.com/Decred-Next/dcrnd/dcrutil/v2"
+	"github.com/Decred-Next/dcrnd/mining/v2"
+	"github.com/Decred-Next/dcrnd/txscript/v2"
+	"github.com/Decred-Next/dcrnd/wire"
 )
 
 const (

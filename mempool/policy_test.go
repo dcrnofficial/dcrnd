@@ -11,14 +11,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/decred/dcrd/blockchain/stake/v2"
-	"github.com/decred/dcrd/chaincfg/chainhash"
-	"github.com/decred/dcrd/chaincfg/v2"
-	"github.com/decred/dcrd/dcrec"
-	"github.com/decred/dcrd/dcrec/secp256k1/v2"
-	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/txscript/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/blockchain/stake/v2"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/v2"
+	"github.com/Decred-Next/dcrnd/dcrec"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v2"
+	"github.com/Decred-Next/dcrnd/dcrutil/v2"
+	"github.com/Decred-Next/dcrnd/txscript/v2"
+	"github.com/Decred-Next/dcrnd/wire"
 )
 
 // TestCalcMinRequiredTxRelayFee tests the calcMinRequiredTxRelayFee API.
