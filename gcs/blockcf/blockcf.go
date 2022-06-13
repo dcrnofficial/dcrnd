@@ -21,11 +21,11 @@ package blockcf
 import (
 	"encoding/binary"
 
-	"github.com/decred/dcrd/blockchain/stake/v2"
-	"github.com/decred/dcrd/chaincfg/chainhash"
-	"github.com/decred/dcrd/gcs/v2"
-	"github.com/decred/dcrd/txscript/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/blockchain/stake/v8"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
+	"github.com/Decred-Next/dcrnd/gcs/v8"
+	"github.com/Decred-Next/dcrnd/txscript/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 const (

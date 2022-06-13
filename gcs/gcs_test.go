@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/dchest/siphash"
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 // filterMatcher allows different versions of the filter types to be used for

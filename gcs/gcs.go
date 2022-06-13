@@ -15,9 +15,9 @@ import (
 	"sync"
 
 	"github.com/dchest/siphash"
-	"github.com/decred/dcrd/chaincfg/chainhash"
-	"github.com/decred/dcrd/crypto/blake256"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
+	"github.com/Decred-Next/dcrnd/crypto/blake256/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 // modReduceV1 is the reduction method used in version 1 filters and simply
