@@ -9,7 +9,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/decred/dcrd/bech32"
+	"github.com/Decred-Next/dcrnd/bech32/v8"
 )
 
 // This example demonstrates how to decode a bech32 encoded string.
