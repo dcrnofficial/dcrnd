@@ -15,7 +15,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/decred/dcrd/chaincfg/v2"
+	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 )
 
 type payout struct {
