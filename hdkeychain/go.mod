@@ -1,12 +1,12 @@
-module github.com/decred/dcrd/hdkeychain/v2
+module github.com/Decred-Next/dcrnd/hdkeychain/v8
 
 go 1.11
 
 require (
+	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/chaincfg/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0
 	github.com/decred/base58 v1.0.1
-	github.com/decred/dcrd/chaincfg/chainhash v1.0.2
-	github.com/decred/dcrd/chaincfg/v2 v2.3.0
-	github.com/decred/dcrd/dcrec v1.0.0
-	github.com/decred/dcrd/dcrec/secp256k1/v2 v2.0.0
-	github.com/decred/dcrd/dcrutil/v2 v2.0.1
 )

@@ -1,9 +1,9 @@
 hdkeychain
 ==========
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/hdkeychain)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/hdkeychain)
 
 Package hdkeychain provides an API for Decred hierarchical deterministic
 extended keys (based on BIP0032).
@@ -38,18 +38,18 @@ report.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/hdkeychain
+$ go get -u github.com/Decred-Next/dcrnd/hdkeychain
 ```
 
 ## Examples
 
-* [NewMaster Example](https://godoc.org/github.com/decred/dcrd/hdkeychain#example-package--NewMaster)
+* [NewMaster Example](https://godoc.org/github.com/Decred-Next/dcrnd/hdkeychain#example-package--NewMaster)
   Demonstrates how to generate a cryptographically random seed then use it to
   create a new master node (extended key).
-* [Default Wallet Layout Example](https://godoc.org/github.com/decred/dcrd/hdkeychain#example-package--DefaultWalletLayout)
+* [Default Wallet Layout Example](https://godoc.org/github.com/Decred-Next/dcrnd/hdkeychain#example-package--DefaultWalletLayout)
   Demonstrates the default hierarchical deterministic wallet layout as described
   in BIP0032.
-* [Audits Use Case Example](https://godoc.org/github.com/decred/dcrd/hdkeychain#example-package--Audits)
+* [Audits Use Case Example](https://godoc.org/github.com/Decred-Next/dcrnd/hdkeychain#example-package--Audits)
   Demonstrates the audits use case in BIP0032.
 
 ## License
