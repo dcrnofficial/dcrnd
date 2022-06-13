@@ -1,9 +1,9 @@
 indexers
 ========
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://godoc.org/github.com/decred/dcrd/blockchain/indexers?status.png)](https://godoc.org/github.com/decred/dcrd/blockchain/indexers)
+[![GoDoc](https://godoc.org/github.com/Decred-Next/dcrnd/blockchain/indexers?status.png)](https://godoc.org/github.com/Decred-Next/dcrnd/blockchain/indexers)
 
 Package indexers implements optional block chain indexes.
 
@@ -30,7 +30,7 @@ via an RPC interface.
 ## Installation
 
 ```bash
-$ go get -u github.com/decred/dcrd/blockchain/indexers
+$ go get -u github.com/Decred-Next/dcrnd/blockchain/indexers
 ```
 
 ## License

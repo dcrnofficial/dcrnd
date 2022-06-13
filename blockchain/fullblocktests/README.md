@@ -1,9 +1,9 @@
 fullblocktests
 ==============
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/blockchain/fullblocktests)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/blockchain/fullblocktests)
 
 Package fullblocktests provides a set of full block tests to be used for testing
 the consensus validation rules.  The tests are intended to be flexible enough to
@@ -20,7 +20,7 @@ of blocks that exercise the consensus validation rules.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/blockchain/fullblocktests
+$ go get -u github.com/Decred-Next/dcrnd/blockchain/fullblocktests
 ```
 
 ## License

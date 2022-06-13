@@ -1,9 +1,9 @@
 blockchain
 ==========
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/blockchain)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/blockchain)
 
 Package blockchain implements Decred block handling and chain selection rules.
 The test coverage is currently only around 60%, but will be increasing over
@@ -21,7 +21,7 @@ block chain.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/blockchain
+$ go get -u github.com/Decred-Next/dcrnd/blockchain
 ```
 
 ## Decred Chain Processing Overview
@@ -61,7 +61,7 @@ is by no means exhaustive:
 
 ## Examples
 
-* [ProcessBlock Example](https://godoc.org/github.com/decred/dcrd/blockchain#example-BlockChain-ProcessBlock)
+* [ProcessBlock Example](https://godoc.org/github.com/Decred-Next/dcrnd/blockchain#example-BlockChain-ProcessBlock)
   Demonstrates how to create a new chain instance and use ProcessBlock to
   attempt to add a block to the chain.  This example intentionally
   attempts to insert a duplicate genesis block to illustrate how an invalid
