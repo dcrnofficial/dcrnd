@@ -9,7 +9,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/decred/dcrd/database/v2"
+	"github.com/Decred-Next/dcrnd/database/v8"
 )
 
 // TestErrorCodeStringer tests the stringized output for the ErrorCode type.

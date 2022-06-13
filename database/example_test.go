@@ -11,11 +11,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/decred/dcrd/chaincfg/v2"
-	"github.com/decred/dcrd/database/v2"
-	_ "github.com/decred/dcrd/database/v2/ffldb"
-	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/chaincfg/v8"
+	"github.com/Decred-Next/dcrnd/database/v8"
+	_ "github.com/Decred-Next/dcrnd/database/v8/ffldb"
+	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 // This example demonstrates creating a new database.
@@ -23,8 +23,8 @@ func ExampleCreate() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/decred/dcrd/database2"
-	// 	_ "github.com/decred/dcrd/database/v2/ffldb"
+	// 	"github.com/Decred-Next/dcrnd/database2"
+	// 	_ "github.com/Decred-Next/dcrnd/database/v2/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -49,8 +49,8 @@ func Example_basicUsage() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/decred/dcrd/database2"
-	// 	_ "github.com/decred/dcrd/database/v2/ffldb"
+	// 	"github.com/Decred-Next/dcrnd/database2"
+	// 	_ "github.com/Decred-Next/dcrnd/database/v2/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -115,8 +115,8 @@ func Example_blockStorageAndRetrieval() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/decred/dcrd/database2"
-	// 	_ "github.com/decred/dcrd/database/v2/ffldb"
+	// 	"github.com/Decred-Next/dcrnd/database2"
+	// 	_ "github.com/Decred-Next/dcrnd/database/v2/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.

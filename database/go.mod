@@ -1,13 +1,13 @@
-module github.com/decred/dcrd/database/v2
+module github.com/Decred-Next/dcrnd/database/v8
 
 go 1.11
 
 require (
+	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/chaincfg/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/wire/v8 v8.0.0
 	github.com/btcsuite/goleveldb v1.0.0
-	github.com/decred/dcrd/chaincfg/chainhash v1.0.2
-	github.com/decred/dcrd/chaincfg/v2 v2.3.0
-	github.com/decred/dcrd/dcrutil/v2 v2.0.1
-	github.com/decred/dcrd/wire v1.3.0
 	github.com/decred/slog v1.0.0
 	github.com/fsnotify/fsnotify v1.4.7 // indirect
 	github.com/golang/protobuf v1.3.2 // indirect

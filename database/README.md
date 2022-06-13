@@ -1,9 +1,9 @@
 database
 ========
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/database)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/database)
 
 Package database provides a block and metadata storage database.
 
@@ -14,7 +14,7 @@ and that entity will be dcrd.
 
 When a client wants programmatic access to the data provided by dcrd, they'll
 likely want to use the [dcrrpcclient](https://github.com/decred/dcrrpcclient)
-package which makes use of the [JSON-RPC API](https://github.com/decred/dcrd/tree/master/docs/json_rpc_api.mediawiki).
+package which makes use of the [JSON-RPC API](https://github.com/Decred-Next/dcrnd/tree/master/docs/json_rpc_api.mediawiki).
 
 However, this package could be extremely useful for any applications requiring
 Decred block storage capabilities.
@@ -37,16 +37,16 @@ storage, and strict checksums in key areas to ensure data integrity.
 ## Installation
 
 ```bash
-$ go get github.com/decred/dcrd/database2
+$ go get github.com/Decred-Next/dcrnd/database2
 ```
 
 ## Examples
 
-* [Basic Usage Example](https://godoc.org/github.com/decred/dcrd/database2#example-package--BasicUsage)
+* [Basic Usage Example](https://godoc.org/github.com/Decred-Next/dcrnd/database2#example-package--BasicUsage)
   Demonstrates creating a new database and using a managed read-write
   transaction to store and retrieve metadata.
 
-* [Block Storage and Retrieval Example](https://godoc.org/github.com/decred/dcrd/database2#example-package--BlockStorageAndRetrieval)
+* [Block Storage and Retrieval Example](https://godoc.org/github.com/Decred-Next/dcrnd/database2#example-package--BlockStorageAndRetrieval)
   Demonstrates creating a new database, using a managed read-write transaction
   to store a block, and then using a managed read-only transaction to fetch the
   block.
