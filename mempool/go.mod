@@ -8,8 +8,8 @@ require (
 	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/chaincfg/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/mining/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0

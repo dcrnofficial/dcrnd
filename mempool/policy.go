@@ -9,11 +9,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Decred-Next/dcrnd/blockchain/stake/v2"
-	"github.com/Decred-Next/dcrnd/blockchain/v2"
-	"github.com/Decred-Next/dcrnd/dcrutil/v2"
-	"github.com/Decred-Next/dcrnd/txscript/v2"
-	"github.com/Decred-Next/dcrnd/wire"
+	"github.com/Decred-Next/dcrnd/blockchain/stake/v8"
+	"github.com/Decred-Next/dcrnd/blockchain/v8"
+	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	"github.com/Decred-Next/dcrnd/txscript/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 const (

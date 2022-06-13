@@ -7,8 +7,8 @@ package mempool
 
 import (
 	"fmt"
-	"github.com/Decred-Next/dcrnd/blockchain/v2"
-	"github.com/Decred-Next/dcrnd/wire"
+	"github.com/Decred-Next/dcrnd/blockchain/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 // RuleError identifies a rule violation.  It is used to indicate that
