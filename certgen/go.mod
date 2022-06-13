@@ -1,3 +1,3 @@
-module github.com/decred/dcrd/certgen
+module github.com/Decred-Next/dcrnd/certgen/v8
 
 go 1.11
