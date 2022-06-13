@@ -1,3 +1,3 @@
-module github.com/decred/dcrd/dcrec
+module github.com/Decred-Next/dcrnd/dcrec/v8
 
 go 1.11
