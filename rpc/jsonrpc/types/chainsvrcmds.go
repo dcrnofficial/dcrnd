@@ -9,7 +9,7 @@
 package types
 
 import (
-	"github.com/decred/dcrd/dcrjson/v3"
+	"github.com/Decred-Next/dcrnd/dcrjson/v8"
 )
 
 // AddNodeSubCmd defines the type used in the addnode JSON-RPC command for the
