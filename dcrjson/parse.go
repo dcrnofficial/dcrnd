@@ -7,7 +7,7 @@ package dcrjson
 import (
 	"encoding/hex"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 // EncodeConcatenatedHashes serializes a slice of chainhash.Hash values into a

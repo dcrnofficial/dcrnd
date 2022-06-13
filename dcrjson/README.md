@@ -1,9 +1,9 @@
 dcrjson
 =======
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/dcrjson)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/dcrjson)
 
 Package dcrjson implements infrastructure for marshalling to and from the decred
 JSON-RPC API via concrete types.  A comprehensive suite of tests is provided to
@@ -16,7 +16,7 @@ to marshal to and from decred JSON-RPC requests and responses.
 Note that although it's possible to use this package directly to implement an
 RPC client, it is not recommended since it is only intended as an infrastructure
 package.  Instead, RPC clients should use the
-[rpcclient](https://github.com/decred/dcrd/tree/master/rpcclient) package which
+[rpcclient](https://github.com/Decred-Next/dcrnd/tree/master/rpcclient) package which
 provides a full blown RPC client with many features such as automatic connection
 management, websocket support, automatic notification re-registration on
 reconnect, and conversion from the raw underlying RPC types (strings, floats,
@@ -25,22 +25,22 @@ ints, etc) to higher-level types with many nice and useful properties.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/dcrjson
+$ go get -u github.com/Decred-Next/dcrnd/dcrjson
 ```
 
 ## Examples
 
-* [Marshal Command](https://godoc.org/github.com/decred/dcrd/dcrjson#example-MarshalCmd)
+* [Marshal Command](https://godoc.org/github.com/Decred-Next/dcrnd/dcrjson#example-MarshalCmd)
   Demonstrates how to create and marshal a command into a JSON-RPC request.
 
-* [Parse Command](https://godoc.org/github.com/decred/dcrd/dcrjson#example-ParseParams)
+* [Parse Command](https://godoc.org/github.com/Decred-Next/dcrnd/dcrjson#example-ParseParams)
   Demonstrates how to unmarshal a JSON-RPC request and then parse the params
   of the concrete request into a concrete command.
 
-* [Marshal Response](https://godoc.org/github.com/decred/dcrd/dcrjson#example-MarshalResponse)
+* [Marshal Response](https://godoc.org/github.com/Decred-Next/dcrnd/dcrjson#example-MarshalResponse)
   Demonstrates how to marshal a JSON-RPC response.
 
-* [Unmarshal Response](https://godoc.org/github.com/decred/dcrd/dcrjson#example-package--UnmarshalResponse)
+* [Unmarshal Response](https://godoc.org/github.com/Decred-Next/dcrnd/dcrjson#example-package--UnmarshalResponse)
   Demonstrates how to unmarshal a JSON-RPC response and then unmarshal the
   result field in the response to a concrete type.
 
