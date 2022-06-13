@@ -1,3 +1,3 @@
-module github.com/decred/dcrd/crypto/ripemd160
+module github.com/Decred-Next/dcrnd/crypto/ripemd160/v8
 
 go 1.11
