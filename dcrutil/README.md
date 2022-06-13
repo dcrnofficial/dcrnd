@@ -2,9 +2,9 @@ dcrutil
 =======
 
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/dcrutil)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/dcrutil)
 
 Package dcrutil provides decred-specific convenience functions and types.
 A comprehensive suite of tests is provided to ensure proper functionality.
@@ -17,7 +17,7 @@ standalone package for any projects needing the functionality provided.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/dcrutil
+$ go get -u github.com/Decred-Next/dcrnd/dcrutil
 ```
 
 ## License
