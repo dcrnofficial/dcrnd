@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 // genesisCoinbaseTx is the coinbase transaction for the genesis blocks for

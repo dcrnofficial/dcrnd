@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 // defaultTransactionAlloc is the default size used for the backing array

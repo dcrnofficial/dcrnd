@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/davecgh/go-spew/spew"
-	"github.com/decred/dcrd/chaincfg/chainhash"
 )
 
 // TestBlock tests the MsgBlock API.

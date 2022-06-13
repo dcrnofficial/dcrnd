@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 // MsgGetCFHeaders is a message similar to MsgGetHeaders, but for committed

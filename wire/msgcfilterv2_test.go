@@ -11,8 +11,8 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/davecgh/go-spew/spew"
-	"github.com/decred/dcrd/chaincfg/chainhash"
 )
 
 // baseMsgCFilterV2 returns a MsgCFilterV2 struct populated with mock values

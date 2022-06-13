@@ -11,7 +11,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 func TestMiningState(t *testing.T) {

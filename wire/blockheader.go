@@ -10,7 +10,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 )
 
 // MaxBlockHeaderPayload is the maximum number of bytes a block header can be.

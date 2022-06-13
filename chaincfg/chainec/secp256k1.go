@@ -10,7 +10,7 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/decred/dcrd/dcrec/secp256k1/v2"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
 )
 
 type secp256k1DSA struct {
