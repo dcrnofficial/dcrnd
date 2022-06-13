@@ -1,9 +1,9 @@
-module github.com/decred/dcrd/addrmgr
+module github.com/Decred-Next/dcrnd/addrmgr
 
 go 1.11
 
 require (
-	github.com/decred/dcrd/chaincfg/chainhash v1.0.2
-	github.com/decred/dcrd/wire v1.3.0
+	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/wire/v8 v8.0.0
 	github.com/decred/slog v1.0.0
 )

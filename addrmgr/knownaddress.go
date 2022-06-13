@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 // KnownAddress tracks information about a known network address that is used
