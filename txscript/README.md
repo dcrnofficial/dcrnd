@@ -1,9 +1,9 @@
 txscript
 ========
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/txscript)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/txscript)
 
 Package txscript implements the Decred transaction script language.  There is
 a comprehensive test suite.
@@ -20,23 +20,23 @@ although it is still fairly powerful.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/txscript
+$ go get -u github.com/Decred-Next/dcrnd/txscript
 ```
 
 ## Examples
 
-* [Standard Pay-to-pubkey-hash Script](https://godoc.org/github.com/decred/dcrd/txscript#example-PayToAddrScript)
+* [Standard Pay-to-pubkey-hash Script](https://godoc.org/github.com/Decred-Next/dcrnd/txscript#example-PayToAddrScript)
   Demonstrates creating a script which pays to a Decred address.  It also
   prints the created script hex and uses the DisasmString function to display
   the disassembled script.
 
-* [Extracting Details from Standard Scripts](https://godoc.org/github.com/decred/dcrd/txscript#example-ExtractPkScriptAddrs)
+* [Extracting Details from Standard Scripts](https://godoc.org/github.com/Decred-Next/dcrnd/txscript#example-ExtractPkScriptAddrs)
   Demonstrates extracting information from a standard public key script.
 
-* [Manually Signing a Transaction Output](https://godoc.org/github.com/decred/dcrd/txscript#example-SignTxOutput)
+* [Manually Signing a Transaction Output](https://godoc.org/github.com/Decred-Next/dcrnd/txscript#example-SignTxOutput)
   Demonstrates manually creating and signing a redeem transaction.
 
-* [Counting Opcodes in Scripts](https://godoc.org/github.com/decred/dcrd/txscript#example-ScriptTokenizer)
+* [Counting Opcodes in Scripts](https://godoc.org/github.com/Decred-Next/dcrnd/txscript#example-ScriptTokenizer)
   Demonstrates creating a script tokenizer instance and using it to count the
   number of opcodes a script contains.
 
