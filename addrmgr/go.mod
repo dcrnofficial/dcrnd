@@ -1,4 +1,4 @@
-module github.com/Decred-Next/dcrnd/addrmgr
+module github.com/Decred-Next/dcrnd/addrmgr/v8
 
 go 1.11
 
