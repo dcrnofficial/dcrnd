@@ -1,4 +1,4 @@
-module github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8
+module github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8/version2
 
 go 1.11
 
