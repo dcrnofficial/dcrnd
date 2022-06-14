@@ -16,7 +16,7 @@ import (
 
 	"github.com/Decred-Next/dcrnd/internal/limits"
 	"github.com/Decred-Next/dcrnd/internal/version"
-	"github.com/decred/dcrd/blockchain/v2/indexers"
+	"github.com/Decred-Next/dcrnd/blockchain/v8/indexers"
 )
 
 var cfg *config

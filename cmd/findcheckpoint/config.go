@@ -10,10 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/decred/dcrd/chaincfg/v2"
-	"github.com/decred/dcrd/database/v2"
-	_ "github.com/decred/dcrd/database/v2/ffldb"
-	"github.com/decred/dcrd/dcrutil/v2"
+	"github.com/Decred-Next/dcrnd/chaincfg/v8"
+	"github.com/Decred-Next/dcrnd/database/v8"
+	_ "github.com/Decred-Next/dcrnd/database/v8/ffldb"
+	"github.com/Decred-Next/dcrnd/dcrutil/v8"
 	flags "github.com/jessevdk/go-flags"
 )
 

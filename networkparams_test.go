@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/decred/base58"
-	"github.com/decred/dcrd/blockchain/standalone"
-	"github.com/decred/dcrd/chaincfg/v2"
+	"github.com/Decred-Next/dcrnd/blockchain/standalone/v8"
+	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 )
 
 // checkPowLimitsAreConsistent ensures PowLimit and PowLimitBits are consistent

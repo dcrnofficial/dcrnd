@@ -17,10 +17,10 @@ import (
 	"strings"
 
 	"github.com/Decred-Next/dcrnd/internal/version"
-	"github.com/decred/dcrd/dcrjson/v3"
-	"github.com/decred/dcrd/dcrutil/v2"
+	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/Decred-Next/dcrnd/dcrutil/v8"
 
-	dcrdtypes "github.com/decred/dcrd/rpc/jsonrpc/types/v2"
+	dcrdtypes "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 	wallettypes "github.com/decred/dcrwallet/rpc/jsonrpc/types"
 
 	flags "github.com/jessevdk/go-flags"

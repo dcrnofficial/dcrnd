@@ -42,13 +42,13 @@ transactions).
 **2.1 Installation**<br />
 
 The first step is to install dcrd.  The installation instructions can be found
-[here](https://github.com/decred/dcrd/tree/master/README.md#Installation).
+[here](https://github.com/Decred-Next/dcrnd/tree/master/README.md#Installation).
 
 <a name="Configuration" />
 
 **2.2 Configuration**<br />
 
-dcrd has a number of [configuration](https://godoc.org/github.com/decred/dcrd)
+dcrd has a number of [configuration](https://godoc.org/github.com/Decred-Next/dcrnd)
 options, which can be viewed by running: `$ dcrd --help`.
 
 <a name="DcrctlConfig" />
@@ -85,7 +85,7 @@ For a list of available options, run: `$ dcrctl --help`
 <a name="Mining" />
 
 **2.4 Mining**<br />
-dcrd supports the [getwork](https://github.com/decred/dcrd/tree/master/docs/json_rpc_api.mediawiki#getwork)
+dcrd supports the [getwork](https://github.com/Decred-Next/dcrnd/tree/master/docs/json_rpc_api.mediawiki#getwork)
 RPC.  The limited user cannot access this RPC.<br />
 
 **1. Add the payment addresses with the `miningaddr` option.**<br />
@@ -121,10 +121,10 @@ certificate into the default system Certificate Authority list.
 <a name="NetworkConfig" />
 
 **3.1 Network Configuration**<br />
-* [What Ports Are Used by Default?](https://github.com/decred/dcrd/tree/master/docs/default_ports.md)
-* [How To Listen on Specific Interfaces](https://github.com/decred/dcrd/tree/master/docs/configure_peer_server_listen_interfaces.md)
-* [How To Configure RPC Server to Listen on Specific Interfaces](https://github.com/decred/dcrd/tree/master/docs/configure_rpc_server_listen_interfaces.md)
-* [Configuring dcrd with Tor](https://github.com/decred/dcrd/tree/master/docs/configuring_tor.md)
+* [What Ports Are Used by Default?](https://github.com/Decred-Next/dcrnd/tree/master/docs/default_ports.md)
+* [How To Listen on Specific Interfaces](https://github.com/Decred-Next/dcrnd/tree/master/docs/configure_peer_server_listen_interfaces.md)
+* [How To Configure RPC Server to Listen on Specific Interfaces](https://github.com/Decred-Next/dcrnd/tree/master/docs/configure_rpc_server_listen_interfaces.md)
+* [Configuring dcrd with Tor](https://github.com/Decred-Next/dcrnd/tree/master/docs/configuring_tor.md)
 
 <a name="Wallet" />
 
@@ -154,14 +154,14 @@ https://decred.org/community
 
 **5.1 Code Contribution Guidelines**
 
-* [Code Contribution Guidelines](https://github.com/decred/dcrd/tree/master/docs/code_contribution_guidelines.md)
+* [Code Contribution Guidelines](https://github.com/Decred-Next/dcrnd/tree/master/docs/code_contribution_guidelines.md)
 
 <a name="JSONRPCReference" />
 
 **5.2 JSON-RPC Reference**
 
-* [JSON-RPC Reference](https://github.com/decred/dcrd/tree/master/docs/json_rpc_api.mediawiki)
-* [RPC Examples](https://github.com/decred/dcrd/tree/master/docs/json_rpc_api.mediawiki#8-example-code)
+* [JSON-RPC Reference](https://github.com/Decred-Next/dcrnd/tree/master/docs/json_rpc_api.mediawiki)
+* [RPC Examples](https://github.com/Decred-Next/dcrnd/tree/master/docs/json_rpc_api.mediawiki#8-example-code)
 
 <a name="GoModules" />
 
@@ -169,62 +169,62 @@ https://decred.org/community
 
 The following versioned modules are provided by dcrd repository:
 
-* [rpcclient/v4](https://github.com/decred/dcrd/tree/master/rpcclient) - Implements
+* [rpcclient/v4](https://github.com/Decred-Next/dcrnd/tree/master/rpcclient) - Implements
   a robust and easy to use Websocket-enabled Decred JSON-RPC client
-* [dcrjson/v3](https://github.com/decred/dcrd/tree/master/dcrjson) - Provides
+* [dcrjson/v3](https://github.com/Decred-Next/dcrnd/tree/master/dcrjson) - Provides
   infrastructure for working with Decred JSON-RPC APIs
-* [rpc/jsonrpc/types](https://github.com/decred/dcrd/tree/master/rpc/jsonrpc/types) -
+* [rpc/jsonrpc/types](https://github.com/Decred-Next/dcrnd/tree/master/rpc/jsonrpc/types) -
   Provides concrete types via dcrjson for the chain server JSON-RPC commands,
   return values, and notifications
-* [wire](https://github.com/decred/dcrd/tree/master/wire) - Implements the
+* [wire](https://github.com/Decred-Next/dcrnd/tree/master/wire) - Implements the
   Decred wire protocol
-* [peer/v2](https://github.com/decred/dcrd/tree/master/peer) - Provides a common
+* [peer/v2](https://github.com/Decred-Next/dcrnd/tree/master/peer) - Provides a common
   base for creating and managing Decred network peers
-* [blockchain/v2](https://github.com/decred/dcrd/tree/master/blockchain) -
+* [blockchain/v2](https://github.com/Decred-Next/dcrnd/tree/master/blockchain) -
   Implements Decred block handling and chain selection rules
-  * [stake/v2](https://github.com/decred/dcrd/tree/master/blockchain/stake) -
+  * [stake/v2](https://github.com/Decred-Next/dcrnd/tree/master/blockchain/stake) -
     Provides an API for working with stake transactions and other portions
     related to the Proof-of-Stake (PoS) system
-  * [standalone](https://github.com/decred/dcrd/tree/master/blockchain/standalone) -
+  * [standalone](https://github.com/Decred-Next/dcrnd/tree/master/blockchain/standalone) -
     Provides standalone functions useful for working with the Decred blockchain
     consensus rules
-* [txscript/v2](https://github.com/decred/dcrd/tree/master/txscript) -
+* [txscript/v2](https://github.com/Decred-Next/dcrnd/tree/master/txscript) -
   Implements the Decred transaction scripting language
-* [dcrec](https://github.com/decred/dcrd/tree/master/dcrec) - Provides constants
+* [dcrec](https://github.com/Decred-Next/dcrnd/tree/master/dcrec) - Provides constants
   for the supported cryptographic signatures supported by Decred scripts
-  * [secp256k1/v2](https://github.com/decred/dcrd/tree/master/dcrec/secp256k1) -
+  * [secp256k1/v2](https://github.com/Decred-Next/dcrnd/tree/master/dcrec/secp256k1) -
     Implements the secp256k1 elliptic curve
-  * [edwards/v2](https://github.com/decred/dcrd/tree/master/dcrec/edwards) -
+  * [edwards/v2](https://github.com/Decred-Next/dcrnd/tree/master/dcrec/edwards) -
     Implements the edwards25519 twisted Edwards curve
-* [database/v2](https://github.com/decred/dcrd/tree/master/database) -
+* [database/v2](https://github.com/Decred-Next/dcrnd/tree/master/database) -
   Provides a database interface for the Decred block chain
-* [mempool/v3](https://github.com/decred/dcrd/tree/master/mempool) - Provides a
+* [mempool/v3](https://github.com/Decred-Next/dcrnd/tree/master/mempool) - Provides a
   policy-enforced pool of unmined Decred transactions
-* [dcrutil/v2](https://github.com/decred/dcrd/tree/master/dcrutil) - Provides
+* [dcrutil/v2](https://github.com/Decred-Next/dcrnd/tree/master/dcrutil) - Provides
   Decred-specific convenience functions and types
-* [chaincfg/v2](https://github.com/decred/dcrd/tree/master/chaincfg) - Defines
+* [chaincfg/v2](https://github.com/Decred-Next/dcrnd/tree/master/chaincfg) - Defines
   chain configuration parameters for the standard Decred networks and allows
   callers to define their own custom Decred networks for testing puproses
-  * [chainhash](https://github.com/decred/dcrd/tree/master/chaincfg/chainhash) -
+  * [chainhash](https://github.com/Decred-Next/dcrnd/tree/master/chaincfg/chainhash) -
     Provides a generic hash type and associated functions that allows the
     specific hash algorithm to be abstracted
-* [certgen](https://github.com/decred/dcrd/tree/master/certgen) - Provides a
+* [certgen](https://github.com/Decred-Next/dcrnd/tree/master/certgen) - Provides a
   function for creating a new TLS certificate key pair, typically used for
   encrypting RPC and websocket communications
-* [addrmgr](https://github.com/decred/dcrd/tree/master/addrmgr) - Provides a
+* [addrmgr](https://github.com/Decred-Next/dcrnd/tree/master/addrmgr) - Provides a
   concurrency safe Decred network address manager
-* [connmgr/v2](https://github.com/decred/dcrd/tree/master/connmgr) - Implements
+* [connmgr/v2](https://github.com/Decred-Next/dcrnd/tree/master/connmgr) - Implements
   a generic Decred network connection manager
-* [hdkeychain/v2](https://github.com/decred/dcrd/tree/master/hdkeychain) -
+* [hdkeychain/v2](https://github.com/Decred-Next/dcrnd/tree/master/hdkeychain) -
   Provides an API for working with  Decred hierarchical deterministic extended
   keys
-* [gcs](https://github.com/decred/dcrd/tree/master/gcs) - Provides an API for
+* [gcs](https://github.com/Decred-Next/dcrnd/tree/master/gcs) - Provides an API for
   building and using Golomb-coded set filters useful for light clients such as
   SPV wallets
-* [fees](https://github.com/decred/dcrd/tree/master/fees) - Provides methods for
+* [fees](https://github.com/Decred-Next/dcrnd/tree/master/fees) - Provides methods for
   tracking and estimating fee rates for new transactions to be mined into the
   network
-* [lru](https://github.com/decred/dcrd/tree/master/lru) - Implements a generic
+* [lru](https://github.com/Decred-Next/dcrnd/tree/master/lru) - Implements a generic
   concurrent safe least-recently-used cache with near O(1) perf
 
 <a name="ModuleHierarchy" />

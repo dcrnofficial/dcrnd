@@ -22,25 +22,25 @@ import (
 	"time"
 
 	"github.com/Decred-Next/dcrnd/internal/version"
-	"github.com/decred/dcrd/addrmgr"
-	"github.com/decred/dcrd/blockchain/stake/v2"
-	"github.com/decred/dcrd/blockchain/standalone"
-	"github.com/decred/dcrd/blockchain/v2"
-	"github.com/decred/dcrd/blockchain/v2/indexers"
-	"github.com/decred/dcrd/chaincfg/chainhash"
-	"github.com/decred/dcrd/chaincfg/v2"
-	"github.com/decred/dcrd/connmgr/v2"
-	"github.com/decred/dcrd/database/v2"
-	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/fees/v2"
-	"github.com/decred/dcrd/gcs/v2"
-	"github.com/decred/dcrd/gcs/v2/blockcf"
-	"github.com/decred/dcrd/lru"
-	"github.com/decred/dcrd/mempool/v3"
-	"github.com/decred/dcrd/mining/v2"
-	"github.com/decred/dcrd/peer/v2"
-	"github.com/decred/dcrd/txscript/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/addrmgr/v8"
+	"github.com/Decred-Next/dcrnd/blockchain/stake/v8"
+	"github.com/Decred-Next/dcrnd/blockchain/standalone/v8"
+	"github.com/Decred-Next/dcrnd/blockchain/v8"
+	"github.com/Decred-Next/dcrnd/blockchain/v8/indexers"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
+	"github.com/Decred-Next/dcrnd/chaincfg/v8"
+	"github.com/Decred-Next/dcrnd/connmgr/v8"
+	"github.com/Decred-Next/dcrnd/database/v8"
+	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	"github.com/Decred-Next/dcrnd/fees/v8"
+	"github.com/Decred-Next/dcrnd/gcs/v8"
+	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf"
+	"github.com/Decred-Next/dcrnd/lru/v8"
+	"github.com/Decred-Next/dcrnd/mempool/v8"
+	"github.com/Decred-Next/dcrnd/mining/v8"
+	"github.com/Decred-Next/dcrnd/peer/v8"
+	"github.com/Decred-Next/dcrnd/txscript/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 const (
@@ -62,7 +62,7 @@ const (
 	connectionRetryInterval = time.Second * 5
 
 	// maxProtocolVersion is the max protocol version the server supports.
-	maxProtocolVersion = wire.CFilterV2Version
+	maxProtocolVersion = wire.CFilterv8Version
 
 	// maxKnownAddrsPerPeer is the maximum number of items to keep in the
 	// per-peer known address cache.
@@ -995,8 +995,8 @@ func (sp *serverPeer) OnGetCFilter(p *peer.Peer, msg *wire.MsgGetCFilter) {
 	sp.QueueMessage(filterMsg, nil)
 }
 
-// OnGetCFilterV2 is invoked when a peer receives a getcfilterv2 wire message.
-func (sp *serverPeer) OnGetCFilterV2(_ *peer.Peer, msg *wire.MsgGetCFilterV2) {
+// OnGetCFilterv8 is invoked when a peer receives a getcfilterv8 wire message.
+func (sp *serverPeer) OnGetCFilterv8(_ *peer.Peer, msg *wire.MsgGetCFilterv8) {
 	// Ignore request if the chain is not yet synced.
 	if !sp.server.blockManager.IsCurrent() {
 		return
@@ -1017,7 +1017,7 @@ func (sp *serverPeer) OnGetCFilterV2(_ *peer.Peer, msg *wire.MsgGetCFilterV2) {
 	// commitment merkle tree, and hence the proof hashes will always be empty
 	// given there are no siblings.  Adding an additional header commitment will
 	// require a consensus vote anyway and this can be updated at that time.
-	cfilterMsg := wire.NewMsgCFilterV2(&msg.BlockHash, filter.Bytes(),
+	cfilterMsg := wire.NewMsgCFilterv8(&msg.BlockHash, filter.Bytes(),
 		blockchain.HeaderCmtFilterIndex, nil)
 	sp.QueueMessage(cfilterMsg, nil)
 }
@@ -1865,7 +1865,7 @@ func newPeerConfig(sp *serverPeer) *peer.Config {
 			OnGetBlocks:      sp.OnGetBlocks,
 			OnGetHeaders:     sp.OnGetHeaders,
 			OnGetCFilter:     sp.OnGetCFilter,
-			OnGetCFilterV2:   sp.OnGetCFilterV2,
+			OnGetCFilterv8:   sp.OnGetCFilterv8,
 			OnGetCFHeaders:   sp.OnGetCFHeaders,
 			OnGetCFTypes:     sp.OnGetCFTypes,
 			OnGetAddr:        sp.OnGetAddr,

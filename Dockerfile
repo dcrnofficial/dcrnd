@@ -31,7 +31,7 @@ FROM golang:1.12
 # $ docker run -d --rm -p 127.0.0.1:19109:19109 -v /var/dcrd:/root/.dcrd user/dcrd
 #
 
-WORKDIR /go/src/github.com/decred/dcrd
+WORKDIR /go/src/github.com/Decred-Next/dcrnd
 COPY . .
 
 RUN env GO111MODULE=on go install . ./cmd/...

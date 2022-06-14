@@ -11,9 +11,9 @@ import (
 	"runtime"
 
 	"github.com/Decred-Next/dcrnd/internal/limits"
-	"github.com/decred/dcrd/blockchain/v2"
-	"github.com/decred/dcrd/blockchain/v2/indexers"
-	"github.com/decred/dcrd/database/v2"
+	"github.com/Decred-Next/dcrnd/blockchain/v8"
+	"github.com/Decred-Next/dcrnd/blockchain/v8/indexers"
+	"github.com/Decred-Next/dcrnd/database/v8"
 	"github.com/decred/slog"
 )
 

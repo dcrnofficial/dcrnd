@@ -3,8 +3,8 @@ dcrd
 
 [![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd)
-[![Go Report Card](https://goreportcard.com/badge/github.com/decred/dcrd)](https://goreportcard.com/report/github.com/decred/dcrd)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Decred-Next/dcrnd)](https://goreportcard.com/report/github.com/Decred-Next/dcrnd)
 
 ## Decred Overview
 
@@ -131,7 +131,7 @@ the repo's root directory.  Some notes:
 ### Example of obtaining and building from source on Windows 10:
 
 ```PowerShell
-PS> git clone https://github.com/decred/dcrd $env:USERPROFILE\src\dcrd
+PS> git clone https://github.com/Decred-Next/dcrnd $env:USERPROFILE\src\dcrd
 PS> cd $env:USERPROFILE\src\dcrd
 PS> go install . .\cmd\...
 PS> & "$(go env GOPATH)\bin\dcrd" -V
@@ -218,13 +218,13 @@ https://decred.org/community
 
 ## Issue Tracker
 
-The [integrated github issue tracker](https://github.com/decred/dcrd/issues)
+The [integrated github issue tracker](https://github.com/Decred-Next/dcrnd/issues)
 is used for this project.
 
 ## Documentation
 
 The documentation for dcrd is a work-in-progress.  It is located in the
-[docs](https://github.com/decred/dcrd/tree/master/docs) folder.
+[docs](https://github.com/Decred-Next/dcrnd/tree/master/docs) folder.
 
 ## License
 
