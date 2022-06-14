@@ -62,7 +62,7 @@ const (
 	connectionRetryInterval = time.Second * 5
 
 	// maxProtocolVersion is the max protocol version the server supports.
-	maxProtocolVersion = wire.CFilterv8Version
+	maxProtocolVersion = wire.CFilterV2Version
 
 	// maxKnownAddrsPerPeer is the maximum number of items to keep in the
 	// per-peer known address cache.
@@ -995,8 +995,8 @@ func (sp *serverPeer) OnGetCFilter(p *peer.Peer, msg *wire.MsgGetCFilter) {
 	sp.QueueMessage(filterMsg, nil)
 }
 
-// OnGetCFilterv8 is invoked when a peer receives a getcfilterv8 wire message.
-func (sp *serverPeer) OnGetCFilterv8(_ *peer.Peer, msg *wire.MsgGetCFilterv8) {
+// OnGetCFilterV2 is invoked when a peer receives a getcfilterv2 wire message.
+func (sp *serverPeer) OnGetCFilterV2(_ *peer.Peer, msg *wire.MsgGetCFilterV2) {
 	// Ignore request if the chain is not yet synced.
 	if !sp.server.blockManager.IsCurrent() {
 		return
@@ -1017,7 +1017,7 @@ func (sp *serverPeer) OnGetCFilterv8(_ *peer.Peer, msg *wire.MsgGetCFilterv8) {
 	// commitment merkle tree, and hence the proof hashes will always be empty
 	// given there are no siblings.  Adding an additional header commitment will
 	// require a consensus vote anyway and this can be updated at that time.
-	cfilterMsg := wire.NewMsgCFilterv8(&msg.BlockHash, filter.Bytes(),
+	cfilterMsg := wire.NewMsgCFilterV2(&msg.BlockHash, filter.Bytes(),
 		blockchain.HeaderCmtFilterIndex, nil)
 	sp.QueueMessage(cfilterMsg, nil)
 }
@@ -1865,7 +1865,7 @@ func newPeerConfig(sp *serverPeer) *peer.Config {
 			OnGetBlocks:      sp.OnGetBlocks,
 			OnGetHeaders:     sp.OnGetHeaders,
 			OnGetCFilter:     sp.OnGetCFilter,
-			OnGetCFilterv8:   sp.OnGetCFilterv8,
+			OnGetCFilterV2:   sp.OnGetCFilterV2,
 			OnGetCFHeaders:   sp.OnGetCFHeaders,
 			OnGetCFTypes:     sp.OnGetCFTypes,
 			OnGetAddr:        sp.OnGetAddr,

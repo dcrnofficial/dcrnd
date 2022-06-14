@@ -159,7 +159,7 @@ var rpcHandlersBeforeInit = map[types.Method]commandHandler{
 	"getblocksubsidy":       handleGetBlockSubsidy,
 	"getcfilter":            handleGetCFilter,
 	"getcfilterheader":      handleGetCFilterHeader,
-	"getcfilterv8":          handleGetCFilterv8,
+	"getcfilterv2":          handleGetCFilterV2,
 	"getchaintips":          handleGetChainTips,
 	"getcoinsupply":         handleGetCoinSupply,
 	"getconnectioncount":    handleGetConnectionCount,
@@ -320,7 +320,7 @@ var rpcLimited = map[string]struct{}{
 	"getblockheader":        {},
 	"getblocksubsidy":       {},
 	"getcfilter":            {},
-	"getcfilterv8":          {},
+	"getcfilterv2":          {},
 	"getchaintips":          {},
 	"getcoinsupply":         {},
 	"getcurrentnet":         {},
@@ -2274,9 +2274,9 @@ func handleGetHeaders(s *rpcServer, cmd interface{}, closeChan <-chan struct{}) 
 	return &types.GetHeadersResult{Headers: hexBlockHeaders}, nil
 }
 
-// handleGetCFilterv8 implements the getcfilterv8 command.
-func handleGetCFilterv8(s *rpcServer, cmd interface{}, closeChan <-chan struct{}) (interface{}, error) {
-	c := cmd.(*types.GetCFilterv8Cmd)
+// handleGetCFilterV2 implements the getcfilterv2 command.
+func handleGetCFilterV2(s *rpcServer, cmd interface{}, closeChan <-chan struct{}) (interface{}, error) {
+	c := cmd.(*types.GetCFilterV2Cmd)
 	hash, err := chainhash.NewHashFromStr(c.BlockHash)
 	if err != nil {
 		return nil, rpcDecodeHexError(c.BlockHash)
@@ -2301,7 +2301,7 @@ func handleGetCFilterv8(s *rpcServer, cmd interface{}, closeChan <-chan struct{}
 	// commitment merkle tree, and hence the proof hashes will always be empty
 	// given there are no siblings.  Adding an additional header commitment will
 	// require a consensus vote anyway and this can be updated at that time.
-	result := &types.GetCFilterv8Result{
+	result := &types.GetCFilterV2Result{
 		BlockHash:   c.BlockHash,
 		Data:        hex.EncodeToString(filter.Bytes()),
 		ProofIndex:  blockchain.HeaderCmtFilterIndex,
