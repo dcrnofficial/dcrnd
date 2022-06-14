@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/decred/dcrd/dcrjson/v3"
 )
 
 // TestChainSvrWsNtfns tests all of the chain server websocket-specific
@@ -184,7 +184,7 @@ func TestChainSvrWsNtfns(t *testing.T) {
 		// generic new notification creation function.
 		cmd, err := test.newNtfn()
 		if err != nil {
-			t.Errorf("Test #%d (%s) unexpected dcrjson.NewCmd error: %v",
+			t.Errorf("Test #%d (%s) unexpected dcrjson.NewCmd error: %v ",
 				i, test.name, err)
 		}
 

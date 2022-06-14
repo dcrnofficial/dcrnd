@@ -1,5 +1,5 @@
 // Copyright (c) 2014 The btcsuite developers
-// Copyright (c) 2015-2019 The Decred developers
+// Copyright (c) 2015-2016 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -11,7 +11,7 @@ import (
 )
 
 // TestChainSvrCustomResults ensures any results that have custom marshalling
-// work as intended.
+// work as inteded.
 // and unmarshal code of results are as expected.
 func TestChainSvrCustomResults(t *testing.T) {
 	t.Parallel()
@@ -79,7 +79,7 @@ func TestChainSvrCustomResults(t *testing.T) {
 			continue
 		}
 		if string(marshalled) != test.expected {
-			t.Errorf("Test #%d (%s) unexpected marshalled data - "+
+			t.Errorf("Test #%d (%s) unexpected marhsalled data - "+
 				"got %s, want %s", i, test.name, marshalled,
 				test.expected)
 			continue

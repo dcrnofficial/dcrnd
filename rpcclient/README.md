@@ -1,9 +1,9 @@
 rpcclient
 =========
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
+[![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/rpcclient)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/rpcclient)
 
 rpcclient implements a Websocket-enabled Decred JSON-RPC client package written
 in [Go](https://golang.org/).  It provides a robust and easy to use client for
@@ -18,12 +18,12 @@ implement and the API is not stable yet.
 
 ## Documentation
 
-* [API Reference](https://godoc.org/github.com/decred/dcrd/rpcclient)
-* [dcrd Websockets Example](https://github.com/decred/dcrd/tree/master/rpcclient/examples/dcrdwebsockets)
+* [API Reference](https://godoc.org/github.com/Decred-Next/dcrnd/rpcclient)
+* [dcrd Websockets Example](https://github.com/Decred-Next/dcrnd/tree/master/rpcclient/examples/dcrdwebsockets)
   Connects to a dcrd RPC server using TLS-secured websockets, registers for
   block connected and block disconnected notifications, and gets the current
   block count
-* [dcrwallet Websockets Example](https://github.com/decred/dcrd/tree/master/rpcclient/examples/dcrwalletwebsockets)  
+* [dcrwallet Websockets Example](https://github.com/Decred-Next/dcrnd/tree/master/rpcclient/examples/dcrwalletwebsockets)  
   Connects to a dcrwallet RPC server using TLS-secured websockets, registers for
   notifications about changes to account balances, and gets a list of unspent
   transaction outputs (utxos) the wallet can sign
@@ -44,7 +44,7 @@ implement and the API is not stable yet.
 ## Installation
 
 ```bash
-$ go get -u github.com/decred/dcrd/rpcclient
+$ go get -u github.com/Decred-Next/dcrnd/rpcclient
 ```
 
 ## License

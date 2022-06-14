@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/decred/dcrd/dcrjson/v3"
 )
 
 // TestChainSvrWsCmds tests all of the chain server websocket-specific commands
@@ -97,17 +97,6 @@ func TestChainSvrWsCmds(t *testing.T) {
 			unmarshalled: &NotifyBlocksCmd{},
 		},
 		{
-			name: "notifywork",
-			newCmd: func() (interface{}, error) {
-				return dcrjson.NewCmd(Method("notifywork"))
-			},
-			staticCmd: func() interface{} {
-				return NewNotifyWorkCmd()
-			},
-			marshalled:   `{"jsonrpc":"1.0","method":"notifywork","params":[],"id":1}`,
-			unmarshalled: &NotifyWorkCmd{},
-		},
-		{
 			name: "stopnotifyblocks",
 			newCmd: func() (interface{}, error) {
 				return dcrjson.NewCmd(Method("stopnotifyblocks"))
@@ -117,17 +106,6 @@ func TestChainSvrWsCmds(t *testing.T) {
 			},
 			marshalled:   `{"jsonrpc":"1.0","method":"stopnotifyblocks","params":[],"id":1}`,
 			unmarshalled: &StopNotifyBlocksCmd{},
-		},
-		{
-			name: "stopnotifywork",
-			newCmd: func() (interface{}, error) {
-				return dcrjson.NewCmd(Method("stopnotifywork"))
-			},
-			staticCmd: func() interface{} {
-				return NewStopNotifyWorkCmd()
-			},
-			marshalled:   `{"jsonrpc":"1.0","method":"stopnotifywork","params":[],"id":1}`,
-			unmarshalled: &StopNotifyWorkCmd{},
 		},
 		{
 			name: "notifynewtransactions",
@@ -203,7 +181,7 @@ func TestChainSvrWsCmds(t *testing.T) {
 		// new command creation function.
 		cmd, err := test.newCmd()
 		if err != nil {
-			t.Errorf("Test #%d (%s) unexpected dcrjson.NewCmd error: %v",
+			t.Errorf("Test #%d (%s) unexpected dcrjson.NewCmd error: %v ",
 				i, test.name, err)
 		}
 

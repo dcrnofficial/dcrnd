@@ -11,14 +11,14 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/decred/dcrd/chaincfg/chainhash"
-	"github.com/decred/dcrd/dcrjson/v3"
-	"github.com/decred/dcrd/dcrutil/v2"
-	"github.com/decred/dcrd/gcs/v2"
-	"github.com/decred/dcrd/gcs/v2/blockcf"
-	"github.com/decred/dcrd/gcs/v2/blockcf2"
-	chainjson "github.com/decred/dcrd/rpc/jsonrpc/types/v2"
-	"github.com/decred/dcrd/wire"
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
+	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	"github.com/Decred-Next/dcrnd/gcs/v8"
+	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf"
+	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf2"
+	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8"
+	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
 // FutureGetBestBlockHashResult is a future promise to deliver the result of a

@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/decred/dcrd/dcrjson/v3"
 )
 
 // TestChainSvrCmds tests all of the chain server commands marshal and unmarshal
@@ -344,6 +344,89 @@ func TestChainSvrCmds(t *testing.T) {
 			},
 		},
 		{
+			name: "getblocktemplate",
+			newCmd: func() (interface{}, error) {
+				return dcrjson.NewCmd(Method("getblocktemplate"))
+			},
+			staticCmd: func() interface{} {
+				return NewGetBlockTemplateCmd(nil)
+			},
+			marshalled:   `{"jsonrpc":"1.0","method":"getblocktemplate","params":[],"id":1}`,
+			unmarshalled: &GetBlockTemplateCmd{Request: nil},
+		},
+		{
+			name: "getblocktemplate optional - template request",
+			newCmd: func() (interface{}, error) {
+				return dcrjson.NewCmd(Method("getblocktemplate"), `{"mode":"template","capabilities":["longpoll","coinbasetxn"]}`)
+			},
+			staticCmd: func() interface{} {
+				template := TemplateRequest{
+					Mode:         "template",
+					Capabilities: []string{"longpoll", "coinbasetxn"},
+				}
+				return NewGetBlockTemplateCmd(&template)
+			},
+			marshalled: `{"jsonrpc":"1.0","method":"getblocktemplate","params":[{"mode":"template","capabilities":["longpoll","coinbasetxn"]}],"id":1}`,
+			unmarshalled: &GetBlockTemplateCmd{
+				Request: &TemplateRequest{
+					Mode:         "template",
+					Capabilities: []string{"longpoll", "coinbasetxn"},
+				},
+			},
+		},
+		{
+			name: "getblocktemplate optional - template request with tweaks",
+			newCmd: func() (interface{}, error) {
+				return dcrjson.NewCmd(Method("getblocktemplate"), `{"mode":"template","capabilities":["longpoll","coinbasetxn"],"sigoplimit":500,"sizelimit":100000000,"maxversion":2}`)
+			},
+			staticCmd: func() interface{} {
+				template := TemplateRequest{
+					Mode:         "template",
+					Capabilities: []string{"longpoll", "coinbasetxn"},
+					SigOpLimit:   500,
+					SizeLimit:    100000000,
+					MaxVersion:   2,
+				}
+				return NewGetBlockTemplateCmd(&template)
+			},
+			marshalled: `{"jsonrpc":"1.0","method":"getblocktemplate","params":[{"mode":"template","capabilities":["longpoll","coinbasetxn"],"sigoplimit":500,"sizelimit":100000000,"maxversion":2}],"id":1}`,
+			unmarshalled: &GetBlockTemplateCmd{
+				Request: &TemplateRequest{
+					Mode:         "template",
+					Capabilities: []string{"longpoll", "coinbasetxn"},
+					SigOpLimit:   int64(500),
+					SizeLimit:    int64(100000000),
+					MaxVersion:   2,
+				},
+			},
+		},
+		{
+			name: "getblocktemplate optional - template request with tweaks 2",
+			newCmd: func() (interface{}, error) {
+				return dcrjson.NewCmd(Method("getblocktemplate"), `{"mode":"template","capabilities":["longpoll","coinbasetxn"],"sigoplimit":true,"sizelimit":100000000,"maxversion":2}`)
+			},
+			staticCmd: func() interface{} {
+				template := TemplateRequest{
+					Mode:         "template",
+					Capabilities: []string{"longpoll", "coinbasetxn"},
+					SigOpLimit:   true,
+					SizeLimit:    100000000,
+					MaxVersion:   2,
+				}
+				return NewGetBlockTemplateCmd(&template)
+			},
+			marshalled: `{"jsonrpc":"1.0","method":"getblocktemplate","params":[{"mode":"template","capabilities":["longpoll","coinbasetxn"],"sigoplimit":true,"sizelimit":100000000,"maxversion":2}],"id":1}`,
+			unmarshalled: &GetBlockTemplateCmd{
+				Request: &TemplateRequest{
+					Mode:         "template",
+					Capabilities: []string{"longpoll", "coinbasetxn"},
+					SigOpLimit:   true,
+					SizeLimit:    int64(100000000),
+					MaxVersion:   2,
+				},
+			},
+		},
+		{
 			name: "getcfilter",
 			newCmd: func() (interface{}, error) {
 				return dcrjson.NewCmd(Method("getcfilter"), "123", "extended")
@@ -369,19 +452,6 @@ func TestChainSvrCmds(t *testing.T) {
 			unmarshalled: &GetCFilterHeaderCmd{
 				Hash:       "123",
 				FilterType: "extended",
-			},
-		},
-		{
-			name: "getcfilterv2",
-			newCmd: func() (interface{}, error) {
-				return dcrjson.NewCmd(Method("getcfilterv2"), "123")
-			},
-			staticCmd: func() interface{} {
-				return NewGetCFilterV2Cmd("123")
-			},
-			marshalled: `{"jsonrpc":"1.0","method":"getcfilterv2","params":["123"],"id":1}`,
-			unmarshalled: &GetCFilterV2Cmd{
-				BlockHash: "123",
 			},
 		},
 		{
@@ -1136,7 +1206,7 @@ func TestChainSvrCmds(t *testing.T) {
 		// new command creation function.
 		cmd, err := test.newCmd()
 		if err != nil {
-			t.Errorf("Test #%d (%s) unexpected dcrjson.NewCmd error: %v",
+			t.Errorf("Test #%d (%s) unexpected dcrjson.NewCmd error: %v ",
 				i, test.name, err)
 		}
 
@@ -1177,6 +1247,58 @@ func TestChainSvrCmds(t *testing.T) {
 				fmt.Sprintf("(%T) %+[1]v", cmd),
 				fmt.Sprintf("(%T) %+[1]v\n", test.unmarshalled))
 			continue
+		}
+	}
+}
+
+// TestChainSvrCmdErrors ensures any errors that occur in the command during
+// custom mashal and unmarshal are as expected.
+func TestChainSvrCmdErrors(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name       string
+		result     interface{}
+		marshalled string
+		err        error
+	}{
+		{
+			name:       "template request with invalid type",
+			result:     &TemplateRequest{},
+			marshalled: `{"mode":1}`,
+			err:        &json.UnmarshalTypeError{},
+		},
+		{
+			name:       "invalid template request sigoplimit field",
+			result:     &TemplateRequest{},
+			marshalled: `{"sigoplimit":"invalid"}`,
+			err:        dcrjson.Error{Code: dcrjson.ErrInvalidType},
+		},
+		{
+			name:       "invalid template request sizelimit field",
+			result:     &TemplateRequest{},
+			marshalled: `{"sizelimit":"invalid"}`,
+			err:        dcrjson.Error{Code: dcrjson.ErrInvalidType},
+		},
+	}
+
+	t.Logf("Running %d tests", len(tests))
+	for i, test := range tests {
+		err := json.Unmarshal([]byte(test.marshalled), &test.result)
+		if reflect.TypeOf(err) != reflect.TypeOf(test.err) {
+			t.Errorf("Test #%d (%s) wrong error type - got `%T` (%v), got `%T`",
+				i, test.name, err, err, test.err)
+			continue
+		}
+
+		if terr, ok := test.err.(dcrjson.Error); ok {
+			gotErrorCode := err.(dcrjson.Error).Code
+			if gotErrorCode != terr.Code {
+				t.Errorf("Test #%d (%s) mismatched error code "+
+					"- got %v (%v), want %v", i, test.name,
+					gotErrorCode, terr, terr.Code)
+				continue
+			}
 		}
 	}
 }
