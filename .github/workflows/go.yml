@@ -34,9 +34,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dcrnd-binary
-          path: ./dcrd
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: dcrnd-binary
+          name: dcrnd_linux_x64
+          path: dcrnd
