@@ -19,7 +19,7 @@ import (
 	"github.com/Decred-Next/dcrnd/fees/v8"
 	"github.com/Decred-Next/dcrnd/mempool/v8"
 	"github.com/Decred-Next/dcrnd/peer/v8"
-	"github.com/Decred-Next/dcrnd/txscript/v8"
+	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"
 	"github.com/decred/slog"
 	"github.com/jrick/logrotate/rotator"
 )

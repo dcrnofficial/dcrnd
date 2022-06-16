@@ -12,7 +12,7 @@ require (
 	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/mining/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.0
 	github.com/decred/slog v1.0.0
 )

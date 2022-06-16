@@ -30,8 +30,8 @@ github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.0 h1:ml5paIynCB8
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.0/go.mod h1:/9IFszg+P6Ib0lKDERXoPFIL06W6Ov++XtcJ62FFqvw=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.0 h1:KqBFrbqPphEIIdlN4NZyEOdgwSdC2r7MDua2W5X2mAE=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.0/go.mod h1:fFuHQTYXRwT8pn9gZTPeHFPZN6ZEzfEP/K7svkBF08Q=
-github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0 h1:Udmr+H7xcpXhjPQsSnBbpgZkMnl2PhkLuW3PMkuuQNQ=
-github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0/go.mod h1:W27tBpKWCFAnNm4s9jTu56FcGty7+D74nVs5AWWvS2g=
+github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.0 h1:Udmr+H7xcpXhjPQsSnBbpgZkMnl2PhkLuW3PMkuuQNQ=
+github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.0/go.mod h1:W27tBpKWCFAnNm4s9jTu56FcGty7+D74nVs5AWWvS2g=
 github.com/Decred-Next/dcrnd/wire/v8 v8.0.0 h1:+SMLcPwGzFR9wLWloVsjTvmnL4df22ePTf5XXJQwxHQ=
 github.com/Decred-Next/dcrnd/wire/v8 v8.0.0/go.mod h1:tRixr9lCjUlpFIgS1ZmRGUUIBA1pOyDbHzN241L8Urw=
 github.com/agl/ed25519 v0.0.0-20170116200512-5312a6153412 h1:w1UutsfOrms1J05zt7ISrnJIXKzwaspym5BTKGx93EI=

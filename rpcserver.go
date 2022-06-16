@@ -48,7 +48,7 @@ import (
 	"github.com/Decred-Next/dcrnd/dcrutil/v8"
 	"github.com/Decred-Next/dcrnd/mempool/v8"
 	"github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
-	"github.com/Decred-Next/dcrnd/txscript/v8"
+	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 	"github.com/jrick/bitset"
 )

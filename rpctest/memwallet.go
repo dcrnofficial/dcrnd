@@ -18,7 +18,7 @@ import (
 	"github.com/Decred-Next/dcrnd/dcrutil/v8"
 	"github.com/Decred-Next/dcrnd/hdkeychain/v8"
 	"github.com/Decred-Next/dcrnd/rpcclient/v8"
-	"github.com/Decred-Next/dcrnd/txscript/v8"
+	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
