@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Decred-Next/dcrnd/txscript/v4"
+	"github.com/Decred-Next/dcrnd/txscript/version4/v8"
 )
 
 var (

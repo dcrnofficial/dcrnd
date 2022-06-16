@@ -1,4 +1,4 @@
-module github.com/Decred-Next/dcrnd/txscript/v8
+module github.com/Decred-Next/dcrnd/txscript/version2/v8
 
 go 1.11
 

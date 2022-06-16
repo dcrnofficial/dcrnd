@@ -8,7 +8,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/Decred-Next/dcrnd/txscript/v4/stdscript"
+	"github.com/Decred-Next/dcrnd/txscript/version4/v8/stdscript"
 )
 
 // hexToBytes converts the passed hex string into bytes and will panic if there

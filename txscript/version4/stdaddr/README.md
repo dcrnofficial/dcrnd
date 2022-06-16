@@ -3,7 +3,7 @@ stdaddr
 
 [![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![Doc](https://img.shields.io/badge/doc-reference-blue.svg)](https://pkg.go.dev/github.com/Decred-Next/dcrnd/txscript/v4/stdaddr)
+[![Doc](https://img.shields.io/badge/doc-reference-blue.svg)](https://pkg.go.dev/github.com/Decred-Next/dcrnd/txscript/version4/v8/stdaddr)
 
 ## Decred Address Overview
 
@@ -220,12 +220,12 @@ by the interface.
 
 ## Installation and Updating
 
-This package is part of the `github.com/Decred-Next/dcrnd/txscript/v4` module.  Use
+This package is part of the `github.com/Decred-Next/dcrnd/txscript/version4/v8` module.  Use
 the standard go tooling for working with modules to incorporate it.
 
 ## Examples
 
-* [DecodeAddress](https://pkg.go.dev/github.com/Decred-Next/dcrnd/txscript/v4/stdaddr#example-DecodeAddress)
+* [DecodeAddress](https://pkg.go.dev/github.com/Decred-Next/dcrnd/txscript/version4/v8/stdaddr#example-DecodeAddress)
 
   Demonstrates decoding addresses, generating their payment scripts and
   associated scripting language versions, determining supported capabilities by

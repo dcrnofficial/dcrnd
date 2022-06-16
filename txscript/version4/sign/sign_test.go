@@ -17,7 +17,7 @@ import (
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8"
-	"github.com/Decred-Next/dcrnd/txscript/v4"
+	"github.com/Decred-Next/dcrnd/txscript/version4/v8"
 	"github.com/Decred-Next/dcrnd/txscript/version4/v8/stdaddr"
 	"github.com/Decred-Next/dcrnd/txscript/version4/v8/stdscript"
 	"github.com/Decred-Next/dcrnd/wire/v8"
