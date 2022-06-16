@@ -7,7 +7,7 @@ package txscript
 import (
 	"fmt"
 
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8"
 )
 
 const (

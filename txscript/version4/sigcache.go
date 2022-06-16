@@ -12,8 +12,8 @@ import (
 
 	"github.com/dchest/siphash"
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8/ecdsa"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8/ecdsa"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
