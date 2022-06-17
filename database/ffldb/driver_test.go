@@ -16,7 +16,7 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/database/v8"
 	"github.com/Decred-Next/dcrnd/database/v8/ffldb"
-	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 )
 
 // dbType is the database type name for this driver.

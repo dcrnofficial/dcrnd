@@ -45,7 +45,7 @@ import (
 	"github.com/Decred-Next/dcrnd/database/v8"
 	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
 	"github.com/Decred-Next/dcrnd/dcrjson/v8"
-	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 	"github.com/Decred-Next/dcrnd/mempool/v8"
 	"github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"

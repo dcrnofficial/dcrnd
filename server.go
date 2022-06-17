@@ -31,7 +31,7 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/connmgr/v8"
 	"github.com/Decred-Next/dcrnd/database/v8"
-	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 	"github.com/Decred-Next/dcrnd/fees/v8"
 	"github.com/Decred-Next/dcrnd/gcs/version2/v8"
 	"github.com/Decred-Next/dcrnd/gcs/version2/v8/blockcf"
