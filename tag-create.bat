@@ -1,4 +1,4 @@
-set version=v8.0.4
+set version=v8.0.5
 git tag -a addrmgr/%version% -m "%version%"
 git tag -a bech32/%version% -m "%version%"
 git tag -a blockchain/stake/%version% -m "%version%"
@@ -15,7 +15,7 @@ git tag -a wire/%version% -m "%version%"
 git tag -a database/%version% -m "%version%"
 git tag -a dcrec/%version% -m "%version%"
 git tag -a dcrjson/%version% -m "%version%"
-git tag -a dcrutil/%version% -m "%version%"
+git tag -a dcrutil/version2/%version% -m "%version%"
 git tag -a fees/%version% -m "%version%"
 git tag -a gcs/version2/%version% -m "%version%"
 git tag -a gcs/version1/%version% -m "%version%"
