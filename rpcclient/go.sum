@@ -22,8 +22,8 @@ github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0 h1:iKHW2z+8IumkH9dsnbNUuHRoo8M0pv
 github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0/go.mod h1:O3Y0um7nbfewWFtB8RIWYYA8mDZoqfJsfpx9SRDUtVU=
 github.com/Decred-Next/dcrnd/gcs/v8 v8.0.0 h1:JD3mZSRrZ47IBWrotzbcwDc4wR3avCro/y4GjKkyuCs=
 github.com/Decred-Next/dcrnd/gcs/v8 v8.0.0/go.mod h1:fyWVjzUg1H9wa8EnBy/QmmRvukNJPeOBPoABMq74vRI=
-github.com/Decred-Next/dcrnd/hdkeychain/v8 v8.0.0 h1:U3hkEZoiGODTvTzd1C7IyrT+bqgIIlsKkw3LGMGotd0=
-github.com/Decred-Next/dcrnd/hdkeychain/v8 v8.0.0/go.mod h1:9drTv/7J1YmlA8gDECt1TBB+Lh31KQZ1ri2GntRmBiI=
+github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.0 h1:U3hkEZoiGODTvTzd1C7IyrT+bqgIIlsKkw3LGMGotd0=
+github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.0/go.mod h1:9drTv/7J1YmlA8gDECt1TBB+Lh31KQZ1ri2GntRmBiI=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8 v8.0.0 h1:/1Km+hujgfLq8eNuUBcSpnXKGUODvRSFQrYyrK73QfQ=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8 v8.0.0/go.mod h1:LrZyPFJM/Q0LJNj6Z9it+3fGz5CvBff5l4J1mY9aOXE=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.0 h1:ml5paIynCB8gItHmHKcY+ssKAPPRs09/bsyMXNbd3so=
