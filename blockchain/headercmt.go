@@ -10,7 +10,7 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/database/v8"
 	"github.com/Decred-Next/dcrnd/dcrutil/v8"
-	"github.com/Decred-Next/dcrnd/gcs/v8"
+	"github.com/Decred-Next/dcrnd/gcs/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 

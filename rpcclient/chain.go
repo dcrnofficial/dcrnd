@@ -14,9 +14,9 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/dcrjson/v8"
 	"github.com/Decred-Next/dcrnd/dcrutil/v8"
-	"github.com/Decred-Next/dcrnd/gcs/v8"
-	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf"
-	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf2"
+	"github.com/Decred-Next/dcrnd/gcs/version2/v8"
+	"github.com/Decred-Next/dcrnd/gcs/version2/v8/blockcf"
+	"github.com/Decred-Next/dcrnd/gcs/version2/v8/blockcf2"
 	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )

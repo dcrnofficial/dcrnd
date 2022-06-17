@@ -22,7 +22,7 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/dcrutil/v8"
-	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf2"
+	"github.com/Decred-Next/dcrnd/gcs/version2/v8/blockcf2"
 	"github.com/Decred-Next/dcrnd/lru/v8"
 	"github.com/Decred-Next/dcrnd/mining/v8"
 	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"

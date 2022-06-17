@@ -6,7 +6,7 @@ require (
 	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.2
 	github.com/Decred-Next/dcrnd/dcrjson/v8 v8.0.2
 	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.2
-	github.com/Decred-Next/dcrnd/gcs/v8 v8.0.2
+	github.com/Decred-Next/dcrnd/gcs/version2/v8 v8.0.2
 	github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.2
 	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8 v8.0.2
 	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.2
