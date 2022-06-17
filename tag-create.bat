@@ -1,4 +1,4 @@
-set version=v8.0.2
+set version=v8.0.3
 git tag -a addrmgr/%version% -m "%version%"
 git tag -a bech32/%version% -m "%version%"
 git tag -a blockchain/stake/%version% -m "%version%"
