@@ -10,7 +10,7 @@ import (
 	"math/big"
 
 	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8/schnorr"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8/schnorr"
 )
 
 type secSchnorrDSA struct {
