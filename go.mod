@@ -4,9 +4,9 @@ go 1.11
 
 require (
 	github.com/Decred-Next/dcrnd/addrmgr/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.1
 	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.1
 	github.com/Decred-Next/dcrnd/certgen/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/chaincfg/v8 v8.0.0

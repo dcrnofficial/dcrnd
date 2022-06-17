@@ -3,9 +3,9 @@ module github.com/Decred-Next/dcrnd/mempool/v8
 go 1.11
 
 require (
-	github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.1
 	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.1
 	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/chaincfg/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0

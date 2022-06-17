@@ -1,11 +1,13 @@
 github.com/Decred-Next/dcrnd/addrmgr/v8 v8.0.0 h1:QTJbBxXLHqKV9I2TL9bHBrmM+QAQBrb1f72zp0FW8oo=
 github.com/Decred-Next/dcrnd/addrmgr/v8 v8.0.0/go.mod h1:mbNFtaIDFmBTQdiAv2/NK/wY3hkLFtMbnNka4+jaKH0=
-github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.0 h1:6t09UMVsrxHNbrzlgKM+rFtq24NuBYs8j4oOwTHUlAw=
 github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.0/go.mod h1:mPOCJLzoWz1OB6SOVJJMFhS3tzxsjFH1KWFZDs+wOkU=
+github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.1 h1:1RP2wXqFgWWFxE7Ko6+iETehMxCo/+h/vApLdr9rPAA=
+github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.1/go.mod h1:6/nZED9d1TxmUAqrTSU48TOX8N/ftpjRq8be+4SuxjI=
 github.com/Decred-Next/dcrnd/blockchain/standalone/v8 v8.0.0 h1:dKYHqm2n2BSj+fYC/TurqRtqkazsuxZhUzGitsXZ7ww=
 github.com/Decred-Next/dcrnd/blockchain/standalone/v8 v8.0.0/go.mod h1:5Ve1UKB9pGOY/kFE3aIKVgqSa5UvdcD44tnqCuDk+hU=
-github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.0 h1:UKdMB5xEPjOyUi46R7VkCTR4Hy9RySa7jaYl/BFPHww=
 github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.0/go.mod h1:Ho+VMfYe+U5/75Dc0gh5t4EupqoPjjzOs8kJU3CDQ8s=
+github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.1 h1:0hGvKKRGzfghApwKYFINS/EhSZf0BX9M1VIxXfQfXJo=
+github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.1/go.mod h1:jNowpA8Edp6EhHEq9Jb8usGI86nDQZzobjKs5Amlrng=
 github.com/Decred-Next/dcrnd/certgen/v8 v8.0.0 h1:HLQvuaC2JScFmOjjcU/z41bYPItdu0SRPmFWeZ1i96U=
 github.com/Decred-Next/dcrnd/certgen/v8 v8.0.0/go.mod h1:znMrdTi2Qz2AgajbuAGYlnP3oHt3vAUfZ0Z/tf64/n8=
 github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0 h1:W23iE+e4cx6hJ5HDHVjIU4PN0WGeTpgRTeVfbRuVSrE=
