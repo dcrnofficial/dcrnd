@@ -36,8 +36,6 @@ github.com/Decred-Next/dcrnd/fees/v8 v8.0.0 h1:BHqSvcaHNce8N60KchFCJuaoHtrDuUDVy
 github.com/Decred-Next/dcrnd/fees/v8 v8.0.0/go.mod h1:R3Kn8V9YeJLQyY0zjfAyvWH7MRtxU4lnOM6747bh+ik=
 github.com/Decred-Next/dcrnd/gcs/v8 v8.0.0 h1:JD3mZSRrZ47IBWrotzbcwDc4wR3avCro/y4GjKkyuCs=
 github.com/Decred-Next/dcrnd/gcs/v8 v8.0.0/go.mod h1:fyWVjzUg1H9wa8EnBy/QmmRvukNJPeOBPoABMq74vRI=
-github.com/Decred-Next/dcrnd/hdkeychain/v8 v8.0.0 h1:U3hkEZoiGODTvTzd1C7IyrT+bqgIIlsKkw3LGMGotd0=
-github.com/Decred-Next/dcrnd/hdkeychain/v8 v8.0.0/go.mod h1:9drTv/7J1YmlA8gDECt1TBB+Lh31KQZ1ri2GntRmBiI=
 github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.0 h1:fFOjBP9YRil9bfgaJ6JMxeJJY7LEh/3TdffaUbshxng=
 github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.0/go.mod h1:6OziO4JtHytPTLh+Po/rVadMmPsNRd2dAbtlDDKTA2k=
 github.com/Decred-Next/dcrnd/lru/v8 v8.0.0 h1:HTJyaPNyjqaWjoWlRax7EwNBQNgq3myVAs0FWFR8Jnc=
@@ -54,8 +52,8 @@ github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.0 h1:ml5paIynCB8
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.0/go.mod h1:/9IFszg+P6Ib0lKDERXoPFIL06W6Ov++XtcJ62FFqvw=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.0 h1:KqBFrbqPphEIIdlN4NZyEOdgwSdC2r7MDua2W5X2mAE=
 github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.0/go.mod h1:fFuHQTYXRwT8pn9gZTPeHFPZN6ZEzfEP/K7svkBF08Q=
-github.com/Decred-Next/dcrnd/rpcclient/v8 v8.0.0 h1:bjPElj6+JviNFNpCwLr4CkUKiR8YU1zgpfz2uUUJ++4=
-github.com/Decred-Next/dcrnd/rpcclient/v8 v8.0.0/go.mod h1:fzfcizO78FeWF8JdTeg0+APM9ge8qe2qi9UovHy/9Dg=
+github.com/Decred-Next/dcrnd/rpcclient/v8 v8.0.1 h1:1ZFFbwSYS3ovSU8GU8j6xQX6y16I6YKEpYLtYkKqy2I=
+github.com/Decred-Next/dcrnd/rpcclient/v8 v8.0.1/go.mod h1:liVyJtUvWFUU6c1FleEE1rVWwx6OSJ0p+Oxht8FCo5I=
 github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0 h1:Udmr+H7xcpXhjPQsSnBbpgZkMnl2PhkLuW3PMkuuQNQ=
 github.com/Decred-Next/dcrnd/txscript/v8 v8.0.0/go.mod h1:W27tBpKWCFAnNm4s9jTu56FcGty7+D74nVs5AWWvS2g=
 github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.0 h1:3KIS6Lqi+dLGODsUiCTxJ4P5Ur/jbNGHNnIs7sHsiOc=

@@ -25,7 +25,7 @@ require (
 	github.com/Decred-Next/dcrnd/mining/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/peer/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/rpcclient/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/rpcclient/v8 v8.0.1
 	github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.0
 	github.com/btcsuite/winsvc v1.0.0
