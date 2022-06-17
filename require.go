@@ -12,6 +12,6 @@
 package main
 
 import (
-	_ "github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
+	_ "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
 	_ "github.com/Decred-Next/dcrnd/fees/v8"
 )

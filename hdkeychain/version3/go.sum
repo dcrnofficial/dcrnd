@@ -8,7 +8,6 @@ github.com/Decred-Next/dcrnd/crypto/ripemd160/v8 v8.0.0 h1:a/B/MkTT/Hgwnqs0gX3Gg
 github.com/Decred-Next/dcrnd/crypto/ripemd160/v8 v8.0.0/go.mod h1:hr4LFAxJAmi17e/aaeeMlu3VJH9LvHhjsiZPzl64XL0=
 github.com/Decred-Next/dcrnd/dcrec/edwards/v8 v8.0.0 h1:5hTV6KkmauY8peAfpVA7xqtVXxAcFE/5eS1kvEKlKig=
 github.com/Decred-Next/dcrnd/dcrec/edwards/v8 v8.0.0/go.mod h1:grR20bB1Cn+RWJUczDOVRIhGdQzw4R9wyMcowKAx+Go=
-github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0 h1:nZkT7AGaycvBitFseWFRletaHeViUN/y5PN4sn+pKtE=
 github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0/go.mod h1:FQF30PEYxEV3lQ6lPwDcRkyQcZBUHBXGk8RWwzvo7S4=
 github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8 v8.0.0 h1:r8AprLIsarhloohrPB7yqUBa2WDbuEmSQpSqyfzVbCc=
 github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8 v8.0.0/go.mod h1:drMcVCduNam1dmdiApiSa4TLKkuUomY3d2xJcSMRu5A=

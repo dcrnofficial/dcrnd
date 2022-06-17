@@ -13,7 +13,7 @@ require (
 	github.com/Decred-Next/dcrnd/connmgr/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/crypto/ripemd160/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/database/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrjson/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.0
