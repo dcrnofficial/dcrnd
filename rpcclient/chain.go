@@ -17,7 +17,7 @@ import (
 	"github.com/Decred-Next/dcrnd/gcs/v8"
 	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf"
 	"github.com/Decred-Next/dcrnd/gcs/v8/blockcf2"
-	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8"
+	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 

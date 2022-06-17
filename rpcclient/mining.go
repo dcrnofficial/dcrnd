@@ -12,7 +12,7 @@ import (
 
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/dcrutil/v8"
-	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/v8"
+	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 )
 
 // FutureGenerateResult is a future promise to deliver the result of a

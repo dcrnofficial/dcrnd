@@ -1,4 +1,4 @@
-set version=%version%
+set version=v8.0.2
 git tag -a addrmgr/%version% -m "%version%"
 git tag -a bech32/%version% -m "%version%"
 git tag -a blockchain/stake/%version% -m "%version%"
@@ -31,4 +31,4 @@ git tag -a rpc/jsonrpc/types/version2/%version% -m "%version%"
 git tag -a rpc/jsonrpc/types/version1/%version% -m "%version%"
 git tag -a crypto/blake256/%version% -m "%version%"
 git tag -a crypto/ripemd160/%version% -m "%version%"
-git tag -a crypto/blake256/%version% -m "%version%"
+git push origin --tags
