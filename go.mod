@@ -21,7 +21,7 @@ require (
 	github.com/Decred-Next/dcrnd/gcs/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/hdkeychain/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/lru/v8 v8.0.0
-	github.com/Decred-Next/dcrnd/mempool/v8 v8.0.0
+	github.com/Decred-Next/dcrnd/mempool/v8 v8.0.1
 	github.com/Decred-Next/dcrnd/mining/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/peer/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.0
