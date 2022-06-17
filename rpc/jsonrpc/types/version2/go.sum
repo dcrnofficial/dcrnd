@@ -1,6 +1,0 @@
-github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0 h1:W23iE+e4cx6hJ5HDHVjIU4PN0WGeTpgRTeVfbRuVSrE=
-github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.0/go.mod h1:1xnh8bx4NgNnP1v8cUfjn6qWwGrMnBr124J2zUbFkes=
-github.com/Decred-Next/dcrnd/crypto/blake256/v8 v8.0.0 h1:Y7/MVTz0U+QywF2qYuCnIDyx0sIN6/lQK5vIEvD0CWk=
-github.com/Decred-Next/dcrnd/crypto/blake256/v8 v8.0.0/go.mod h1:xHJ7pgEGFJV0uGVmU/YDJZZXn38YfS7ke9NC2sJK/Pc=
-github.com/Decred-Next/dcrnd/dcrjson/v8 v8.0.0 h1:3ugFTsChRoq3ewNaRH7QiK6uO7JIznqYU7xix4CPsdQ=
-github.com/Decred-Next/dcrnd/dcrjson/v8 v8.0.0/go.mod h1:Un/iT4tYi1O6AWO23l3h30VMUGls7URiKEDoqXeg8L4=
