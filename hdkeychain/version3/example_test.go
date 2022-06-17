@@ -9,8 +9,8 @@ import (
 	"fmt"
 
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
-	"github.com/Decred-Next/dcrnd/hdkeychain/v3"
-	"github.com/Decred-Next/dcrnd/txscript/v4/stdaddr"
+	"github.com/Decred-Next/dcrnd/hdkeychain/version3/v8"
+	"github.com/Decred-Next/dcrnd/txscript/version4/v8/stdaddr"
 )
 
 // This example demonstrates how to generate a cryptographically random seed
