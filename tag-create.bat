@@ -1,4 +1,4 @@
-set version=v8.0.3
+set version=v8.0.4
 git tag -a addrmgr/%version% -m "%version%"
 git tag -a bech32/%version% -m "%version%"
 git tag -a blockchain/stake/%version% -m "%version%"
@@ -10,7 +10,7 @@ git tag -a certgen/%version% -m "%version%"
 git tag -a connmgr/%version% -m "%version%"
 git tag -a txscript/version4/%version% -m "%version%"
 git tag -a txscript/version2/%version% -m "%version%"
-git tag -a rpclcient/v8.0.1 -m "%version%"
+git tag -a rpcclient/%version% -m "%version%"
 git tag -a wire/%version% -m "%version%"
 git tag -a database/%version% -m "%version%"
 git tag -a dcrec/%version% -m "%version%"
@@ -31,4 +31,5 @@ git tag -a rpc/jsonrpc/types/version2/%version% -m "%version%"
 git tag -a rpc/jsonrpc/types/version1/%version% -m "%version%"
 git tag -a crypto/blake256/%version% -m "%version%"
 git tag -a crypto/ripemd160/%version% -m "%version%"
+git tag -a mining/%version% -m "%version%"
 git push origin --tags
