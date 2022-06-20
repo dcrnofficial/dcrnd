@@ -8,7 +8,7 @@ require (
 	github.com/Decred-Next/dcrnd/dcrutil/version2/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/gcs/version1/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.6
-	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 v8.0.6
+	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.6
 	github.com/davecgh/go-spew v1.1.1
 	github.com/decred/dcrwallet/rpc/jsonrpc/types v1.4.0

@@ -8,7 +8,7 @@ package rpcclient
 import (
 	"encoding/json"
 
-	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
+	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8"
 )
 
 // AddNodeCommand enumerates the available commands that the AddNode function

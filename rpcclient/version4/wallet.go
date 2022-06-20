@@ -13,7 +13,7 @@ import (
 	dcrjson "github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 	hdkeychain "github.com/Decred-Next/dcrnd/hdkeychain/version2/v8"
-	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
+	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 	walletjson "github.com/decred/dcrwallet/rpc/jsonrpc/types"
 )

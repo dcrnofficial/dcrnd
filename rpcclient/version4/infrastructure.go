@@ -28,7 +28,7 @@ import (
 	"github.com/gorilla/websocket"
 
 	dcrjson "github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
-	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
+	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8"
 	"github.com/decred/go-socks/socks"
 )
 
