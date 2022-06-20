@@ -6,11 +6,10 @@
 package dcrutil
 
 import (
+	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"hash"
 
-	"golang.org/x/crypto/ripemd160/v8"
-
-	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
+	"golang.org/x/crypto/ripemd160"
 )
 
 // Calculate the hash of hasher over buf.

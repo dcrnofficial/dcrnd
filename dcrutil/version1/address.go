@@ -8,16 +8,16 @@ package dcrutil
 import (
 	"errors"
 	"fmt"
+	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/v8"
 
 	"golang.org/x/crypto/ripemd160"
 
-	"github.com/decred/base58"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8/chainec"
-	"github.com/Decred-Next/dcrnd/dcrec/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8/schnorr"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8/schnorr"
+	"github.com/decred/base58"
 )
 
 var (
@@ -204,8 +204,21 @@ func detectNetworkForAddress(addr string) (*chaincfg.Params, error) {
 	if len(addr) < 1 {
 		return nil, fmt.Errorf("empty string given for network detection")
 	}
+	if addr[:1] == "D" {
+		return chaincfg.MainNetParams(), nil
+	}
+	if addr[:1] == "T" {
+		return chaincfg.TestNet3Params(), nil
+	}
+	if addr[:1] == "S" {
+		return chaincfg.SimNetParams(), nil
+	}
+	if addr[:1] == "R" {
+		return chaincfg.RegNetParams(), nil
+	} else {
+		return nil, fmt.Errorf("bad format address")
+	}
 
-	return chaincfg.ParamsByNetAddrPrefix(addr[0:1])
 }
 
 // AddressPubKeyHash is an Address for a pay-to-pubkey-hash (P2PKH)
@@ -571,7 +584,7 @@ type AddressEdwardsPubKey struct {
 // parameter must be a valid 32 byte serialized public key.
 func NewAddressEdwardsPubKey(serializedPubKey []byte,
 	net *chaincfg.Params) (*AddressEdwardsPubKey, error) {
-	pubKey, err := edwards.ParsePubKey(edwards.Edwards(), serializedPubKey)
+	pubKey, err := edwards.ParsePubKey(serializedPubKey)
 	if err != nil {
 		return nil, err
 	}
@@ -664,7 +677,7 @@ type AddressSecSchnorrPubKey struct {
 // parameter must be a valid pubkey and must be compressed.
 func NewAddressSecSchnorrPubKey(serializedPubKey []byte,
 	net *chaincfg.Params) (*AddressSecSchnorrPubKey, error) {
-	pubKey, err := schnorr.ParsePubKey(secp256k1.S256(), serializedPubKey)
+	pubKey, err := schnorr.ParsePubKey(serializedPubKey)
 	if err != nil {
 		return nil, err
 	}

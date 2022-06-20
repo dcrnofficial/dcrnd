@@ -9,15 +9,15 @@ import (
 	"bytes"
 	"encoding/hex"
 	"fmt"
+	"github.com/decred/base58"
 	"reflect"
 	"testing"
 
-	"github.com/decred/base58"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8/chainec"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
-	"golang.org/x/crypto/ripemd160/v8"
+	"golang.org/x/crypto/ripemd160"
 )
 
 // tstAddressPubKey makes an AddressPubKey, setting the unexported fields with
@@ -32,9 +32,9 @@ func tstAddressPubKey(serializedPubKey []byte, pubKeyFormat PubKeyFormat, netID 
 }
 
 func TestAddresses(t *testing.T) {
-	mainNetParams := &chaincfg.MainNetParams
-	testNetParams := &chaincfg.TestNet3Params
-	regNetParams := &chaincfg.RegNetParams
+	mainNetParams := chaincfg.MainNetParams()
+	testNetParams := chaincfg.TestNet3Params()
+	regNetParams := chaincfg.RegNetParams()
 	tests := []struct {
 		name    string
 		addr    string
