@@ -13,7 +13,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
-	"github.com/Decred-Next/dcrnd/rpcclient/v8"
+	"github.com/Decred-Next/dcrnd/rpcclient/version5/v8"
 )
 
 func main() {
