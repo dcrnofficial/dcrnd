@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 )
 
 // TestChainSvrWsNtfns tests all of the chain server websocket-specific

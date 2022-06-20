@@ -4,7 +4,7 @@ go 1.11
 
 require (
 	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 v8.0.6
-	github.com/Decred-Next/dcrnd/dcrjson/v8 v8.0.6
+	github.com/Decred-Next/dcrnd/dcrjson/version3/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/dcrutil/version2/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/gcs/version2/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 v8.0.6

@@ -10,7 +10,7 @@ import (
 	"encoding/json"
 
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 	"github.com/Decred-Next/dcrnd/hdkeychain/version2/v8"
 	chainjsonv1 "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version1/v8"

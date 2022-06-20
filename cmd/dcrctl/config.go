@@ -17,7 +17,7 @@ import (
 	"strings"
 
 	"github.com/Decred-Next/dcrnd/internal/version"
-	"github.com/Decred-Next/dcrnd/dcrjson/v8"
+	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 
 	dcrdtypes "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
