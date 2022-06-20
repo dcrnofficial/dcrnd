@@ -1,4 +1,4 @@
-module github.com/Decred-Next/dcrnd/dcrutil
+module github.com/Decred-Next/dcrnd/dcrutil/version1/v8
 
 go 1.11
 
