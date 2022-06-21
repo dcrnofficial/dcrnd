@@ -27,9 +27,9 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/crypto/ripemd160/v8"
-	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
+	dcrjson "github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
-	"github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
+	types "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )

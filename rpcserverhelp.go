@@ -11,8 +11,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
-	"github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
+	dcrjson "github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
+	types "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 )
 
 // helpDescsEnUS defines the English descriptions used for the help strings.

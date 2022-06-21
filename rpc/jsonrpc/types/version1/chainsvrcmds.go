@@ -12,7 +12,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
+	dcrjson github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 )
 
 // AddNodeSubCmd defines the type used in the addnode JSON-RPC command for the

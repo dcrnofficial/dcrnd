@@ -9,7 +9,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
+	dcrjson "github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
 )
 
 // FutureRawResult is a future promise to deliver the result of a RawRequest RPC
