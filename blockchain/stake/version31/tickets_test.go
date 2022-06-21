@@ -15,7 +15,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/stake/version31/v8/internal/tickettreap"
+	"github.com/Decred-Next/dcrnd/blockchain/stake/version31/v8/internal/tickettreap"
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/database/v8"
