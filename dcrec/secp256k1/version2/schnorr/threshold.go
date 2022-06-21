@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
 )
 
 // Sha256VersionStringRFC6979 is the RFC6979 nonce version for a Schnorr signature

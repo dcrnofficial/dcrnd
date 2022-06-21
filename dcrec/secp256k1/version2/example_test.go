@@ -10,7 +10,7 @@ import (
 	"fmt"
 
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
 )
 
 // This example demonstrates signing a message with a secp256k1 private key that
