@@ -41,3 +41,31 @@ require (
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f
 
 )
+
+replace (
+	github.com/Decred-Next/dcrnd/addrmgr/v8 => ./addrmgr
+	github.com/Decred-Next/dcrnd/blockchain/stake/v8 => ./blockchain/stake
+	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 => ./blockchain/standalone
+	github.com/Decred-Next/dcrnd/blockchain/v8 => ./blockchain
+	github.com/Decred-Next/dcrnd/certgen/v8 => ./certgen
+	github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8 => ./chaincfg/chainhash
+	github.com/Decred-Next/dcrnd/chaincfg/v8 => ./chaincfg
+	github.com/Decred-Next/dcrnd/connmgr/v8 => ./connmgr
+	github.com/Decred-Next/dcrnd/crypto/ripemd160/v8 => ./crypto/ripemd160
+	github.com/Decred-Next/dcrnd/database/v8 => ./database
+	github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8 => ./dcrec/secp256k1/version2
+	github.com/Decred-Next/dcrnd/dcrec/v8 => ./dcrec
+	github.com/Decred-Next/dcrnd/dcrjson/version3/v8 => ./dcrjson/version3
+	github.com/Decred-Next/dcrnd/dcrutil/version2/v8 => ./dcrutil/version2
+	github.com/Decred-Next/dcrnd/fees/v8 => ./fees
+	github.com/Decred-Next/dcrnd/gcs/version2/v8 => ./gcs/version2
+	github.com/Decred-Next/dcrnd/hdkeychain/version2/v8 => ./hdkeychain/version2
+	github.com/Decred-Next/dcrnd/lru/v8 => ./lru
+	github.com/Decred-Next/dcrnd/mempool/v8 => ./mempool
+	github.com/Decred-Next/dcrnd/mining/v8 => ./mining
+	github.com/Decred-Next/dcrnd/peer/v8 => ./peer
+	github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8 => ./rpc/jsonrpc/types/version2
+	github.com/Decred-Next/dcrnd/rpcclient/version5/v8 => ./rpcclient/version5
+	github.com/Decred-Next/dcrnd/txscript/version2/v8 => ./txscript/version2
+	github.com/Decred-Next/dcrnd/wire/v8 => ./wire
+)
