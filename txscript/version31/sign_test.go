@@ -18,7 +18,7 @@ import (
 	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
 	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version31/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version31/v8/schnorr"
-	"github.com/Decred-Next/dcrnd/dcrutil/v8"
+	"github.com/Decred-Next/dcrnd/dcrutil/version31/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 

@@ -9,7 +9,7 @@ require (
 	github.com/Decred-Next/dcrnd/dcrec/edwards/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/dcrec/secp256k1/version31/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.6
-	github.com/Decred-Next/dcrnd/dcrutil/v8 v8.0.4
+	github.com/Decred-Next/dcrnd/dcrutil/version31/v8 v8.0.0
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.6
 	github.com/decred/slog v1.0.0
 )
