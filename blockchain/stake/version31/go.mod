@@ -1,4 +1,4 @@
-module github.com/decred/dcrd/blockchain/stake/version31/v8
+module github.com/Decred-Next/dcrn/blockchain/stake/version31/v8
 
 go 1.11
 

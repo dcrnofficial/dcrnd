@@ -1,7 +1,8 @@
 set version=v8.0.6
 git tag -a addrmgr/%version% -m "%version%"
 git tag -a bech32/%version% -m "%version%"
-git tag -a blockchain/stake/%version% -m "%version%"
+git tag -a blockchain/stake/version2/%version% -m "%version%"
+git tag -a blockchain/stake/version31/%version% -m "%version%"
 git tag -a blockchain/standalone/%version% -m "%version%"
 git tag -a blockchain/%version% -m "%version%"
 git tag -a chaincfg/%version% -m "%version%"
