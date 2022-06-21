@@ -10,11 +10,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/decred/base58"
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/v8"
+	"github.com/decred/base58"
 )
 
 // ErrMalformedPrivateKey describes an error where a WIF-encoded private key
@@ -61,7 +61,7 @@ func NewWIF(privKey []byte, net [2]byte, scheme dcrec.SignatureType) (*WIF, erro
 	var pubBytes []byte
 	switch scheme {
 	case dcrec.STEcdsaSecp256k1, dcrec.STSchnorrSecp256k1:
-		priv := secp256k1.PrivKeyFromBytes(privKey)
+		priv, _ := secp256k1.PrivKeyFromBytes(privKey)
 		pubBytes = priv.PubKey().SerializeCompressed()
 	case dcrec.STEd25519:
 		_, pub, err := edwards.PrivKeyFromScalar(privKey)
@@ -117,7 +117,7 @@ func DecodeWIF(wif string, net [2]byte) (*WIF, error) {
 	switch dcrec.SignatureType(decoded[2]) {
 	case dcrec.STEcdsaSecp256k1:
 		privKeyBytes = decoded[3 : 3+secp256k1.PrivKeyBytesLen]
-		privKey := secp256k1.PrivKeyFromBytes(privKeyBytes)
+		privKey, _ := secp256k1.PrivKeyFromBytes(privKeyBytes)
 		pubKeyBytes = privKey.PubKey().SerializeCompressed()
 		scheme = dcrec.STEcdsaSecp256k1
 	case dcrec.STEd25519:
@@ -130,7 +130,7 @@ func DecodeWIF(wif string, net [2]byte) (*WIF, error) {
 		scheme = dcrec.STEd25519
 	case dcrec.STSchnorrSecp256k1:
 		privKeyBytes = decoded[3 : 3+secp256k1.PrivKeyBytesLen]
-		privKey := secp256k1.PrivKeyFromBytes(privKeyBytes)
+		privKey, _ := secp256k1.PrivKeyFromBytes(privKeyBytes)
 		pubKeyBytes = privKey.PubKey().SerializeCompressed()
 		scheme = dcrec.STSchnorrSecp256k1
 	}
