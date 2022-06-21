@@ -13,8 +13,8 @@ import (
 	"github.com/Decred-Next/dcrnd/crypto/ripemd160/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8/schnorr"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8/schnorr"
 )
 
 var (
