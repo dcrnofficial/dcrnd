@@ -4,7 +4,7 @@ go 1.11
 
 require (
 	github.com/Decred-Next/dcrnd/addrmgr/v8 v8.0.6
-	github.com/Decred-Next/dcrnd/blockchain/stake/v8 v8.0.6
+	github.com/Decred-Next/dcrnd/blockchain/stake/version2/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/blockchain/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/certgen/v8 v8.0.6
@@ -44,7 +44,7 @@ require (
 
 replace (
 	github.com/Decred-Next/dcrnd/addrmgr/v8 => ./addrmgr
-	github.com/Decred-Next/dcrnd/blockchain/stake/v8 => ./blockchain/stake
+	github.com/Decred-Next/dcrnd/blockchain/stake/version2/v8 => ./blockchain/stake
 	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 => ./blockchain/standalone
 	github.com/Decred-Next/dcrnd/blockchain/v8 => ./blockchain
 	github.com/Decred-Next/dcrnd/certgen/v8 => ./certgen

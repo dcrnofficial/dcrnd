@@ -6,13 +6,14 @@ package stake_test
 
 import (
 	"bytes"
+	"math/rand"
 	"reflect"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/blockchain/stake/v8"
+	stake "github.com/Decred-Next/dcrnd/stake/version31/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
-	txscript "github.com/Decred-Next/dcrnd/txscript/version2/v8"
+	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version31/v8"
+	txscript "github.com/Decred-Next/dcrnd/txscript/version31/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )
 
@@ -319,7 +320,6 @@ func TestSSGen(t *testing.T) {
 	if !stake.IsSSGen(ssgen.MsgTx()) {
 		t.Errorf("IsSSGen claimed a valid ssgen is invalid")
 	}
-
 }
 
 // TestSSGenErrors ensures the CheckSSGen and IsSSGen functions correctly
@@ -1017,6 +1017,73 @@ func TestGetStakeRewards(t *testing.T) {
 	if !reflect.DeepEqual(expectedAmts, outAmts) {
 		t.Errorf("TestGetStakeRewards error, wanted %v, "+
 			"but got %v", expectedAmts, outAmts)
+	}
+}
+
+func TestIsNullDataScript(t *testing.T) {
+	var hash160 = dcrutil.Hash160([]byte("test"))
+	var overMaxDataCarrierSize = make([]byte, txscript.MaxDataCarrierSize+1)
+	var underMaxDataCarrierSize = make([]byte, txscript.MaxDataCarrierSize/2)
+	rand.Read(overMaxDataCarrierSize)
+	rand.Read(underMaxDataCarrierSize)
+
+	tests := []struct {
+		name         string
+		scriptSource *txscript.ScriptBuilder
+		version      uint16
+		expected     bool
+	}{
+		{
+			name: "OP_RETURN script",
+			scriptSource: txscript.NewScriptBuilder().
+				AddOp(txscript.OP_RETURN),
+			version:  0,
+			expected: true,
+		},
+		{
+			name: "OP_RETURN script with unsupported version",
+			scriptSource: txscript.NewScriptBuilder().
+				AddOp(txscript.OP_RETURN),
+			version:  100,
+			expected: false,
+		},
+		{
+			name: "OP_RETURN script with data under MaxDataCarrierSize",
+			scriptSource: txscript.NewScriptBuilder().
+				AddOp(txscript.OP_RETURN).AddData(underMaxDataCarrierSize),
+			version:  0,
+			expected: true,
+		},
+		{
+			name: "OP_RETURN script with data over MaxDataCarrierSize",
+			scriptSource: txscript.NewScriptBuilder().
+				AddOp(txscript.OP_RETURN).AddData(overMaxDataCarrierSize),
+			version:  0,
+			expected: false,
+		},
+		{
+			name: "revocation-tagged p2pkh script",
+			scriptSource: txscript.NewScriptBuilder().
+				AddOp(txscript.OP_SSRTX).AddOp(txscript.OP_DUP).
+				AddOp(txscript.OP_HASH160).AddData(hash160).
+				AddOp(txscript.OP_EQUALVERIFY).AddOp(txscript.OP_CHECKSIG),
+			version:  0,
+			expected: false,
+		},
+	}
+
+	for _, test := range tests {
+		script, err := test.scriptSource.Script()
+		if err != nil {
+			t.Fatalf("%s: unexpected script generation error: %s",
+				test.name, err)
+		}
+
+		result := stake.IsNullDataScript(test.version, script)
+		if result != test.expected {
+			t.Fatalf("%s: expected %v, got %v", test.name,
+				test.expected, result)
+		}
 	}
 }
 

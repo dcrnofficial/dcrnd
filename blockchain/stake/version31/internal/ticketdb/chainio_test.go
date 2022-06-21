@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 The Decred developers
+// Copyright (c) 2016-2020 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Decred-Next/dcrnd/blockchain/stake/v8/internal/dbnamespace"
-	"github.com/Decred-Next/dcrnd/blockchain/stake/v8/internal/tickettreap"
+	"github.com/Decred-Next/dcrnd/stake/version31/v8/internal/dbnamespace"
+	"github.com/Decred-Next/dcrnd/stake/version31/v8/internal/tickettreap"
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/database/v8"
@@ -187,7 +187,6 @@ func TestBestChainStateSerialization(t *testing.T) {
 				"mismatched state - got %v, want %v", i,
 				test.name, state, test.state)
 			continue
-
 		}
 	}
 }
@@ -281,7 +280,6 @@ func TestBlockUndoDataSerializing(t *testing.T) {
 				"mismatched state - got %v, want %v", i,
 				test.name, utds, test.utds)
 			continue
-
 		}
 	}
 }
@@ -371,7 +369,6 @@ func TestTicketHashesSerializing(t *testing.T) {
 				"mismatched state - got %v, want %v", i,
 				test.name, ths, test.ths)
 			continue
-
 		}
 	}
 }

@@ -3,7 +3,7 @@ secp256k1
 
 [![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
 [![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd/dcrec/secp256k1)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/Decred-Next/dcrnd/dcrec/v8/secp256k1)
 
 Package dcrec implements elliptic curve cryptography needed for working with
 Decred (secp256k1 only for now). It is designed so that it may be used with the
@@ -20,24 +20,24 @@ use secp256k1 elliptic curve cryptography.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/decred/dcrd/dcrec
+$ go get -u github.com/Decred-Next/dcrnd/dcrec/v8
 ```
 
 ## Examples
 
-* [Sign Message](https://godoc.org/github.com/decred/dcrd/dcrec/secp256k1#example-package--SignMessage)
+* [Sign Message](https://godoc.org/github.com/Decred-Next/dcrnd/dcrec/v8/secp256k1#example-package--SignMessage)
   Demonstrates signing a message with a secp256k1 private key that is first
   parsed form raw bytes and serializing the generated signature.
 
-* [Verify Signature](https://godoc.org/github.com/decred/dcrd/dcrec/secp256k1#example-package--VerifySignature)
+* [Verify Signature](https://godoc.org/github.com/Decred-Next/dcrnd/dcrec/v8/secp256k1#example-package--VerifySignature)
   Demonstrates verifying a secp256k1 signature against a public key that is
   first parsed from raw bytes.  The signature is also parsed from raw bytes.
 
-* [Encryption](https://godoc.org/github.com/decred/dcrd/dcrec/secp256k1#example-package--EncryptMessage)
+* [Encryption](https://godoc.org/github.com/Decred-Next/dcrnd/dcrec/v8/secp256k1#example-package--EncryptMessage)
   Demonstrates encrypting a message for a public key that is first parsed from
   raw bytes, then decrypting it using the corresponding private key.
 
-* [Decryption](https://godoc.org/github.com/decred/dcrd/dcrec/secp256k1#example-package--DecryptMessage)
+* [Decryption](https://godoc.org/github.com/Decred-Next/dcrnd/dcrec/v8/secp256k1#example-package--DecryptMessage)
   Demonstrates decrypting a message using a private key that is first parsed
   from raw bytes.
 
