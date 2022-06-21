@@ -1,4 +1,4 @@
-module github.com/decred/dcrd/txscript/version3/v8
+module github.com/Decred-Next/dcrnd/txscript/version3/v8
 
 go 1.13
 
