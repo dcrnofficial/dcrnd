@@ -15,7 +15,7 @@ import (
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
 	"github.com/Decred-Next/dcrnd/dcrutil/version3/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
-	"github.com/decred/dcrd/txscript/v3"
+	"github.com/Decred-Next/dcrnd/txscript/version4/v8"
 )
 
 const (
