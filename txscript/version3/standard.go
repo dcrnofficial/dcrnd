@@ -10,9 +10,9 @@ import (
 	"fmt"
 
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
-	"github.com/Decred-Next/dcrnd/dcrutil/version3/v8"
+	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version3/v8"
 )
 
 const (

@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 )
 
 // hexToModNScalar converts the passed hex string into a ModNScalar and will

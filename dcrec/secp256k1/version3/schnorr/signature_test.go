@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/Decred-Next/dcrnd/crypto/blake256/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 )
 
 // TestSignatureParsing ensures that signatures are properly parsed including

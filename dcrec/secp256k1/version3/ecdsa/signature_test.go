@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 )
 
 // hexToBytes converts the passed hex string into bytes and will panic if there

@@ -13,7 +13,7 @@ import (
 	"testing"
 
 	"github.com/Decred-Next/dcrnd/chaincfg/chainhash/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8/ecdsa"
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )

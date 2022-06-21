@@ -13,7 +13,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 )
 
 // This example demonstrates use of GenerateSharedSecret to encrypt a message
