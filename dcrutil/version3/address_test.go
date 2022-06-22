@@ -15,7 +15,7 @@ import (
 	"github.com/decred/base58"
 	"github.com/Decred-Next/dcrnd/crypto/ripemd160/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 )
 
 // mockAddrParams implements the AddressParams interface and is used throughout
