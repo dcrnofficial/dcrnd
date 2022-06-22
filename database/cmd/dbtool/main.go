@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/Decred-Next/dcrnd/database/v8"
-	"github.com/decred/slog"
+	"github.com/Decred-Next/slog/v8"
 	flags "github.com/jessevdk/go-flags"
 )
 

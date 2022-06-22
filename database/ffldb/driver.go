@@ -10,7 +10,7 @@ import (
 
 	"github.com/Decred-Next/dcrnd/database/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
-	"github.com/decred/slog"
+	"github.com/Decred-Next/slog/v8"
 )
 
 var log = slog.Disabled

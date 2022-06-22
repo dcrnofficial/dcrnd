@@ -9,7 +9,7 @@ import (
 	"time"
 
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
-	"github.com/decred/slog"
+	"github.com/Decred-Next/slog/v8"
 )
 
 // blockProgressLogger provides periodic logging for other services in order

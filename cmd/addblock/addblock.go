@@ -10,11 +10,11 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/Decred-Next/dcrnd/internal/limits"
 	"github.com/Decred-Next/dcrnd/blockchain/v8"
 	"github.com/Decred-Next/dcrnd/blockchain/v8/indexers"
 	"github.com/Decred-Next/dcrnd/database/v8"
-	"github.com/decred/slog"
+	"github.com/Decred-Next/dcrnd/internal/limits"
+	"github.com/Decred-Next/slog/v8"
 )
 
 const (

@@ -8,7 +8,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/decred/slog"
+	"github.com/Decred-Next/slog/v8"
 )
 
 // Driver defines a structure for backend drivers to use when they register

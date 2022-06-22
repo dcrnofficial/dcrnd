@@ -13,5 +13,5 @@ require (
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.8
 	github.com/dchest/siphash v1.2.2
 	github.com/decred/base58 v1.0.3
-	github.com/decred/slog v1.2.0
+	github.com/Decred-Next/slog/v8 v8.0.1
 )

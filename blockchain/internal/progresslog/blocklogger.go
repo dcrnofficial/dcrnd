@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/decred/slog"
+	"github.com/Decred-Next/slog/v8"
 
 	"github.com/Decred-Next/dcrnd/wire/v8"
 )

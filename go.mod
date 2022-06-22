@@ -29,10 +29,10 @@ require (
 	github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.8
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.8
 	github.com/Decred-Next/dcrnwallet/rpc/jsonrpc/types/version14/v8 v8.0.8
+	github.com/Decred-Next/go-socks/v8 v8.0.1
+	github.com/Decred-Next/slog/v8 v8.0.1
 	github.com/btcsuite/winsvc v1.0.0
 	github.com/decred/base58 v1.0.1
-	github.com/decred/go-socks v1.1.0
-	github.com/decred/slog v1.0.0
 	github.com/gorilla/websocket v1.5.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/jrick/bitset v1.0.0

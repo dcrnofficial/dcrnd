@@ -11,5 +11,5 @@ require (
 	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.8
 	github.com/Decred-Next/dcrnd/dcrutil/version2/v8 v8.0.8
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.8
-	github.com/decred/slog v1.0.0
+	github.com/Decred-Next/slog/v8 v8.0.1
 )

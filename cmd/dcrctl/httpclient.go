@@ -16,7 +16,7 @@ import (
 	"net/http"
 
 	dcrjson "github.com/Decred-Next/dcrnd/dcrjson/version3/v8"
-	"github.com/decred/go-socks/socks"
+	"github.com/Decred-Next/go-socks/v8/socks"
 )
 
 // newHTTPClient returns a new HTTP client that is configured according to the

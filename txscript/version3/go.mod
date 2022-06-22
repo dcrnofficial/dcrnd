@@ -12,5 +12,5 @@ require (
 	github.com/Decred-Next/dcrnd/dcrutil/version3/v8 v8.0.8
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.8
 	github.com/dchest/siphash v1.2.1
-	github.com/decred/slog v1.1.0
+	github.com/Decred-Next/slog/v8 v8.0.1
 )
