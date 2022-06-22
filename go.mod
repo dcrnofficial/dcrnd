@@ -28,9 +28,9 @@ require (
 	github.com/Decred-Next/dcrnd/rpcclient/version5/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/txscript/version2/v8 v8.0.6
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.6
+	github.com/Decred-Next/dcrnwallet/rpc/jsonrpc/types/version14/v8 v8.0.0
 	github.com/btcsuite/winsvc v1.0.0
 	github.com/decred/base58 v1.0.1
-	github.com/decred/dcrwallet/rpc/jsonrpc/types v1.4.0
 	github.com/decred/go-socks v1.1.0
 	github.com/decred/slog v1.0.0
 	github.com/gorilla/websocket v1.5.0
@@ -44,7 +44,7 @@ require (
 
 replace (
 	github.com/Decred-Next/dcrnd/addrmgr/v8 => ./addrmgr
-	github.com/Decred-Next/dcrnd/blockchain/stake/version2/v8 => ./blockchain/stake
+	github.com/Decred-Next/dcrnd/blockchain/stake/version2/v8 => ./blockchain/stake/version2
 	github.com/Decred-Next/dcrnd/blockchain/standalone/v8 => ./blockchain/standalone
 	github.com/Decred-Next/dcrnd/blockchain/v8 => ./blockchain
 	github.com/Decred-Next/dcrnd/certgen/v8 => ./certgen

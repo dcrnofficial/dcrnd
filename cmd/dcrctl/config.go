@@ -21,7 +21,7 @@ import (
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 
 	dcrdtypes "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
-	wallettypes "github.com/decred/dcrwallet/rpc/jsonrpc/types"
+	wallettypes "github.com/Decred-Next/dcrnwallet/rpc/jsonrpc/types/version14/v8"
 
 	flags "github.com/jessevdk/go-flags"
 )

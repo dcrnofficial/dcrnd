@@ -15,7 +15,7 @@ import (
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
 	chainjson "github.com/Decred-Next/dcrnd/rpc/jsonrpc/types/version2/v8"
 	"github.com/Decred-Next/dcrnd/wire/v8"
-	walletjson "github.com/decred/dcrwallet/rpc/jsonrpc/types"
+	walletjson "github.com/Decred-Next/dcrnwallet/rpc/jsonrpc/types/version14/v8"
 )
 
 var (
