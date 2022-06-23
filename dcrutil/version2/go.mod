@@ -11,5 +11,5 @@ require (
 	github.com/Decred-Next/dcrnd/dcrec/v8 v8.0.9
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.9
 	github.com/davecgh/go-spew v1.1.1
-	github.com/decred/base58 v1.0.1
+	github.com/Decred-Next/base58/v8 v8.0.9
 )

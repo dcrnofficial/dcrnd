@@ -9,7 +9,7 @@ import (
 	"bytes"
 	"encoding/hex"
 	"fmt"
-	"github.com/decred/base58"
+	"github.com/Decred-Next/base58/v8"
 	"reflect"
 	"testing"
 

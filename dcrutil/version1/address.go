@@ -13,11 +13,11 @@ import (
 
 	"golang.org/x/crypto/ripemd160"
 
+	"github.com/Decred-Next/base58/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/chaincfg/v8/chainec"
 	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version2/v8/schnorr"
-	"github.com/decred/base58"
 )
 
 var (

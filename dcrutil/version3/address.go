@@ -9,12 +9,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/decred/base58"
+	"github.com/Decred-Next/base58/v8"
 	"github.com/Decred-Next/dcrnd/crypto/ripemd160/v8"
-	"github.com/Decred-Next/dcrnd/dcrec/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
-	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
+	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/secp256k1/version3/v8/schnorr"
+	"github.com/Decred-Next/dcrnd/dcrec/v8"
 )
 
 var (

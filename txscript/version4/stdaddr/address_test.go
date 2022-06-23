@@ -10,7 +10,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/decred/base58"
+	"github.com/Decred-Next/base58/v8"
 	"github.com/Decred-Next/dcrnd/crypto/ripemd160/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/edwards/v8"
 	secp256k1 "github.com/Decred-Next/dcrnd/dcrec/secp256k1/version4/v8"

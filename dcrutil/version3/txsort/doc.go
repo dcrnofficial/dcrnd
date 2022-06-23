@@ -1,11 +1,12 @@
-txsort
-======
+// Copyright (c) 2015 The btcsuite developers
+// Copyright (c) 2017 The Decred developers
+// Use of this source code is governed by an ISC
+// license that can be found in the LICENSE file.
 
-[![Build Status](https://github.com/decred/dcrd/workflows/Build%20and%20Test/badge.svg)](https://github.com/decred/dcrd/actions)
-[![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![Doc](https://img.shields.io/badge/doc-reference-blue.svg)](https://pkg.go.dev/github.com/decred/dcrd/dcrutil/v3/txsort)
-
+/*
 Package txsort provides stable transaction sorting.
+
+Overview
 
 This package implements a standard lexicographical sort order of transaction
 inputs and outputs.  This is useful to standardize transactions for faster
@@ -23,16 +24,5 @@ The sort order for transaction outputs is defined as follows:
 - Amount in ascending order
 - Public key script version in ascending order
 - Raw public key script bytes lexicographically in ascending order
-
-A comprehensive suite of tests is provided to ensure proper functionality.
-
-## Installation and Updating
-
-```bash
-$ go get -u github.com/decred/dcrd/dcrutil/txsort
-```
-
-## License
-
-Package txsort is licensed under the [copyfree](http://copyfree.org) ISC
-License.
+*/
+package txsort
