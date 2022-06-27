@@ -345,3 +345,64 @@ func (c *SubsidyCache) CalcTreasurySubsidy(height int64, voters uint16) int64 {
 	// Adjust for the number of voters.
 	return (int64(voters) * subsidy) / int64(c.params.VotesPerBlock())
 }
+// calcStakeVoteSubsidy returns the subsidy for a single stake vote for a block
+// using the provided stake vote subsidy proportion.  It is calculated as the
+// provided proportion of the total subsidy and max potential number of votes
+// per block.  This is the primary implementation logic used by
+// CalcStakeVoteSubsidy and CalcStakeVoteSubsidyV2.
+//
+// See the comments of those functions for further details.
+//
+// This function is safe for concurrent access.
+func (c *SubsidyCache) calcStakeVoteSubsidy(height int64, proportion, totalProportions uint16) int64 {
+	// Votes have no subsidy prior to the point voting begins.  The minus one
+	// accounts for the fact that vote subsidy are, unfortunately, based on the
+	// height that is being voted on as opposed to the block in which they are
+	// included.
+	if height < c.params.StakeValidationBeginHeight()-1 {
+		return 0
+	}
+
+	// Calculate the full block subsidy and reduce it according to the stake
+	// proportion.  Then divide it by the number of votes per block to arrive
+	// at the amount per vote.
+	subsidy := c.CalcBlockSubsidy(height)
+	proportions := int64(totalProportions)
+	subsidy *= int64(proportion)
+	subsidy /= (proportions * int64(c.params.VotesPerBlock()))
+
+	return subsidy
+}
+
+// CalcStakeVoteSubsidyV2 returns the subsidy for a single stake vote for a
+// block using either the original subsidy split that was in effect at Decred
+// launch or the modified subsidy split defined in DCP0010 according to the
+// provided flag.
+//
+// It is calculated as a proportion of the total subsidy and max potential
+// number of votes per block.
+//
+// Unlike the Proof-of-Work and Treasury subsidies, the subsidy that votes
+// receive is not reduced when a block contains less than the maximum number of
+// votes.  Consequently, this does not accept the number of votes.  However, it
+// is important to note that blocks that do not receive the minimum required
+// number of votes for a block to be valid by consensus won't actually produce
+// any vote subsidy either since they are invalid.
+//
+// This function is safe for concurrent access.
+func (c *SubsidyCache) CalcStakeVoteSubsidyV2(height int64, useDCP0010 bool) int64 {
+	if !useDCP0010 {
+		return c.CalcStakeVoteSubsidy(height)
+	}
+
+	// The stake vote subsidy proportion defined in DCP0010 is 80%.  Thus it is
+	// 8 since 8/10 = 80%.
+	//
+	// Note that the value is hard coded here as opposed to using the subsidy
+	// params in order to avoid the need for a major module bump that would be
+	// required if the subsidy params interface were changed.
+	const voteSubsidyProportion = 8
+	const totalProportions = 10
+	return c.calcStakeVoteSubsidy(height, voteSubsidyProportion,
+		totalProportions)
+}
