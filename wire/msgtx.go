@@ -17,7 +17,10 @@ import (
 const (
 	// TxVersion is the current latest supported transaction version.
 	TxVersion uint16 = 1
-
+	
+	// TxVersionTreasury is the transaction version that enables the
+	// decentralized treasury features.
+	TxVersionTreasury uint16 = 3
 	// MaxTxInSequenceNum is the maximum sequence number the sequence field
 	// of a transaction input can be.
 	MaxTxInSequenceNum uint32 = 0xffffffff
