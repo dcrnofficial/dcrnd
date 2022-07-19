@@ -49,10 +49,10 @@ func dcrdMain() error {
 	}()
 	if tcfg.TestNet{
 		params := chaincfg.TestNet3Params()
-		dcrdLog.Infof("test net:%s",params.Net.String())
+		dcrdLog.Infof("test net:%d",uint32(params.Net))
 	}else if !tcfg.TestNet && !tcfg.SimNet && !tcfg.RegNet{
 		params := chaincfg.MainNetParams()
-		dcrdLog.Infof("main net:%s",params.Net.String())
+		dcrdLog.Infof("main net:%s",uint32(params.Net))
 	}
 	
 	
