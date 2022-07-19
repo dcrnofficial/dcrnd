@@ -19,7 +19,7 @@ import (
 func TestNet3Params() *Params {
 	// testNetPowLimit is the highest proof of work value a Decred block
 	// can have for the test network.  It is the value 2^232 - 1.
-	testNetPowLimit := new(big.Int).Sub(new(big.Int).Lsh(bigOne, 232), bigOne)
+	testNetPowLimit := new(big.Int).Sub(new(big.Int).Lsh(bigOne, 224), bigOne)
 
 	// genesisBlock defines the genesis block of the block chain which serves as
 	// the public transaction ledger for the test network (version 3).
@@ -30,7 +30,7 @@ func TestNet3Params() *Params {
 			// MerkleRoot: Calculated below.
 			StakeRoot:    chainhash.Hash{},
 			Timestamp:    time.Unix(1653386400, 0), // 2022/05/24 10:00:00 GMT
-			Bits:         0x1e00ffff,               // Difficulty 1
+			Bits:         0x1b000a00,               // Difficulty 1
 			SBits:        2 * 1e8,                  // 2 Coin
 			Nonce:        0x00000000,
 			StakeVersion: 0,
@@ -160,7 +160,7 @@ func TestNet3Params() *Params {
 		StakeVersionInterval:    144 * 2 * 7, // ~1 week
 		MaxFreshStakePerBlock:   20,          // 4*TicketsPerBlock
 		StakeEnabledHeight:      16 + 16,     // CoinbaseMaturity + TicketMaturity
-		StakeValidationHeight:   64,          // ~7 days
+		StakeValidationHeight:   2048,          // ~7 days
 		StakeBaseSigScript:      []byte{0x00, 0x00},
 		StakeMajorityMultiplier: 3,
 		StakeMajorityDivisor:    4,

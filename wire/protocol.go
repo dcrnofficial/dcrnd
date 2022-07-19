@@ -122,7 +122,7 @@ const (
 	RegTest CurrencyNet = RegNet
 
 	// TestNet3 represents the 3rd test network.
-	TestNet3 CurrencyNet = 0xb9240adb
+	TestNet3 CurrencyNet = 0xb9240adc
 
 	// SimNet represents the simulation test network.
 	SimNet CurrencyNet = 0xa7974632
