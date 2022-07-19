@@ -33,7 +33,6 @@ require (
 	github.com/Decred-Next/go-socks/v8 v8.0.1
 	github.com/Decred-Next/slog/v8 v8.0.1
 	github.com/btcsuite/winsvc v1.0.0
-	github.com/decred/base58 v1.0.4 // indirect
 	github.com/gorilla/websocket v1.5.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/jrick/bitset v1.0.0

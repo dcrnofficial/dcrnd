@@ -11,7 +11,7 @@ import (
 	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/dcrec/v8"
 	dcrutil "github.com/Decred-Next/dcrnd/dcrutil/version2/v8"
-	"github.com/Decred-Next/dcrnd/hdkeychain/version2/v8"
+	hdkeychain "github.com/Decred-Next/dcrnd/hdkeychain/version2/v8"
 )
 
 // This example demonstrates how to generate a cryptographically random seed
