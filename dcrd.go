@@ -14,9 +14,10 @@ import (
 	"runtime/debug"
 	"runtime/pprof"
 
+	"github.com/Decred-Next/dcrnd/blockchain/v8/indexers"
+	"github.com/Decred-Next/dcrnd/chaincfg/v8"
 	"github.com/Decred-Next/dcrnd/internal/limits"
 	"github.com/Decred-Next/dcrnd/internal/version"
-	"github.com/Decred-Next/dcrnd/blockchain/v8/indexers"
 )
 
 var cfg *config
@@ -46,7 +47,15 @@ func dcrdMain() error {
 			logRotator.Close()
 		}
 	}()
-
+	if tcfg.TestNet{
+		params := chaincfg.TestNet3Params()
+		dcrdLog.Infof("test net:%+v",params.Net)
+	}else if !tcfg.TestNet && !tcfg.SimNet && !tcfg.RegNet{
+		params := chaincfg.MainNetParams()
+		dcrdLog.Infof("main net:%+v",params.Net)
+	}
+	
+	
 	// Get a context that will be canceled when a shutdown signal has been
 	// triggered either from an OS signal such as SIGINT (Ctrl+C) or from
 	// another subsystem such as the RPC server.

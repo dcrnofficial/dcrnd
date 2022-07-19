@@ -6,3 +6,7 @@ require (
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.12
 	github.com/Decred-Next/slog/v8 v8.0.1
 )
+
+replace(
+	github.com/Decred-Next/dcrnd/wire/v8 => ../wire
+)
