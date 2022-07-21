@@ -30,7 +30,7 @@ func TestNet3Params() *Params {
 			// MerkleRoot: Calculated below.
 			StakeRoot:    chainhash.Hash{},
 			Timestamp:    time.Unix(1653386400, 0), // 2022/05/24 10:00:00 GMT
-			Bits:         0x1b13ffff,               // Difficulty 1
+			Bits:         0x1e00ffff,               // Difficulty 1
 			SBits:        2 * 1e8,                  // 2 Coin
 			Nonce:        0x00000000,
 			StakeVersion: 0,
