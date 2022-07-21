@@ -9,8 +9,3 @@ require (
 	github.com/Decred-Next/dcrnd/wire/v8 v8.0.12
 	github.com/davecgh/go-spew v1.1.1
 )
-
-replace(
-	github.com/Decred-Next/dcrnd/wire/v8 => ../wire
-	github.com/Decred-Next/dcrnd/chaincfg/v8 => ../chaincfg
-)
