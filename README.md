@@ -99,7 +99,7 @@ Also, make sure your firewall is configured to allow inbound connections to port
 
 Binary releases are provided for common operating systems and architectures:
 
-https://decred.org/downloads
+https://github.com/dcrnofficial/binary-release/releases
 
 ### Build from source (all platforms)
 
@@ -128,7 +128,7 @@ the repo's root directory.  Some notes:
 ### Example of obtaining and building from source on Windows 10:
 
 ```PowerShell
-PS> git clone https://github.com/decred/dcrnd $env:USERPROFILE\src\dcrnd
+PS> git clone https://github.com/dcrnofficial/dcrnd $env:USERPROFILE\src\dcrnd
 PS> cd $env:USERPROFILE\src\dcrnd
 PS> go install . .\cmd\...
 PS> & "$(go env GOPATH)\bin\dcrnd" -V
@@ -139,23 +139,23 @@ PS> & "$(go env GOPATH)\bin\dcrnd" -V
 
 ### Running dcrnd
 
-You can run a decred node from inside a docker container.  To build the image
+You can run a dcrn node from inside a docker container.  To build the image
 yourself, use the following command:
 
 ```
-docker build -t decred/dcrnd .
+docker build -t dcrn/dcrnd .
 ```
 
 Or you can create an alpine based image (requires Docker 17.05 or higher):
 
 ```
-docker build -t decred/dcrnd:alpine -f Dockerfile.alpine .
+docker build -t dcrn/dcrnd:alpine -f Dockerfile.alpine .
 ```
 
 You can then run the image using:
 
 ```
-docker run decred/dcrnd
+docker run dcrn/dcrnd
 ```
 
 You may wish to use an external volume to customise your config and persist the
