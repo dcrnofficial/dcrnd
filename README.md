@@ -1,30 +1,27 @@
-dcrd
+dcrnd
 ====
 
 [![Build Status](https://github.com/Decred-Next/dcrnd/workflows/Build%20and%20Test/badge.svg)](https://github.com/Decred-Next/dcrnd/actions)
-[![ISC License](https://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/decred/dcrd)
-[![Go Report Card](https://goreportcard.com/badge/github.com/decred/dcrd)](https://goreportcard.com/report/github.com/decred/dcrd)
 
-## Decred Overview
+## DCRN Overview
 
-Decred is a blockchain-based cryptocurrency with a strong focus on community
+DCRN is a blockchain-based cryptocurrency with a strong focus on community
 input, open governance, and sustainable funding for development. It utilizes a
 hybrid proof-of-work and proof-of-stake mining system to ensure that a small
 group cannot dominate the flow of transactions or make changes to Decred without
 the input of the community.  A unit of the currency is called a `decred` (DCR).
 
-https://decred.org
+https://dcrn.xyz
 
 ## Latest Downloads
 
-https://decred.org/downloads
+https://github.com/dcrnofficial/binary-release/releases
 
-## What is dcrd?
+## What is dcrnd?
 
-dcrd is a full node implementation of Decred written in Go (golang).
+dcrnd is a full node implementation of Decred written in Go (golang).
 
-It acts as a fully-validating chain daemon for the Decred cryptocurrency.  dcrd
+It acts as a fully-validating chain daemon for the Decred cryptocurrency.  dcrnd
 maintains the entire past transactional ledger of Decred and allows relaying of
 transactions to other Decred nodes around the world.
 
@@ -35,7 +32,7 @@ The software was originally forked from [btcd](https://github.com/btcsuite/btcd)
 which is a bitcoin full node implementation that is still under active
 development.  To gain the benefit of btcd's ongoing upgrades, including improved
 peer and connection handling, database optimization, and other blockchain
-related technology improvements, dcrd is continuously synced with the btcd
+related technology improvements, dcrnd is continuously synced with the btcd
 codebase.
 
 ## What is a full node?
@@ -53,13 +50,13 @@ of software participating in the Decred peer network. For instance, there are
 and cryptographic proofs they require to function, as well as relay their
 transactions to the rest of the global network.
 
-## Why run dcrd?
+## Why run dcrnd?
 
 As described in the previous section, the Decred cryptocurrency relies on having
 a peer-to-peer network of nodes that fully validate all transactions and blocks
 and then relay them to other full nodes.
 
-Running a full node with dcrd contributes to the overall security of the
+Running a full node with dcrnd contributes to the overall security of the
 network, increases the available paths for transactions and blocks to relay,
 and helps ensure there are an adequate number of nodes available to serve
 lightweight clients, such as Simplified Payment Verification (SPV) wallets.
@@ -69,13 +66,13 @@ users of lightweight clients which could force them to have to rely on
 centralized services that significantly reduce privacy and are vulnerable to
 censorship.
 
-In terms of individual benefits, since dcrd fully validates every block and
+In terms of individual benefits, since dcrnd fully validates every block and
 transaction, it provides the highest security and privacy possible when used in
 conjunction with a wallet that also supports directly connecting to it in full
 validation mode, such as [dcrwallet (CLI)](https://github.com/decred/dcrwallet)
 and [Decrediton (GUI)](https://github.com/decred/decrediton).
 
-## Minimum Recommended Specifications (dcrd only)
+## Minimum Recommended Specifications (dcrnd only)
 
 * 10 GB disk space (as of September 2018, increases over time)
 * 1GB memory (RAM)
@@ -87,7 +84,7 @@ and [Decrediton (GUI)](https://github.com/decred/decrediton).
 ## Getting Started
 
 So, you've decided to help the network by running a full node.  Great!  Running
-dcrd is simple.  All you need to do is install dcrd on a machine that is
+dcrnd is simple.  All you need to do is install dcrnd on a machine that is
 connected to the internet and meets the minimum recommended specifications, and
 launch it.
 
@@ -124,65 +121,65 @@ the repo's root directory.  Some notes:
 * Set the `GO111MODULE=on` environment variable if building from within
   `GOPATH`.
 
-* The `dcrd` executable will be installed to `$GOPATH/bin`.  `GOPATH`
+* The `dcrnd` executable will be installed to `$GOPATH/bin`.  `GOPATH`
   defaults to `$HOME/go` (or `%USERPROFILE%\go` on Windows) if unset.
 
 
 ### Example of obtaining and building from source on Windows 10:
 
 ```PowerShell
-PS> git clone https://github.com/decred/dcrd $env:USERPROFILE\src\dcrd
-PS> cd $env:USERPROFILE\src\dcrd
+PS> git clone https://github.com/decred/dcrnd $env:USERPROFILE\src\dcrnd
+PS> cd $env:USERPROFILE\src\dcrnd
 PS> go install . .\cmd\...
-PS> & "$(go env GOPATH)\bin\dcrd" -V
+PS> & "$(go env GOPATH)\bin\dcrnd" -V
 
 ```
 
 ## Docker
 
-### Running dcrd
+### Running dcrnd
 
 You can run a decred node from inside a docker container.  To build the image
 yourself, use the following command:
 
 ```
-docker build -t decred/dcrd .
+docker build -t decred/dcrnd .
 ```
 
 Or you can create an alpine based image (requires Docker 17.05 or higher):
 
 ```
-docker build -t decred/dcrd:alpine -f Dockerfile.alpine .
+docker build -t decred/dcrnd:alpine -f Dockerfile.alpine .
 ```
 
 You can then run the image using:
 
 ```
-docker run decred/dcrd
+docker run decred/dcrnd
 ```
 
 You may wish to use an external volume to customise your config and persist the
 data in an external volume:
 
 ```
-docker run --rm -v /home/user/dcrdata:/root/.dcrd/data decred/dcrd
+docker run --rm -v /home/user/dcrndata:/root/.dcrnd/data decred/dcrnd
 ```
 
-For a minimal image, you can use the decred/dcrd:alpine tag.  This is typically
+For a minimal image, you can use the decred/dcrnd:alpine tag.  This is typically
 a more secure option while also being a much smaller image.
 
 You can run dcrctl from inside the image.  For example, run an image (mounting
 your data from externally) with:
 
 ```
-docker run --rm -ti --name=dcrd-1 -v /home/user/.dcrd:/root/.dcrd \
-  decred/dcrd:alpine
+docker run --rm -ti --name=dcrnd-1 -v /home/user/.dcrnd:/root/.dcrnd \
+  decred/dcrnd:alpine
 ```
 
 And then run dcrctl commands against it.  For example:
 
 ```
-docker exec -ti dcrd-1 dcrctl getbestblock
+docker exec -ti dcrnd-1 dcrctl getbestblock
 ```
 
 ### Running Tests
@@ -218,14 +215,14 @@ https://decred.org/community
 
 ## Issue Tracker
 
-The [integrated github issue tracker](https://github.com/decred/dcrd/issues)
+The [integrated github issue tracker](https://github.com/decred/dcrnd/issues)
 is used for this project.
 
 ## Documentation
 
-The documentation for dcrd is a work-in-progress.  It is located in the
-[docs](https://github.com/decred/dcrd/tree/master/docs) folder.
+The documentation for dcrnd is a work-in-progress.  It is located in the
+[docs](https://github.com/decred/dcrnd/tree/master/docs) folder.
 
 ## License
 
-dcrd is licensed under the [copyfree](http://copyfree.org) ISC License.
+dcrnd is licensed under the [copyfree](http://copyfree.org) ISC License.
